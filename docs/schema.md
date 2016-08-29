@@ -25,7 +25,7 @@ private     | boolean   | not null, indexed, default: true
 author_id   | integer   | not null, foreign key (references users), indexed
 
 
-## channel_users
+## subscriptions
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key

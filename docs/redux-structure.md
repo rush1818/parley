@@ -28,7 +28,7 @@ Redux structure, you'll need to do the same.
   0. `removeCurrentUser` is set as the success callback.
 * `fetchCurrentUser`
   0. invoked from `App` in `onEntry`
-  0. `GET /api/session` is called.
+  0. if current_user present, rails will bootstrap the user
   0. `receiveCurrentUser` is set as the success callback.
 * `fetchAllUsers`
   0. invoked from `ChannelForm` `didMount`
