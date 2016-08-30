@@ -1,4 +1,5 @@
 import React from 'react';
+import { hashHistory } from 'react-router';
 
 class SessionForm extends React.Component {
   constructor(props){
@@ -9,6 +10,24 @@ class SessionForm extends React.Component {
     this.guestLogin = this.guestLogin.bind(this);
     this.checkValidUsername = this.checkValidUsername.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.redirectIfLoggedIn = this.redirectIfLoggedIn.bind(this);
+
+  }
+  // componentDidUpdate(){
+  //   console.log('session update');
+	// 	this.redirectIfLoggedIn();
+	// }
+
+  redirectIfLoggedIn(){
+    if (this.props.currentUser){
+      hashHistory.push("/channels");
+    }
+  }
+
+  componentWillUnmount(){
+    if (this.props.currentUser){
+      hashHistory.push("/channels");
+    }
   }
 
   changeSessionType(val){
@@ -63,8 +82,9 @@ class SessionForm extends React.Component {
   render() {
     let errorContent;
     if (this.props.errors.length > 0) {
+      // debugger
       errorContent = (
-        <li>{this.props.errors}</li>
+        <li className='user-errors'>{this.props.errors.join(", ")}</li>
       );
     }
     let sessionOptions, buttonText;

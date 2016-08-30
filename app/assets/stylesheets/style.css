@@ -184,5 +184,10 @@ body {
   left: 50px;
   top: 15px;
 }
-
+.user-errors {
+  width: 400px;
+  position: relative;
+  top: -10px;
+  left: -80px;
+}
 /*------------    ------------*/

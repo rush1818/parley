@@ -1,9 +1,13 @@
 import {login, signup, logout} from './../util/session_api_util.js';
 import {SESSION_CONSTANTS, receiveErrors, receiveCurrentUser} from '../actions/session_actions.js';
+import { hashHistory } from 'react-router';
 
 
 const SessionMiddleware = store => next => action => {
-  const loginSuccess = (user) => (store.dispatch(receiveCurrentUser(user)));
+  const loginSuccess = (user) => {
+      hashHistory.push('/channels');
+      return store.dispatch(receiveCurrentUser(user));
+  };
 
   const errorCallback = xhr => {
     const errors = xhr.responseJSON;
