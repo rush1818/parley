@@ -6,13 +6,23 @@ import { hashHistory } from 'react-router';
 
 const SessionMiddleware = store => next => action => {
   const loginSuccess = (user) => {
-      const redirectInt = setInterval((()=>{
+      const redirectLogin = setInterval((()=>{
         if (store.getState().session.currentUser) {
           hashHistory.push('/channels');
-          clearInterval(redirectInt);
+          clearInterval(redirectLogin);
         }
       }), 50);
       return store.dispatch(receiveCurrentUser(user));
+  };
+
+  const logoutSuccess = () =>{
+    const redirectLogout = setInterval((()=>{
+      if (!store.getState().session.currentUser) {
+        hashHistory.push('/home');
+        clearInterval(redirectLogout);
+      }
+    }), 50);
+    return next(action);
   };
 
   const errorCallback = xhr => {
@@ -25,7 +35,8 @@ const SessionMiddleware = store => next => action => {
       login(action.user, loginSuccess, errorCallback);
       return next(action);
     case SESSION_CONSTANTS.LOGOUT:
-      return logout(() => next(action));
+      return logout(logoutSuccess);
+      // return logout(() => next(action));
     case SESSION_CONSTANTS.SIGNUP:
       signup(action.user, loginSuccess, errorCallback);
       return next(action);
