@@ -75,19 +75,19 @@ body {
   background: var(--background-color) ;      /* light-black*/
 }
 
-.landing-page h1{
+.landing-page-navbar h1{
   font-size: 32px;
   font-style: oblique;
   margin-left: 40px;
   display: inline-block;
   cursor: default;
 }
-.landing-page ul {
+.landing-page-navbar ul {
   float: right;
   margin-right: 20px;
 }
 
-.landing-page button {
+.landing-page-navbar button {
   border-left: 0.5px solid white;
   border-right: 0.5px solid white;
   height: 40px;
@@ -95,7 +95,7 @@ body {
   box-sizing: border-box;
 }
 
-.landing-page button:hover {
+.landing-page-navbar button:hover {
   background: var(--green-color);
   cursor: pointer;
   color: black;

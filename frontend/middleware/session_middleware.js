@@ -5,7 +5,12 @@ import { hashHistory } from 'react-router';
 
 const SessionMiddleware = store => next => action => {
   const loginSuccess = (user) => {
-      hashHistory.push('/channels');
+      const redirectInt = setInterval((()=>{
+        if (store.getState().session.currentUser) {
+          hashHistory.push('/channels');
+          clearInterval(redirectInt);
+        }
+      }), 50);
       return store.dispatch(receiveCurrentUser(user));
   };
 

@@ -4,6 +4,7 @@ import SessionFormContainer from '../session/session_form_container.jsx';
 
 class NavBar extends React.Component {
   constructor(props){
+// debugger
     super(props);
     this.state = {modalOpen: false};
     this.closeModal = this.closeModal.bind(this);
