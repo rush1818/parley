@@ -45,6 +45,11 @@ class HomePage extends React.Component {
       </section>
     );
   }
+
+  componentWillUnmount() {
+    clearInterval(this.animateTyping);
+    clearInterval(this.animateCursor);
+  }
 }
 
 
