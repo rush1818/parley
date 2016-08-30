@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create!(username: user, password: 111111)
+User.create!(username: 'user', password: 111111)
 usernames = []
 until usernames.length == 20
   username = Faker::StarWars.vehicle.split(" ").map{|el| el.capitalize}.join("")
@@ -14,4 +14,9 @@ end
 
 usernames.each do |username|
   User.create!(username: username, password: Figaro.env.user_passwords)
+end
+
+
+10.times do |n|
+  Message.create!(body: Faker::Lorem.paragraph, user_id: 1, channel_id: 1)
 end
