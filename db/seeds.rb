@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
+User.create!(username: user, password: 111111)
 usernames = []
 until usernames.length == 20
   username = Faker::StarWars.vehicle.split(" ").map{|el| el.capitalize}.join("")

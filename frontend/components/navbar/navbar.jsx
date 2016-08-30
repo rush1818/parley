@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-import SessionForm from '../session/session_form.jsx';
+import SessionFormContainer from '../session/session_form_container.jsx';
 
 class NavBar extends React.Component {
   constructor(props){
@@ -21,22 +21,34 @@ class NavBar extends React.Component {
   render() {
     let content;
     if (this.props.loggedIn){
-
+      content = (
+        <section className="landing-page-nav">
+          <nav className="landing-page-navbar group">
+            <h1>SlaCar</h1>
+          </nav>
+        </section>
+      );
+    } else {
+      content = (
+        <section className="landing-page-nav">
+          <nav className="landing-page-navbar group">
+            <h1>SlaCar</h1>
+            <ul>
+              <li><button type="button" onClick={this.openModal}>Login/Signup</button></li>
+            </ul>
+          </nav>
+          <Modal
+            isOpen={this.state.modalOpen}
+            onRequestClose={this.closeModal}
+            style={modalStyle}>
+            <SessionFormContainer />
+          </Modal>
+        </section>
+      );
     }
     return(
-      <section className="landing-page-nav">
-        <nav className="landing-page-navbar group">
-          <h1>SlaCar</h1>
-          <ul>
-            <li><button type="button" onClick={this.openModal}>Login/Signup</button></li>
-          </ul>
-        </nav>
-        <Modal
-          isOpen={this.state.modalOpen}
-          onRequestClose={this.closeModal}
-          style={modalStyle}>
-          <SessionForm />
-        </Modal>
+      <section>
+        {content}
       </section>
     );
   }

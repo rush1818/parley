@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import HomePage from './home_page/home_page.jsx';
-import NavBar from './navbar/navbar.jsx';
+import NavBarContainer from './navbar/navbar_container.jsx';
 
 const _ensureLoggedIn = (store) => (nextState, replace) =>{
   if(!store.getState().session.currentUser){
@@ -13,7 +13,7 @@ const AppRouter = (props, context) => {
   return (
     <Router history={ hashHistory }>
       <Route path="/" component={ HomePage }>
-        <IndexRoute component={ NavBar } />
+        <IndexRoute component={ NavBarContainer } />
       </Route>
     </Router>
 );

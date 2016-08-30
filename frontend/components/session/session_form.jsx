@@ -3,7 +3,7 @@ import React from 'react';
 class SessionForm extends React.Component {
   constructor(props){
     super(props);
-    this.state = {newUser: 'false', username:"", password:"", errors:[], guest: "false"};
+    this.state = {newUser: 'false', username:"", password:"", guest: "false"};
     this.handleChange = this.handleChange.bind(this);
     this.changeSessionType = this.changeSessionType.bind(this);
     this.guestLogin = this.guestLogin.bind(this);
@@ -22,6 +22,7 @@ class SessionForm extends React.Component {
     return (e) => {
       e.preventDefault();
       if(field === 'username'){
+        // debugger
         this.checkValidUsername(e.target.value);
       }
       this.setState({[field]: e.target.value});
@@ -51,9 +52,21 @@ class SessionForm extends React.Component {
   }
 
   handleFormSubmit(e){
-
+    e.preventDefault();
+    let userData = {user: {username: this.state.username, password: this.state.password}};
+    if (this.state.newUser === "true") {
+      this.props.signup(userData);
+    }else{
+      this.props.login(userData);
+    }
   }
   render() {
+    let errorContent;
+    if (this.props.errors.length > 0) {
+      errorContent = (
+        <li>{this.props.errors}</li>
+      );
+    }
     let sessionOptions, buttonText;
     if (this.state.newUser==="false"){
       buttonText= "Login";
@@ -79,6 +92,9 @@ class SessionForm extends React.Component {
         {sessionOptions}
       <form className='session-form' onSubmit={this.handleFormSubmit}>
       {/* <pre>{this.state.newUser}</pre> */}
+        <ul>
+          {errorContent}
+        </ul>
         <label htmlFor="session_username">Username</label>
         <input id="session_username" type="text" onChange={this.handleChange('username')}
           value={this.state.username} placeholder="Username"/>
