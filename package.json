@@ -4,7 +4,8 @@
   "description": "== README",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "./node_modules/.bin/webpack"
   },
   "keywords": [],
   "author": "",
@@ -20,5 +21,9 @@
     "react-router": "^2.7.0",
     "redux": "^3.5.2",
     "webpack": "^1.13.2"
-  }
+  },
+  "engines": {
+  "node": "6.2.1",
+  "npm": "3.9.3"
+  },
 }

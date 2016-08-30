@@ -53,3 +53,9 @@ group :development do
   gem 'binding_of_caller'
   gem 'awesome_print', require:'ap'
 end
+
+gem 'figaro'
+group :production do
+  gem 'newrelic_rpm'
+  gem 'rails_12factor'
+end
