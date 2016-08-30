@@ -1,6 +1,8 @@
 import React from 'react';
 import Modal from 'react-modal';
 import SessionFormContainer from '../session/session_form_container.jsx';
+import { hashHistory } from 'react-router';
+
 
 class NavBar extends React.Component {
   constructor(props){
@@ -9,6 +11,7 @@ class NavBar extends React.Component {
     this.state = {modalOpen: false};
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   closeModal(){
@@ -19,6 +22,17 @@ class NavBar extends React.Component {
     this.setState({modalOpen: true});
   }
 
+  handleLogout(){
+    this.setState({modalOpen: false});
+    this.props.logout();
+    const redirectInt = setInterval((()=>{
+      if (!this.props.loggedIn) {
+          hashHistory.push('/channels');
+          clearInterval(redirectInt);
+        }
+      }), 50);
+    }
+
   render() {
     let content;
     if (this.props.loggedIn){
@@ -26,6 +40,9 @@ class NavBar extends React.Component {
         <section className="landing-page-nav">
           <nav className="landing-page-navbar group">
             <h1>SlaCar</h1>
+            <ul>
+              <li><button type="button" onClick={this.handleLogout}>Logout</button></li>
+            </ul>
           </nav>
         </section>
       );

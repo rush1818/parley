@@ -19,8 +19,7 @@ import {requestAllMessages} from './actions/message_actions.js';
 
   ReactDOM.render(<Root store={store}/>, rootEl);
 
-  window.fetchAllMessages = () =>{
-    store.dispatch(requestAllMessages())
-  };
-  // store.dispatch({type:REMOVE_MESSAGE, messageId: 13})
+  // window.fetchAllMessages = () =>{
+  //   store.dispatch(requestAllMessages())
+  // };
 });
