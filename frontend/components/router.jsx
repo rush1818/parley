@@ -27,7 +27,7 @@ const AppRouter = (props, context) => {
         <IndexRoute component={ NavBarContainer } />
         </Route>
         <Route path='/channels' component={Content}
-        >
+        onEnter={_ensureLoggedIn(context.store)}>
       </Route>
     </Router>
 );
