@@ -1,5 +1,6 @@
 import {login, signup, logout} from './../util/session_api_util.js';
-import {SESSION_CONSTANTS, receiveErrors, receiveCurrentUser} from '../actions/session_actions.js';
+import {SESSION_CONSTANTS, receiveCurrentUser} from '../actions/session_actions.js';
+import {receiveSesionErrors} from '../actions/error_actions.js';
 import { hashHistory } from 'react-router';
 
 
@@ -16,7 +17,7 @@ const SessionMiddleware = store => next => action => {
 
   const errorCallback = xhr => {
     const errors = xhr.responseJSON;
-    store.dispatch(receiveErrors(errors));
+    store.dispatch(receiveSesionErrors(errors));
   };
 
   switch (action.type) {
