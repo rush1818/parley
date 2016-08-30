@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+usernames = []
+until usernames.length == 20
+  username = Faker::StarWars.vehicle.split(" ").map{|el| el.capitalize}.join("")
+  usernames << username unless usernames.include?(username)
+end
+
+usernames.each do |username|
+  User.create!(username: username, password: Figaro.env.user_passwords)
+end

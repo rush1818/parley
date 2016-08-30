@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  root 'static_pages#root'
+
+  namespace :api, defaults: {format: :json} do
+    resources :users, only:[:index, :create]
+    resource :session, only:[:create, :destroy]
+  end
+
+  get 'api/users/guest' => 'api/users#guest_login', defaults: {format: :json}
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
