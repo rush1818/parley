@@ -6,6 +6,12 @@ import MessageFormContainer from './message_form_container.jsx';
 class MessageIndex extends React.Component {
   constructor(props){
     super(props);
+    this.fetchMore = this.fetchMore.bind(this);
+  }
+
+  fetchMore (){
+    let oldDate = this.props.messages.date.toUTCString();
+    this.props.fetchMessages(oldDate);
   }
 
   componentDidMount(){
@@ -18,21 +24,22 @@ class MessageIndex extends React.Component {
       channel.bind('new_message', function(data) {
         that.props.fetchMessages();
     });
-
-  }
-
-  componentWillUpdate(){
+    this.props.fetchMessages();
     setTimeout(()=>{
       let messageList = document.getElementById("message-list-data");
       messageList.scrollTop = messageList.scrollHeight;
-    },5);
+    },200);
+  }
+
+  componentWillUpdate(){
+
   }
 
   componentWillMount(){
-    this.props.fetchMessages();
+
   }
 
-  componentWillUnMount(){
+  componentWillUnmount(){
     this.pusher.unsubscribe('messages');
   }
 
@@ -40,6 +47,7 @@ class MessageIndex extends React.Component {
     return(
       <section className='message-index'>
         <h2>Message Index Component Goes Here</h2>
+        <h2 onClick={this.fetchMore}>FETCH MORE</h2>
         <MessageList messages={this.props.messages} />
         <MessageFormContainer />
       </section>

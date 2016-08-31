@@ -11,8 +11,9 @@ export const receiveNewMessage = (message) => ({
   message
 });
 
-export const requestAllMessages = () => ({
+export const requestAllMessages = (date) => ({
   type: MESSAGE_ACTIONS.REQUEST_ALL_MESSAGES,
+  date
 });
 
 export const receiveAllMessages = (messages) => ({

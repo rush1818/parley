@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return ({
     removeMessage: (messageId) => dispatch(removeMessage(messageId)),
-    fetchMessages: () => dispatch(requestAllMessages()),
+    fetchMessages: (date) => dispatch(requestAllMessages(date)),
     createMessage: (message) => dispatch(createMessage(message))
   });
 };

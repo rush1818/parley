@@ -15,12 +15,18 @@ export const removeMessageAPI = (messageId, success, error)=>{
   });
 };
 
-export const receiveMessagesAPI = (success, error)=>{
+export const receiveMessagesAPI = (date = null, success, error)=>{
   if (!success) {success = testFn;}
   if (!error) {error = testFn;}
+  let url;
+  if(date !== null) {
+    url = `/api/messages?date=${date}`;
+  } else {
+    url = '/api/messages';
+  }
 
   $.ajax({
-    url: '/api/messages',
+    url,
     method: 'GET',
     success,
     error

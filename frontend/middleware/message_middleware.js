@@ -13,15 +13,28 @@ const SessionMiddleware = store => next => action => {
 
   switch (action.type) {
     case MESSAGE_ACTIONS.CREATE_MESSAGE:
-      const createSuccess = (data) => store.dispatch(receiveNewMessage(data));
+      const createSuccess = (data) => {
+        setTimeout(()=>{
+          let messageList = document.getElementById("message-list-data");
+          messageList.scrollTop = messageList.scrollHeight;
+          console.log('h');
+        },500);
+        store.dispatch(receiveNewMessage(data));
+      };
       createMessageAPI(action.message, createSuccess, errorCallback);
       return next(action);
     case MESSAGE_ACTIONS.REMOVE_MESSAGE:
       removeMessageAPI(action.messageId, ()=>next(action));
       break;
     case MESSAGE_ACTIONS.REQUEST_ALL_MESSAGES:
-      const receiveAllSuccess = (data) => store.dispatch(receiveAllMessages(data));
-      receiveMessagesAPI(receiveAllSuccess, errorCallback);
+      const receiveAllSuccess = (data) => {
+        setTimeout(()=>{
+          let messageList = document.getElementById("message-list-data");
+          messageList.scrollTop = 0;
+        },100);
+        store.dispatch(receiveAllMessages(data));
+      };
+      receiveMessagesAPI(action.date, receiveAllSuccess, errorCallback);
       return next(action);
     default:
       return next(action);

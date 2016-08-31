@@ -2,7 +2,7 @@ import {merge} from 'lodash';
 import {MESSAGE_ACTIONS} from '../actions/message_actions.js';
 
 
-const ErrorReducer = (state = {}, action) => {
+const MessageReducer = (state = {}, action) => {
   switch(action.type){
       case MESSAGE_ACTIONS.REMOVE_MESSAGE:
         let newState = merge({}, state);
@@ -13,13 +13,18 @@ const ErrorReducer = (state = {}, action) => {
       return merge({}, state, newMsg);
       case MESSAGE_ACTIONS.RECEIVE_ALL_MESSAGES:
         let allMsgs = {};
+        let oldestDate = {};
         action.messages.forEach(msg => {
           allMsgs[msg.id] = msg;
+          let currentDate = new Date(msg.date);
+          if (!oldestDate['date']) oldestDate['date'] = currentDate;
+          if (oldestDate['date'] && oldestDate['date'] > currentDate)
+          oldestDate['date'] = currentDate;
         });
-        return merge({}, state, allMsgs);
+        return merge({}, state, allMsgs, oldestDate);
       default:
         return state;
     }
 };
 
-export default ErrorReducer;
+export default MessageReducer;
