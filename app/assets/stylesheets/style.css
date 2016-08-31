@@ -240,12 +240,15 @@ body {
   float: right;
   margin-bottom: 10px;
 }
-/*.msg-list-item span {
-  display: block;
-  position: relative;
-  left: 65%;
-  margin-bottom: 10px;
-}*/
+
+.msg-list-item .msg-delete-button {
+  background: var(--message-background);
+  border: 0.5px solid #ccc;
+  box-sizing: border-box;
+  padding: 3px;
+  font-size: 12px;
+  border-radius: 5px;
+}
 /*------------    ------------*/
 
 /*Message form*/

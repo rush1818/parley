@@ -18,5 +18,6 @@ end
 
 
 10.times do |n|
-  Message.create!(body: Faker::Lorem.paragraph, user_id: 1, channel_id: 1)
+  user_id = (1..15).to_a.shuffle.sample
+  Message.create!(body: Faker::Lorem.paragraph, user_id: user_id, channel_id: 1)
 end

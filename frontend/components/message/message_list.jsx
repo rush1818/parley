@@ -14,8 +14,8 @@ class MessageList extends React.Component {
 
   render(){
     let messageKeys = Object.keys(this.props.messages);
-    let button=(<span></span>);
     let content = messageKeys.map(key=>{
+      let button=(<span></span>);
       if (key === 'date') {return;}
       let message = this.props.messages[key];
       if (this.props.currentUserId === this.props.messages[key].user_id){

@@ -3,10 +3,16 @@ import MessageIndex from './message_index.jsx';
 import {requestAllMessages, createMessage, removeMessage} from '../../actions/message_actions.js';
 
 const mapStateToProps = (state, ownProps) => {
-  return({
-    messages: state.messages,
-    currentUserId: state.session.currentUser.id
-  });
+  if (state.session.currentUser) {
+    return({
+      messages: state.messages,
+      currentUserId: state.session.currentUser.id
+    });
+  } else {
+    return({
+      messages: state.messages
+    });
+  }
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {

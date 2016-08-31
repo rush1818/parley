@@ -38,6 +38,9 @@ class MessageIndex extends React.Component {
   componentWillMount(){
 
   }
+  componentWillReceiveProps(newProps){
+
+  }
 
   componentWillUnmount(){
     this.pusher.unsubscribe('messages');
