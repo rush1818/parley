@@ -15,8 +15,10 @@ class MessageList extends React.Component {
   render(){
     let messageKeys = Object.keys(this.props.messages);
     let content = messageKeys.map(key=>{
+      if (key === 'date' || key === "limit") {
+        return;
+      }
       let button=(<span></span>);
-      if (key === 'date') {return;}
       let message = this.props.messages[key];
       let date = new Date(message.date)
       if (this.props.currentUserId === this.props.messages[key].user_id){
@@ -28,6 +30,7 @@ class MessageList extends React.Component {
         <li className="msg-list-item group" key={`${key} ${message.date}`}><span className="message-info group"><span className='message-date'>{date.toTimeString()}</span>{button}</span>{message.body}</li>
       );
     });
+
     return (
       <section id="message-list-data" className="message-list-data">
       {content}

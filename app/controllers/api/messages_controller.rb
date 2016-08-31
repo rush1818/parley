@@ -2,7 +2,6 @@ class Api::MessagesController < ApplicationController
 
   before_action :require_login
   def index
-    # @messages = Message.all
     @messages = Message.message_feed(1, 20, params[:date])
   end
 

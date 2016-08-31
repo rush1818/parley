@@ -34,7 +34,6 @@ class MessageForm extends React.Component{
   render(){
     return (<form className="message-form" onSubmit={this.handleSubmit}>
       <label htmlFor="msg-body"></label>
-      {/* <input id='msg-body' type='text' onChange={this.handleChange('body')} value={this.state.body} placeholder="New Message"/> */}
       <textarea id='msg-body' type='text' onChange={this.handleChange('body')} value={this.state.body} onKeyPress={this.handleEnter} placeholder="New Message"></textarea>
     </form>);
   }

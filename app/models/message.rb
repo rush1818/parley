@@ -16,14 +16,11 @@ class Message < ActiveRecord::Base
   belongs_to :user
 
   def self.message_feed(channel_id, limit = 10, max_created_at = nil)
-    @messages = Message
-    .where("messages.channel_id = :id", id: channel_id)
-    .order("messages.created_at DESC")
-    .uniq
+    @messages = Message.where("messages.channel_id = :id", id: channel_id).order("messages.created_at DESC").uniq
 
   if max_created_at
     @messages = @messages.where("messages.created_at < :date", date: max_created_at)
   end
-  @messages.limit(limit)
+  return @messages.limit(limit)
   end
 end

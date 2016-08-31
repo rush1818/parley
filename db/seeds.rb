@@ -16,8 +16,10 @@ usernames.each do |username|
   User.create!(username: username, password: Figaro.env.user_passwords)
 end
 
-
+dates = []
+50.times { dates.push(rand(1.month).seconds.ago)}
+dates.sort!
 50.times do |n|
   user_id = n % 3 == 0 ? (1..15).to_a.shuffle.sample : 1
-  Message.create!(body: "#{n+1} - #{Faker::Lorem.paragraph}", user_id: user_id, channel_id: 1)
+  Message.create!(body: "#{n+1} - #{Faker::Lorem.paragraph}", user_id: user_id, channel_id: 1, created_at: dates[n])
 end

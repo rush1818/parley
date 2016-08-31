@@ -22,6 +22,8 @@ const MessageReducer = (state = {}, action) => {
           if (oldestDate['date'] && oldestDate['date'] > currentDate)
           oldestDate['date'] = currentDate;
         });
+        console.log(action.messages.length);
+
         if (action.messages.length < 20) {
           limit = {limit: true};
         }
