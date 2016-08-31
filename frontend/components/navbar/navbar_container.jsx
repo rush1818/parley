@@ -4,10 +4,12 @@ import {logout} from '../../actions/session_actions.js';
 
 
 const mapStateToProps = (state, ownProps) => {
-  let loggedIn;
+  let loggedIn, username;
   loggedIn = state.session.currentUser ? true : false;
+  username = state.session.currentUser ? state.session.currentUser.username : "none";
   return ({
-    loggedIn
+    loggedIn,
+    username
   });
 };
 const mapDispatchToProps = (dispatch, ownProps) => {

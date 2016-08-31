@@ -39,9 +39,9 @@ class NavBar extends React.Component {
       content = (
         <section className="landing-page-nav">
           <nav className="landing-page-navbar group">
-            <h1><a href="#/home">SlaCar</a></h1>
+            <h1><a href="#">SlaCar</a></h1>
             <ul>
-              <li><button type="button" onClick={this.handleLogout}>Logout</button></li>
+              <li>Welcome, {this.props.username}<button type="button" onClick={this.handleLogout}>Logout</button></li>
             </ul>
           </nav>
         </section>
@@ -50,7 +50,7 @@ class NavBar extends React.Component {
       content = (
         <section className="landing-page-nav">
           <nav className="landing-page-navbar group">
-            <h1><a href="#/home">SlaCar</a></h1>
+            <h1><a href="#">SlaCar</a></h1>
             <ul>
               <li><button type="button" onClick={this.openModal}>Login/Signup</button></li>
             </ul>

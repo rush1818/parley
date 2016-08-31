@@ -4,7 +4,7 @@ import MessageIndexContainer from '../message/message_index_container.jsx';
 class Content extends React.Component {
   render() {
     return (
-      <section className="main-content">
+      <section className="main-content group">
         <section>
         <secion className="channel-index"></secion>
         <MessageIndexContainer />

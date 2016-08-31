@@ -26,34 +26,24 @@ class MessageIndex extends React.Component {
     });
     this.props.fetchMessages();
 
-  }
-
-  componentWillUpdate(){
-    console.log('updated');
-    const that = this;
     setTimeout(()=>{
-      const autoFetch = window.setInterval(()=>{
+      that.autoFetch = window.setInterval(()=>{
         if (!that.props.messages.limit) {
           let messageList = document.getElementById("message-list-data");
           if (messageList.scrollTop === 0){
             that.fetchMore();
           }
         } else {
-          clearInterval(autoFetch);
+          clearInterval(that.autoFetch);
         }
       }, 500);
     }, 100);
   }
 
-  componentWillMount(){
-
-  }
-  componentWillReceiveProps(newProps){
-
-  }
-
   componentWillUnmount(){
+    const that = this;
     this.pusher.unsubscribe('messages');
+    clearInterval(that.autoFetch);
   }
 
   render() {

@@ -51,7 +51,7 @@ img {
 :root {
   --green-color: #56B68B;
   --background-color: #202426;
-  --message-background: #dedede;
+  --message-background: #eee;
 }
 
 /*---------*/
@@ -94,6 +94,7 @@ body {
   height: 6vh;
   padding: 5px;
   box-sizing: border-box;
+  margin-left: 10px;
 }
 
 .landing-page-navbar button:hover {
@@ -192,11 +193,15 @@ body {
   top: -10px;
   left: -80px;
 }
-/*------------    ------------*/
+/*------------  MAIN CONTENT ------------*/
+
+.main-content {
+  background: var(--message-background);
+
+}
 /*------------Message Index------------*/
 
 .message-index {
-  background: var(--message-background);
   display: flex;
   float: right;
   width: 66.66%;
