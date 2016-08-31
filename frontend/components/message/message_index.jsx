@@ -26,14 +26,16 @@ class MessageIndex extends React.Component {
     });
     this.props.fetchMessages();
 
-    this.props.fetchUsers();
     setTimeout(()=>{
       that.autoFetch = window.setInterval(()=>{
         if (!that.props.messages.limit) {
-          let messageList = document.getElementById("message-list-data");
-          if (messageList.scrollTop === 0){
-            that.fetchMore();
-          }
+          setTimeout(()=>{
+
+            let messageList = document.getElementById("message-list-data");
+            if (messageList.scrollTop === 0){
+              that.fetchMore();
+            }
+          }, 300);
         } else {
           clearInterval(that.autoFetch);
         }
@@ -48,15 +50,11 @@ class MessageIndex extends React.Component {
   }
 
   render() {
-    let fetch = <h2></h2>;
-    if (!this.props.messages.limit) {
-      fetch = <h2 onClick={this.fetchMore}>FETCH MORE</h2>;
-    }
+    this.props.fetchUsers();
     return(
       <section className='message-index'>
         <h2>Message Index Component Goes Here</h2>
-          {fetch}
-        <MessageList messages={this.props.messages} currentUserId={this.props.currentUserId} removeMessage={this.props.removeMessage} />
+        <MessageList messages={this.props.messages} currentUser={this.props.currentUser} removeMessage={this.props.removeMessage} users={this.props.users}/>
         <MessageFormContainer />
       </section>
     );

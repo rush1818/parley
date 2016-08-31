@@ -7,7 +7,8 @@ const mapStateToProps = (state, ownProps) => {
   if (state.session.currentUser) {
     return({
       messages: state.messages,
-      currentUserId: state.session.currentUser.id
+      currentUser: state.session.currentUser,
+      users: state.users
     });
   } else {
     return({
