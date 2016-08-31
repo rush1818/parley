@@ -12,7 +12,7 @@
 
 class User < ActiveRecord::Base
   def self.guest_user
-    User.find(1)
+    User.find(2)
   end
 
   def self.find_by_credentials(username, password)

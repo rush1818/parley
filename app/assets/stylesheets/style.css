@@ -118,7 +118,8 @@ body {
   height: 100%;
   border-radius: 20px;
   box-sizing: border-box;
-  color: white
+  color: white;
+  overflow: hidden;
 }
 
 .new-session .session-options{
@@ -203,6 +204,7 @@ body {
   height: 94vh;
   box-sizing: border-box;
   padding-left: 15px;
+  padding-right: 15px;
 
 }
 .message-list-data{  /* The actual list container*/
@@ -216,19 +218,34 @@ body {
 
 .msg-list-item {  /*Individual items*/
   box-sizing: border-box;
-  border: 1px solid #bbb;
-  font-style: 'Roboto', sans-serif;
+  border-radius: 5px;
+  font-family: 'Roboto', sans-serif;
   list-style: none;
   padding: 5px;
   padding-left: 10px;
+  padding-right: 10px;
+  overflow-wrap: break-word;
 }
 
-.msg-list-item span {
+.msg-list-item:hover{
+  border: 0.5px solid #bbb;
+  background: #ececec
+
+}
+
+.msg-list-item .message-info {
+  display: block;
+}
+.msg-list-item .message-date {
+  float: right;
+  margin-bottom: 10px;
+}
+/*.msg-list-item span {
   display: block;
   position: relative;
   left: 65%;
   margin-bottom: 10px;
-}
+}*/
 /*------------    ------------*/
 
 /*Message form*/

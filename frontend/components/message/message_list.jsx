@@ -5,7 +5,7 @@ const MessageList = ({messages}) => {
   let content = messageKeys.map(key=>{
     let message = messages[key];
     return (
-      <li className="msg-list-item group" key={`${key} ${message.date}`}><span className='message-date'>{message.date}</span>{message.body}</li>
+      <li className="msg-list-item group" key={`${key} ${message.date}`}><span className="message-info group"><span className='message-date'>{message.date}</span></span>{message.body}</li>
     );
   });
   return (
