@@ -23,8 +23,12 @@ class MessageIndex extends React.Component {
     });
 
     var channel = this.pusher.subscribe('messages');
-      channel.bind('new_message', function(data) {
-        that.props.fetchMessages();
+    channel.bind('new_message', function(data) {
+      that.props.fetchMessages();
+    });
+
+    channel.bind('message_deleted', function(data) {
+      that.props.removeMessageFromStore(data.id);
     });
     this.props.fetchMessages();
 

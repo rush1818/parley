@@ -3,7 +3,8 @@ export const MESSAGE_ACTIONS = {
   RECEIVE_ALL_MESSAGES: 'RECEIVE_ALL_MESSAGES',
   REQUEST_ALL_MESSAGES: 'REQUEST_ALL_MESSAGES',
   CREATE_MESSAGE: 'CREATE_MESSAGE',
-  REMOVE_MESSAGE: 'REMOVE_MESSAGE'
+  REMOVE_MESSAGE: 'REMOVE_MESSAGE',
+  REMOVE_MESSAGE_FROM_STORE: 'REMOVE_MESSAGE_FROM_STORE'
 };
 
 export const receiveNewMessage = (message) => ({
@@ -28,5 +29,10 @@ export const createMessage = (message) => ({
 
 export const removeMessage = (messageId) => ({
   type: MESSAGE_ACTIONS.REMOVE_MESSAGE,
+  messageId
+});
+
+export const removeMessageFromStore = (messageId) =>({
+  type: MESSAGE_ACTIONS.REMOVE_MESSAGE_FROM_STORE,
   messageId
 });

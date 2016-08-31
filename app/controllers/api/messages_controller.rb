@@ -20,7 +20,9 @@ class Api::MessagesController < ApplicationController
     @message = Message.find(params[:id])
 
     if @message.user == current_user
+      msg_id = @message.id
       @message.destroy
+      Pusher.trigger('messages', 'message_deleted', {id: msg_id})
       render json: {}
     else
       render json: ["Invalid Action"], status: 404

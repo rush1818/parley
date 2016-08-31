@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import MessageIndex from './message_index.jsx';
-import {requestAllMessages, createMessage, removeMessage} from '../../actions/message_actions.js';
+import {requestAllMessages, createMessage, removeMessage, removeMessageFromStore} from '../../actions/message_actions.js';
 import {requestUsers} from '../../actions/user_actions.js';
 
 const mapStateToProps = (state, ownProps) => {
@@ -22,7 +22,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     removeMessage: (messageId) => dispatch(removeMessage(messageId)),
     fetchMessages: (date) => dispatch(requestAllMessages(date)),
     createMessage: (message) => dispatch(createMessage(message)),
-    fetchUsers: () => dispatch(requestUsers())
+    fetchUsers: () => dispatch(requestUsers()),
+    removeMessageFromStore: (messageId) => dispatch(removeMessageFromStore(messageId))
   });
 };
 

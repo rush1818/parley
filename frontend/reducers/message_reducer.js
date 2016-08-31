@@ -28,6 +28,10 @@ const MessageReducer = (state = {}, action) => {
           limit = {limit: true};
         }
         return merge({}, state, allMsgs, oldestDate, limit);
+      case MESSAGE_ACTIONS.REMOVE_MESSAGE_FROM_STORE:
+        let newState2 = merge({}, state);
+        delete newState2[action.messageId];
+        return newState2;
       default:
         return state;
     }
