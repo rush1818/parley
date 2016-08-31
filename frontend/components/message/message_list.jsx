@@ -9,9 +9,9 @@ const MessageList = ({messages}) => {
     );
   });
   return (
-    <div>
+    <section className="message-list-data">
     {content}
-    </div>
+    </section>
   );
 };
 

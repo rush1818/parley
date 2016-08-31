@@ -7,6 +7,7 @@ class Content extends React.Component {
       <section className="main-content">
         <section>
         <h1>Main Content Goes Here</h1>
+        <secion className="channel-index"></secion>
         <MessageIndexContainer />
         </section>
       </section>

@@ -10,11 +10,11 @@ class MessageIndex extends React.Component {
 
   componentDidMount(){
     let that = this;
-    var pusher = new Pusher(window.myPusherK, {
+    this.pusher = new Pusher(window.myPusherK, {
       encrypted: true
     });
 
-    var channel = pusher.subscribe('messages');
+    var channel = this.pusher.subscribe('messages');
       channel.bind('new_message', function(data) {
         that.props.fetchMessages();
     });
@@ -23,6 +23,11 @@ class MessageIndex extends React.Component {
   componentWillMount(){
     this.props.fetchMessages();
   }
+
+  componentWillUnMount(){
+    this.pusher.unsubscribe('messages');
+  }
+
   render() {
     return(
       <section className='message-index'>

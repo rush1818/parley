@@ -50,7 +50,8 @@ img {
 
 :root {
   --green-color: #56B68B;
-  --background-color: #202426
+  --background-color: #202426;
+  --message-background: #dedede;
 }
 
 /*---------*/
@@ -191,7 +192,37 @@ body {
   left: -80px;
 }
 /*------------    ------------*/
+/*------------Message Index------------*/
+
+.message-index {
+  background: var(--message-background);
+  display: flex;
+  float: right;
+  width: 66.66%;
+  height: 100%;
+  flex-direction: column;
+  height: 100vh;
+  box-sizing: border-box;
+  padding-left: 5px;
+
+}
+.message-list-data{
+  height: 80vh;
+}
+.message-form {
+  height: 20vh;
+}
+/*------------    ------------*/
+
 /*Message form*/
-.message-form input {
-  border: 1px solid black;
+
+.message-form textarea {
+  border: 1px solid #bbb;
+  height: 50px;
+  border-radius: 5px;
+  width: 90%;
+  padding: 7px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  resize: vertical;
 }
