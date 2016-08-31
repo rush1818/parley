@@ -39,3 +39,15 @@ export const logout = (success, error)=>{
     error
   });
 };
+
+export const demoLoginAPI = (success, error)=>{
+  if (!success) {success = testFn;}
+  if (!error) {error = testFn;}
+
+  $.ajax({
+    url: '/api/users/guest',
+    method: 'GET',
+    success,
+    error
+  });
+};

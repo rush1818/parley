@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>SlaCar</title>
+
+   <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+  <script id="pusher-key" type='text/javascript'>
+    window.myPusherK = '<%= Figaro.env.pusher_key! %>'
+  </script>
+
   <script id="bootstrap-current-user" type="text/javascript">
     <% if current_user %>
     	window.currentUser = <%= render("api/users/user.json.jbuilder",
     		user: current_user).html_safe %>
     <% end %>
   </script>
-  
-  <title>SlaCar</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>

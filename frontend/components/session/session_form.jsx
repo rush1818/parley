@@ -56,6 +56,7 @@ class SessionForm extends React.Component {
     e.preventDefault();
     let username="**********";
     let i = 0;
+    let that = this;
     this.state.username = "";
     this.state.password = "";
     this.animateTyping = setInterval(() => {
@@ -65,7 +66,7 @@ class SessionForm extends React.Component {
         i++;
       } else {
         clearInterval(this.animateTyping);
-        // Call Guest Session action
+        that.props.demoLogin();
       }
     }, 100);
   }

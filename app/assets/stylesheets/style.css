@@ -191,3 +191,7 @@ body {
   left: -80px;
 }
 /*------------    ------------*/
+/*Message form*/
+.message-form input {
+  border: 1px solid black;
+}

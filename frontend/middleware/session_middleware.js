@@ -1,4 +1,4 @@
-import {login, signup, logout} from './../util/session_api_util.js';
+import {login, signup, logout, demoLoginAPI} from './../util/session_api_util.js';
 import {SESSION_CONSTANTS, receiveCurrentUser} from '../actions/session_actions.js';
 import {receiveSesionErrors} from '../actions/error_actions.js';
 import { hashHistory } from 'react-router';
@@ -39,6 +39,9 @@ const SessionMiddleware = store => next => action => {
       // return logout(() => next(action));
     case SESSION_CONSTANTS.SIGNUP:
       signup(action.user, loginSuccess, errorCallback);
+      return next(action);
+    case SESSION_CONSTANTS.DEMO_LOGIN:
+      demoLoginAPI(loginSuccess, errorCallback);
       return next(action);
     default:
       return next(action);
