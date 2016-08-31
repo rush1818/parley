@@ -18,7 +18,7 @@ const SessionMiddleware = store => next => action => {
   const logoutSuccess = () =>{
     const redirectLogout = setInterval((()=>{
       if (!store.getState().session.currentUser) {
-        hashHistory.push('/home');
+        hashHistory.push('/');
         clearInterval(redirectLogout);
       }
     }), 50);

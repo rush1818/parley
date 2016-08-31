@@ -17,7 +17,7 @@ const AppRouter = (props, context) => {
 
   const _ensureLoggedIn = (nextState, replace) =>{
     if(!context.store.getState().session.currentUser){
-      replace('/home');
+      replace('/');
     }
   };
 
@@ -25,8 +25,7 @@ const AppRouter = (props, context) => {
   return (
     <Router history={ hashHistory }>
       <Route path="/" component={ App }>
-        <IndexRoute component={ HomePage } />
-        <Route path="/home" component={HomePage} onEnter={_redirectIfLoggedIn}/>
+        <IndexRoute component={ HomePage } onEnter={_redirectIfLoggedIn}/>
         <Route path='/channels' component={Content} onEnter={_ensureLoggedIn}>
         </Route>
       </Route>
