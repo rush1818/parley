@@ -26,6 +26,7 @@ class MessageIndex extends React.Component {
     });
     this.props.fetchMessages();
 
+    this.props.fetchUsers();
     setTimeout(()=>{
       that.autoFetch = window.setInterval(()=>{
         if (!that.props.messages.limit) {
