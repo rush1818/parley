@@ -9,7 +9,6 @@ class MessageIndex extends React.Component {
   }
 
   componentDidMount(){
-    console.log(window.myPusherK);
     let that = this;
     var pusher = new Pusher(window.myPusherK, {
       encrypted: true
