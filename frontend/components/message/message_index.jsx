@@ -18,6 +18,10 @@ class MessageIndex extends React.Component {
       channel.bind('new_message', function(data) {
         that.props.fetchMessages();
     });
+    setTimeout(()=>{
+      let messageList = document.getElementById("message-list-data");
+      messageList.scrollTop = messageList.scrollHeight;
+    },500);
   }
 
   componentWillMount(){

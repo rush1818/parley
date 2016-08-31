@@ -11,7 +11,7 @@ import App from './app.jsx';
 const AppRouter = (props, context) => {
   const _redirectIfLoggedIn = (nextState, replace) => {
     if(context.store.getState().session.currentUser){
-      hashHistory.push('/channels');
+      replace('/channels');
     }
   };
 

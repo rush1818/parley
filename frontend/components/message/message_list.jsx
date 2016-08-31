@@ -5,11 +5,11 @@ const MessageList = ({messages}) => {
   let content = messageKeys.map(key=>{
     let message = messages[key];
     return (
-      <li key={`${key} ${message.date}`}>{message.body} <span className='message-date'>{message.date}</span></li>
+      <li className="msg-list-item group" key={`${key} ${message.date}`}><span className='message-date'>{message.date}</span>{message.body}</li>
     );
   });
   return (
-    <section className="message-list-data">
+    <section id="message-list-data" className="message-list-data">
     {content}
     </section>
   );
