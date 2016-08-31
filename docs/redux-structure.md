@@ -22,6 +22,10 @@ Redux structure, you'll need to do the same.
   0. invoked from `LoginForm` `onSubmit`
   0. `POST /api/session` is called.
   0. `receiveCurrentUser` is set as the callback.
+* `DemoLogin`
+  0. invoked from `Guest/Demo login` `onSubmit`
+  0. `GET /users/guest` is called.
+  0. `receiveCurrentUser` is set as the callback.
 * `logOut`
   0. invoked from `Navbar` `onClick`
   0. `DELETE /api/session` is called.

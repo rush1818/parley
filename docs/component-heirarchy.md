@@ -1,6 +1,6 @@
 ## Component Heirarchy
 
-**AuthFormContainer**
+**AuthModalContainer**
   - AuthForm
 
 **HomeContainer**
@@ -24,14 +24,12 @@
   - Channel/DM Detail
   - MessageIndex
     + MessageList
-    + MessageDetail
-  - MessageForm
+    + MessageForm
 
 
 ## Routes
 
 |Path   | Component   |
 |-------|-------------|
-| "/signup" | "AuthFormContainer" |
-| "/login" | "AuthFormContainer" |
-| "/messages/:channel_name" | "HomeContainer" |
+| "/"   | "HomeContainer with AuthModalContainer" |
+| "/channel/:channel_name" | "ContentContainer" |

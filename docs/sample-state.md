@@ -15,7 +15,14 @@
       "body": "what time is the show?",
       "author_id": 1,
       "channel_id": 1
-    }
+    },
+    "2": {
+      "id": 2,
+      "body": "at 8",
+      "author_id": 4,
+      "channel_id": 1
+    },
+    "date": "Tue Aug 30 2016 21:32:43 GMT-0700 (PDT)"
   },
   "channels": {
     "1": {

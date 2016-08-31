@@ -242,12 +242,17 @@ body {
 }
 
 .msg-list-item .msg-delete-button {
+  display: none;
   background: var(--message-background);
   border: 0.5px solid #ccc;
   box-sizing: border-box;
   padding: 3px;
   font-size: 12px;
   border-radius: 5px;
+}
+.msg-list-item:hover .msg-delete-button{
+  display: inline-block;
+
 }
 /*------------    ------------*/
 
