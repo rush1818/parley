@@ -15,6 +15,8 @@ class MessageIndex extends React.Component {
   }
 
   componentDidMount(){
+    this.props.fetchUsers();
+
     let that = this;
     this.pusher = new Pusher(window.myPusherK, {
       encrypted: true
@@ -32,8 +34,10 @@ class MessageIndex extends React.Component {
           setTimeout(()=>{
 
             let messageList = document.getElementById("message-list-data");
-            if (messageList.scrollTop === 0){
-              that.fetchMore();
+            if (messageList && messageList.scrollTop === 0){
+              if (that.props.currentUser){
+                that.fetchMore();
+              }
             }
           }, 300);
         } else {
@@ -50,7 +54,6 @@ class MessageIndex extends React.Component {
   }
 
   render() {
-    this.props.fetchUsers();
     return(
       <section className='message-index'>
         <h2>Message Index Component Goes Here</h2>
