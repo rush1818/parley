@@ -254,9 +254,10 @@ body {
   border: 1px solid #bbb;
   height: 50px;
   border-radius: 5px;
-  width: 95%;
+  width: 100%;
   padding: 7px;
   overflow-y: scroll;
   overflow-x: hidden;
   resize: vertical;
+  margin-right: 20px;
 }

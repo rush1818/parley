@@ -4,7 +4,8 @@ import {requestAllMessages, createMessage, removeMessage} from '../../actions/me
 
 const mapStateToProps = (state, ownProps) => {
   return({
-    messages: state.messages
+    messages: state.messages,
+    currentUserId: state.session.currentUser.id
   });
 };
 

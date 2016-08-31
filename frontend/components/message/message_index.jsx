@@ -48,7 +48,7 @@ class MessageIndex extends React.Component {
       <section className='message-index'>
         <h2>Message Index Component Goes Here</h2>
         <h2 onClick={this.fetchMore}>FETCH MORE</h2>
-        <MessageList messages={this.props.messages} />
+        <MessageList messages={this.props.messages} currentUserId={this.props.currentUserId} removeMessage={this.props.removeMessage} />
         <MessageFormContainer />
       </section>
     );
