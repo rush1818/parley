@@ -18,13 +18,14 @@ class MessageList extends React.Component {
       let button=(<span></span>);
       if (key === 'date') {return;}
       let message = this.props.messages[key];
+      let date = new Date(message.date)
       if (this.props.currentUserId === this.props.messages[key].user_id){
         button = (
           <button className="msg-delete-button" onClick={this.handleDelete(this.props.messages[key].id)}>Delete</button>
         );
       }
       return (
-        <li className="msg-list-item group" key={`${key} ${message.date}`}><span className="message-info group"><span className='message-date'>{message.date}</span>{button}</span>{message.body}</li>
+        <li className="msg-list-item group" key={`${key} ${message.date}`}><span className="message-info group"><span className='message-date'>{date.toTimeString()}</span>{button}</span>{message.body}</li>
       );
     });
     return (

@@ -14,6 +14,7 @@ const MessageReducer = (state = {}, action) => {
       case MESSAGE_ACTIONS.RECEIVE_ALL_MESSAGES:
         let allMsgs = {};
         let oldestDate = {};
+        let limit = {limit: false};
         action.messages.forEach(msg => {
           allMsgs[msg.id] = msg;
           let currentDate = new Date(msg.date);
@@ -21,7 +22,10 @@ const MessageReducer = (state = {}, action) => {
           if (oldestDate['date'] && oldestDate['date'] > currentDate)
           oldestDate['date'] = currentDate;
         });
-        return merge({}, state, allMsgs, oldestDate);
+        if (action.messages.length < 20) {
+          limit = {limit: true};
+        }
+        return merge({}, state, allMsgs, oldestDate, limit);
       default:
         return state;
     }

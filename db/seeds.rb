@@ -17,7 +17,7 @@ usernames.each do |username|
 end
 
 
-10.times do |n|
-  user_id = (1..15).to_a.shuffle.sample
-  Message.create!(body: Faker::Lorem.paragraph, user_id: user_id, channel_id: 1)
+50.times do |n|
+  user_id = n % 3 == 0 ? (1..15).to_a.shuffle.sample : 1
+  Message.create!(body: "#{n+1} - #{Faker::Lorem.paragraph}", user_id: user_id, channel_id: 1)
 end

@@ -17,7 +17,6 @@ const SessionMiddleware = store => next => action => {
         setTimeout(()=>{
           let messageList = document.getElementById("message-list-data");
           messageList.scrollTop = messageList.scrollHeight;
-          console.log('h');
         },500);
         store.dispatch(receiveNewMessage(data));
       };
@@ -29,10 +28,9 @@ const SessionMiddleware = store => next => action => {
     case MESSAGE_ACTIONS.REQUEST_ALL_MESSAGES:
       const receiveAllSuccess = (data) => {
         setTimeout(()=>{
-          let messageList = document.getElementById("message-list-data");
-          messageList.scrollTop = 0;
-        },100);
-        store.dispatch(receiveAllMessages(data));
+           $(".msg-list-item").get(19).scrollIntoView();
+        },20);
+        return store.dispatch(receiveAllMessages(data));
       };
       receiveMessagesAPI(action.date, receiveAllSuccess, errorCallback);
       return next(action);
