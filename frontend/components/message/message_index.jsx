@@ -60,7 +60,9 @@ class MessageIndex extends React.Component {
   render() {
     return(
       <section className='message-index'>
-        <h2>Message Index Component Goes Here</h2>
+        <section className='message-index-info'>
+          ChannelInfoGoesHere
+        </section>
         <MessageList messages={this.props.messages} currentUser={this.props.currentUser} removeMessage={this.props.removeMessage} users={this.props.users}/>
         <MessageFormContainer />
       </section>

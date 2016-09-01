@@ -171,20 +171,22 @@ body {
 }
 
 .new-session {
-  /*background: #202426;*/
   height: 100%;
   border-radius: 20px;
   box-sizing: border-box;
-  color: white;
+  color: black;
   overflow: hidden;
 }
 
 .new-session .session-options{
   box-sizing: border-box;
   display: block;
-  margin: 0 0 30px 83px;
+  margin: 0 0 30px 70px;
 }
-
+.new-session .session-options:first-child{
+  border-left: 2px solid black;
+  border-radius: 5px;
+}
 .new-session .session-options li{
   float: left;
   margin: 0 auto;
@@ -197,9 +199,10 @@ body {
   text-align: center;
   color: black;
   font-style: 'Roboto';
+  border-radius: 5px;
 }
 .new-session .session-options .session-notselected{
-  background: white;
+  background: #dbdbdb;
   border-style: outset;
 }
 .new-session .session-options .session-notselected:hover{
@@ -215,7 +218,7 @@ body {
 
 .new-session .session-form {
   position: relative;
-  left: 125px;
+  left: 100px;
 }
 .new-session .session-form label{
   display: block;
@@ -253,14 +256,14 @@ body {
 
 .main-content {
   background: var(--message-background);
-
+  width: 100.5%;
 }
 /*------------Message Index------------*/
 
 .message-index {
   display: flex;
   float: right;
-  width: 66.66%;
+  width: 70%;
   flex-direction: column;
   height: 94vh;
   box-sizing: border-box;
@@ -268,6 +271,12 @@ body {
   padding-right: 15px;
 
 }
+.message-index-info {
+  height: 8vh;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+
 .message-list-data{  /* The actual list container*/
   height: 90%;
   padding-top: 20px;
@@ -281,6 +290,7 @@ body {
   box-sizing: border-box;
   border-radius: 5px;
   font-family: 'Roboto', sans-serif;
+  font-size: 14px;
   list-style: none;
   padding: 5px;
   padding-left: 10px;

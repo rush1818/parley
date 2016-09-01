@@ -2,7 +2,6 @@ import React from 'react';
 import Modal from 'react-modal';
 import SessionFormContainer from '../session/session_form_container.jsx';
 import { hashHistory } from 'react-router';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class NavBar extends React.Component {
   constructor(props){
@@ -39,9 +38,9 @@ class NavBar extends React.Component {
       content = (
         <section className="landing-page-nav">
           <nav className="landing-page-navbar group">
-            <h1><a href="#">SlaQ</a></h1>
+            <h1><a href="#">parley</a></h1>
             <ul>
-              <li>Welcome, {this.props.username}<button type="button" onClick={this.handleLogout}>Logout</button></li>
+              <li>Welcome, {this.props.username}<button type="button" onClick={this.handleLogout}>&nbsp;&nbsp;&nbsp;Logout&nbsp;&nbsp;&nbsp;</button></li>
             </ul>
           </nav>
         </section>
@@ -50,19 +49,18 @@ class NavBar extends React.Component {
       content = (
         <section className="landing-page-nav">
           <nav className="landing-page-navbar group">
-            <h1><a href="#">SlaQ</a></h1>
+            <h1><a href="#">parley</a></h1>
             <ul>
               <li><button type="button" onClick={this.openModal}>Login/Signup</button></li>
             </ul>
           </nav>
-          <ReactCSSTransitionGroup transitionName="modal-transition" transitionEnterTimeout={100} transitionLeaveTimeout={100}><Modal
+          <Modal
             isOpen={this.state.modalOpen}
             onRequestClose={this.closeModal}
             style={modalStyle}
             closeTimeoutMS={5}>
             <SessionFormContainer />
           </Modal>
-          </ReactCSSTransitionGroup>
         </section>
       );
     }
@@ -92,8 +90,8 @@ const modalStyle = {
     // border: '1px solid #ccc',
     padding: '20px',
     background: 'rgba(255,255,255,.9)',
-    width: '450px',
-    height: '300px',
+    width: '400px',
+    height: '250px',
     margin: '0 auto',
     borderRadius: '10%'
 
