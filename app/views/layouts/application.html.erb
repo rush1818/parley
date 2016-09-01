@@ -8,8 +8,8 @@
     window.myPusherK = '<%= Figaro.env.pusher_key! %>'
   </script>
   <script type="text/javascript">
-    window.mySplashPath = '<%= asset_path("splash-img.jpeg") %>'
-    window.myBackgroundPath = '<%= asset_path("Black_background.jpeg") %>'
+    window.mySplashPath = '<%= Figaro.env.main_img! %>'
+    window.myBackgroundPath = '<%= Figaro.env.dark_img! %>'
   </script>
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700" rel="stylesheet">
   <script id="bootstrap-current-user" type="text/javascript">
