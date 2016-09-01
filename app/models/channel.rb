@@ -17,6 +17,16 @@ class Channel < ActiveRecord::Base
   belongs_to :user
   has_many :messages
 
+  has_many :subscriptions,
+    primary_key: :id,
+    foreign_key: :channel_id,
+    class_name: :Subscription,
+    dependent: :destroy, inverse_of: :channel
+
+  has_many :subscribers,
+    through: :subscriptions,
+    source: :user
+
   before_save do
     self.name = self.name.downcase
   end

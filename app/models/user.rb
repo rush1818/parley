@@ -31,6 +31,16 @@ class User < ActiveRecord::Base
   has_many :messages
   has_many :channels
 
+  has_many :subscriptions,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :Subscription,
+    dependent: :destroy, inverse_of: :user
+
+  has_many :subscribed_channels,
+    through: :subscriptions,
+    source: :channel
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(self.password)

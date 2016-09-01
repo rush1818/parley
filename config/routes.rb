@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     resource :session, only:[:create, :destroy]
 
     resources :messages, only:[:index, :create, :destroy]
+    resources :channels, only:[:index, :create, :patch, :destroy] do
+      resources :messages, only:[:index, :create, :destroy]
+    end
   end
 
   get 'api/users/guest' => 'api/users#guest_login', defaults: {format: :json}
