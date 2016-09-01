@@ -61,6 +61,6 @@ class User < ActiveRecord::Base
   end
 
   def feed_channels
-    @channels = Channel.joins(:subscriptions).joins("LEFT OUTER JOIN users ON users.id = subscriptions.user_id").where("channels.private = false OR subscriptions.user_id = :id", id: self.id).order("channels.id").uniq
+    @channels = Channel.joins("LEFT OUTER JOIN subscriptions ON channels.id = subscriptions.channel_id").joins("LEFT OUTER JOIN users ON users.id = subscriptions.user_id").where("channels.private = false AND subscriptions.user_id IS NULL", id: self.id).order("channels.id").uniq
   end
 end
