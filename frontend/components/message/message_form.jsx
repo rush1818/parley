@@ -22,10 +22,11 @@ class MessageForm extends React.Component{
     }
   }
   handleEmptyMsg(){
-    const errorInterval = setInterval(()=>{
-
-    })
+    const that = this;
     this.setState({errors: "Hey, enter some text!"});
+    setTimeout(()=>{
+      this.setState({errors: ""});
+    }, 2000);
   }
 
   handleSubmit(e){
@@ -38,13 +39,13 @@ class MessageForm extends React.Component{
         messageList.scrollTop = messageList.scrollHeight;
       },50);
     } else {
-      // this.handleEmptyMsg();
+      this.handleEmptyMsg();
     }
   }
   render(){
     return (<form className="message-form" onSubmit={this.handleSubmit}>
       <label htmlFor="msg-body"></label>
-      <textarea id='msg-body' type='text' onChange={this.handleChange('body')} value={this.state.body} onKeyPress={this.handleEnter} placeholder={"New Message"}></textarea>
+      <textarea id='msg-body' type='text' onChange={this.handleChange('body')} value={this.state.body} onKeyPress={this.handleEnter} placeholder={this.state.errors.length ? this.state.errors : "New Message"}></textarea>
     </form>);
   }
 }
