@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import SessionFormContainer from '../session/session_form_container.jsx';
 import { hashHistory } from 'react-router';
-
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class NavBar extends React.Component {
   constructor(props){
@@ -39,7 +39,7 @@ class NavBar extends React.Component {
       content = (
         <section className="landing-page-nav">
           <nav className="landing-page-navbar group">
-            <h1><a href="#">SlaCar</a></h1>
+            <h1><a href="#">SlaQ</a></h1>
             <ul>
               <li>Welcome, {this.props.username}<button type="button" onClick={this.handleLogout}>Logout</button></li>
             </ul>
@@ -50,17 +50,19 @@ class NavBar extends React.Component {
       content = (
         <section className="landing-page-nav">
           <nav className="landing-page-navbar group">
-            <h1><a href="#">SlaCar</a></h1>
+            <h1><a href="#">SlaQ</a></h1>
             <ul>
               <li><button type="button" onClick={this.openModal}>Login/Signup</button></li>
             </ul>
           </nav>
-          <Modal
+          <ReactCSSTransitionGroup transitionName="modal-transition" transitionEnterTimeout={100} transitionLeaveTimeout={100}><Modal
             isOpen={this.state.modalOpen}
             onRequestClose={this.closeModal}
-            style={modalStyle}>
+            style={modalStyle}
+            closeTimeoutMS={5}>
             <SessionFormContainer />
           </Modal>
+          </ReactCSSTransitionGroup>
         </section>
       );
     }

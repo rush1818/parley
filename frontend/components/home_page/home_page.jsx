@@ -37,11 +37,15 @@ class HomePage extends React.Component {
 
   render() {
     return(
-      <section className="landing-page">
+      <section className="landing-page group">
         {this.props.children}
+        <div className="splash-img-box group" >
+          <img className="splash-img" src={window.mySplashPath} alt="SlaQ" />
+        </div>
+        <div className="intro-text-box">
         <h2 className="intro-text">
           Lorem ipsum dolor sit amet, consectetur{this.state.greeting}{this.state.cursor}
-        </h2>
+        </h2></div>
       </section>
     );
   }

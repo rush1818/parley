@@ -7,6 +7,9 @@
   <script id="pusher-key" type='text/javascript'>
     window.myPusherK = '<%= Figaro.env.pusher_key! %>'
   </script>
+  <script type="text/javascript">
+    window.mySplashPath = '<%= asset_path("splash-img.jpeg") %>'
+  </script>
 
   <script id="bootstrap-current-user" type="text/javascript">
     <% if current_user %>
