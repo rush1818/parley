@@ -40,7 +40,6 @@ class HomePage extends React.Component {
       <section className="landing-page group">
         {this.props.children}
         <div className="splash-img-box group" >
-          <img className="splash-img" src="assets/splash-img.jpg" alt="SlaQ" />
         </div>
         <div className="intro-text-box">
         <h2 className="intro-text">
