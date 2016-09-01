@@ -369,3 +369,12 @@ body {
   margin-right: 20px;
   margin-top: 15px;
 }
+button, input[type="submit"] {
+ cursor: pointer;
+ transition: filter .3s, -webkit-filter .3s;
+}
+
+button:hover, input[type="submit"]:hover {
+ filter: brightness(85%);
+ -webkit-filter: brightness(85%);
+}

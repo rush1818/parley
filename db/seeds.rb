@@ -16,6 +16,12 @@ usernames.each do |username|
   User.create!(username: username, password: Figaro.env.user_passwords)
 end
 
+Channel.create!(name: 'general', user_id: User.first.id)
+channel_names = ['design', 'sf', 'atom', 'alumni']
+channel_names.length.times do |n|
+  Channel.create!(name: channel_names[n], private: false, user_id: User.first.id)
+end
+
 dates = []
 50.times { dates.push(rand(1.month).seconds.ago)}
 dates.sort!
