@@ -81,7 +81,7 @@ const modalStyle = {
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(32,36,38, 0.90)'  //Same as style.css in hex color is #202426
+    backgroundColor: 'rgba(32,36,38, 0.60)'  //Same as style.css in hex color is #202426
   },
   content: {
     position: 'fixed',
@@ -91,7 +91,7 @@ const modalStyle = {
     bottom: '100px',
     // border: '1px solid #ccc',
     padding: '20px',
-    background: 'black',
+    background: 'rgba(255,255,255,.9)',
     width: '450px',
     height: '300px',
     margin: '0 auto',
