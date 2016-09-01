@@ -24,12 +24,14 @@ class MessageForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.createMessage({message: this.state});
-    this.setState({body:"", channel_id: 1});
-    setTimeout(()=>{
-      let messageList = document.getElementById("message-list-data");
-      messageList.scrollTop = messageList.scrollHeight;
-    },50);
+    if (this.state.body.length > 0) {
+      this.props.createMessage({message: this.state});
+      this.setState({body:"", channel_id: 1});
+      setTimeout(()=>{
+        let messageList = document.getElementById("message-list-data");
+        messageList.scrollTop = messageList.scrollHeight;
+      },50);
+    }
   }
   render(){
     return (<form className="message-form" onSubmit={this.handleSubmit}>

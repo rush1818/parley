@@ -1,10 +1,10 @@
 import {removeMessageAPI, createMessageAPI, receiveMessagesAPI} from '../util/message_api_util.js';
-import {MESSAGE_ACTIONS, receiveNewMessage, removeMessage, receiveAllMessages} from '../actions/message_actions.js';
+import {MESSAGE_ACTIONS, FETCH_CONDITIONS, receiveNewMessage, removeMessage, receiveAllMessages} from '../actions/message_actions.js';
 import {receiveMessageErrors} from '../actions/error_actions.js';
 import { hashHistory } from 'react-router';
 
 
-const SessionMiddleware = store => next => action => {
+const MessageMiddleware = store => next => action => {
 
   const errorCallback = xhr => {
     const errors = xhr.responseJSON;
@@ -17,7 +17,7 @@ const SessionMiddleware = store => next => action => {
         setTimeout(()=>{
           let messageList = document.getElementById("message-list-data");
           messageList.scrollTop = messageList.scrollHeight;
-        },500);
+        },50);
         store.dispatch(receiveNewMessage(data));
       };
       createMessageAPI(action.message, createSuccess, errorCallback);
@@ -26,12 +26,20 @@ const SessionMiddleware = store => next => action => {
       removeMessageAPI(action.messageId, ()=>next(action));
       break;
     case MESSAGE_ACTIONS.REQUEST_ALL_MESSAGES:
-      const receiveAllSuccess = (data) => {
-        setTimeout(()=>{
-           $(".msg-list-item").get(19).scrollIntoView();
-        },20);
-        return store.dispatch(receiveAllMessages(data));
-      };
+      let receiveAllSuccess;
+      if (action.condition === FETCH_CONDITIONS.ALL_MESSAGES || action.condition === FETCH_CONDITIONS.FIRST_FETCH) {
+         receiveAllSuccess = (data) => {
+          setTimeout(()=>{
+             $(".msg-list-item").get(19).scrollIntoView();
+          },20);
+          return store.dispatch(receiveAllMessages(data));
+        };
+      } else {
+        console.log("in else");
+        receiveAllSuccess = (data) => {
+         return store.dispatch(receiveAllMessages(data));
+       };
+       }
       receiveMessagesAPI(action.date, receiveAllSuccess, errorCallback);
       return next(action);
     default:
@@ -39,4 +47,4 @@ const SessionMiddleware = store => next => action => {
   }
 };
 
-export default SessionMiddleware;
+export default MessageMiddleware;

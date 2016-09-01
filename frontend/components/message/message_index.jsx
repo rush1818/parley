@@ -2,6 +2,7 @@
 import React from 'react';
 import MessageList from './message_list.jsx';
 import MessageFormContainer from './message_form_container.jsx';
+import {FETCH_CONDITIONS} from '../../actions/message_actions.js';
 
 class MessageIndex extends React.Component {
   constructor(props){
@@ -11,11 +12,13 @@ class MessageIndex extends React.Component {
 
   fetchMore (){
     let oldDate = this.props.messages.date.toUTCString();
-    this.props.fetchMessages(oldDate);
+    this.props.fetchMessages(FETCH_CONDITIONS.ALL_MESSAGES ,oldDate);
   }
 
   componentDidMount(){
+    console.log('index mounted');
     this.props.fetchUsers();
+    this.props.fetchMessages(FETCH_CONDITIONS.FIRST_FETCH);
 
     let that = this;
     this.pusher = new Pusher(window.myPusherK, {
@@ -24,13 +27,12 @@ class MessageIndex extends React.Component {
 
     var channel = this.pusher.subscribe('messages');
     channel.bind('new_message', function(data) {
-      that.props.fetchMessages();
+      that.props.fetchMessages(FETCH_CONDITIONS.NEW_MESSAGE);
     });
 
     channel.bind('message_deleted', function(data) {
       that.props.removeMessageFromStore(data.id);
     });
-    this.props.fetchMessages();
 
     setTimeout(()=>{
       that.autoFetch = window.setInterval(()=>{
@@ -52,6 +54,7 @@ class MessageIndex extends React.Component {
   }
 
   componentWillUnmount(){
+    console.log("msg index unmounted!");
     const that = this;
     this.pusher.unsubscribe('messages');
     clearInterval(that.autoFetch);

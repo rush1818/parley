@@ -7,14 +7,21 @@ export const MESSAGE_ACTIONS = {
   REMOVE_MESSAGE_FROM_STORE: 'REMOVE_MESSAGE_FROM_STORE'
 };
 
+export const FETCH_CONDITIONS = {
+  NEW_MESSAGE: 'NEW_MESSAGE',
+  ALL_MESSAGES: 'ALL_MESSAGES',
+  FIRST_FETCH: 'FIRST_FETCH'
+};
+
 export const receiveNewMessage = (message) => ({
   type: MESSAGE_ACTIONS.RECEIVE_NEW_MESSAGE,
   message
 });
 
-export const requestAllMessages = (date) => ({
+export const requestAllMessages = (condition, date) => ({
   type: MESSAGE_ACTIONS.REQUEST_ALL_MESSAGES,
-  date
+  date,
+  condition
 });
 
 export const receiveAllMessages = (messages) => ({
