@@ -59,4 +59,8 @@ class User < ActiveRecord::Base
     self.save!
     self.session_token
   end
+
+  def feed_channels
+    @channels = Channel.joins(:subscriptions).joins("LEFT OUTER JOIN users ON users.id = subscriptions.user_id").where("channels.private = false OR subscriptions.user_id = :id", id: self.id).order("channels.id").uniq
+  end
 end

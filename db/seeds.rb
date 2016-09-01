@@ -16,7 +16,8 @@ usernames.each do |username|
   User.create!(username: username, password: Figaro.env.user_passwords)
 end
 
-Channel.create!(name: 'general', user_id: User.first.id)
+Channel.create!(name: 'general', user_id: User.first.id, private: false)
+Channel.find_by(name: 'general').subscriber_ids = User.all.ids
 channel_names = ['design', 'sf', 'atom', 'alumni']
 channel_names.length.times do |n|
   Channel.create!(name: channel_names[n], private: false, user_id: User.first.id)

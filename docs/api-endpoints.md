@@ -13,7 +13,6 @@
 - `GET /api/users`
 - `POST /api/users`
 - `GET /api/users/guest`
-- `PATCH /api/users`
 
 ### Session
 
@@ -22,17 +21,17 @@
 
 ### Messages
 
-- `GET /api/messages`
+- `GET /api/channels/:channel_id/messages`
   - Messages#index - returns messages for current user
-  - accepts `channel_id` query param to list messages by channel
-- `POST /api/messages`
-  - accepts `channel_id` query param to post messages to a channel
-- `DELETE /api/messages/:id`
+- `POST /api/channels/:channel_id/messages`
+- `DELETE /api/channels/:channel_id/messages/:id`
 
 ### Channels
 
 - `GET /api/channels`
   - Returns all channels that current_user belongs to (includes Public and Private DMs)
+- `PATCH /api/channels/`
+  - Adds current_user as subscriber to channel
 - `POST /api/channels/public`
   - Add a public channel
 - `POST /api/channels/private`

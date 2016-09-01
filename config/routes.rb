@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   end
 
   get 'api/users/guest' => 'api/users#guest_login', defaults: {format: :json}
+  post 'api/channels/public' => 'api/channels#public', defaults: {format: :json}
+  post 'api/channels/private' => 'api/channels#private', defaults: {format: :json}
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
