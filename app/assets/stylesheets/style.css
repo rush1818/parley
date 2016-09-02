@@ -263,16 +263,18 @@ body {
   top: 15px;
 }
 .user-errors {
-  width: 400px;
+  width: 320px;
+  display: inline-block;
   position: relative;
   top: -10px;
-  left: -80px;
+  left: -30px
 }
 /*------------  MAIN CONTENT ------------*/
 
 .main-content {
   background: var(--message-background);
   width: 100.5%;
+  height: 100%;
 }
 .main-content .main-content-back {
   background-image: url("Black_background.jpg");
@@ -291,7 +293,7 @@ body {
   float: right;
   width: 70%;
   flex-direction: column;
-  height: 94vh;
+  height: 96vh;
   box-sizing: border-box;
   padding-left: 15px;
   padding-right: 15px;
@@ -392,7 +394,7 @@ body {
   float: left;
   width: 30%;
   flex-direction: column;
-  height: 94vh;
+  height: 96vh;
   box-sizing: border-box;
   padding: 15px;
 
