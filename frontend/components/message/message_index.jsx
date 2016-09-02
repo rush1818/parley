@@ -9,27 +9,25 @@ class MessageIndex extends React.Component {
   constructor(props){
     super(props);
     this.fetchMore = this.fetchMore.bind(this);
-    this.channelName = this.props.channelName;
-    this.channelId = this.props.channelId;
+    this.state = {channelId: this.props.channelId, channelName: this.props.channelName};
+
   }
 
   fetchMore (){
     let oldDate = this.props.messages.date.toUTCString();
-    let channelName = this.channelName;
-    this.props.fetchMessages(FETCH_CONDITIONS.ALL_MESSAGES ,oldDate);
+    let channelId = this.state.channelId;
+    this.props.fetchMessages(FETCH_CONDITIONS.ALL_MESSAGES , channelId, oldDate);
   }
 
   componentWillReceiveProps(newProps){
-    this.channelName = newProps.channelName;
-    this.channelId = newProps.channelId;
+    // this.setState({channelId: newProps.channelId, channelName: newProps.channelName });
   }
 
   componentDidMount(){
     console.log('index mounted');
-    if (this.channelName){
-
+    if (this.state.channelName){
+      // this.props.fetchMessages(FETCH_CONDITIONS.FIRST_FETCH, this.state.channelId);
       this.props.fetchUsers();
-      this.props.fetchMessages(FETCH_CONDITIONS.FIRST_FETCH);
 
       let that = this;
       this.pusher = new Pusher(window.myPusherK, {
@@ -38,7 +36,7 @@ class MessageIndex extends React.Component {
 
       var channel = this.pusher.subscribe('messages');
       channel.bind('new_message', function(data) {
-        that.props.fetchMessages(FETCH_CONDITIONS.NEW_MESSAGE);
+        that.props.fetchMessages(FETCH_CONDITIONS.NEW_MESSAGE, that.state.channelId);
       });
 
       channel.bind('message_deleted', function(data) {

@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return ({
     removeMessage: (messageId) => dispatch(removeMessage(messageId)),
 
-    fetchMessages: (condition, date) => dispatch(requestAllMessages(condition, date)),
+    fetchMessages: (condition, channelId, date) => dispatch(requestAllMessages(condition, channelId, date)),
 
     createMessage: (message) => dispatch(createMessage(message)),
 

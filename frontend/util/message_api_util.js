@@ -15,14 +15,14 @@ export const removeMessageAPI = (messageId, success, error)=>{
   });
 };
 
-export const receiveMessagesAPI = (date = null, success, error)=>{
+export const receiveMessagesAPI = (id, date = null, success, error)=>{
   if (!success) {success = testFn;}
   if (!error) {error = testFn;}
   let url;
   if(date !== null) {
-    url = `/api/messages?date=${date}`;
+    url = `/api/channels/${id}/messages?date=${date}`;
   } else {
-    url = '/api/messages';
+    url = `/api/channels/${id}/messages`;
   }
 
   $.ajax({

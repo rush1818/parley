@@ -6,14 +6,20 @@ class ChannelDetail extends React.Component {
     super(props);
     this.channelId = this.props.location.search.slice(1);
     this.channelName = this.props.params.channel_name;
+    this.state = {channelId:this.props.location.search.slice(1), channelName: this.props.params.channel_name  };
   }
+
+  componentWillReceiveProps(newProps){
+    // this.setState({channelId: newProps.location.search.slice(1), channelName: newProps.params.channel_name});
+  }
+
   render() {
     return(
       <section className='message-index'>
         <section className='message-index-info'>
           ChannelInfoGoesHere
         </section>
-        <MessageIndexContainer channelId={this.channelId} channelName={this.channelName} />
+        <MessageIndexContainer channelId={this.state.channelId} channelName={this.state.channelName} />
       </section>
     );
   }

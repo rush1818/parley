@@ -28,5 +28,6 @@ dates = []
 dates.sort!
 50.times do |n|
   user_id = n % 3 == 0 ? (1..15).to_a.shuffle.sample : 1
-  Message.create!(body: "#{n+1} - #{Faker::Lorem.paragraph}", user_id: user_id, channel_id: 1, created_at: dates[n])
+  channel_id = n % 3 == 0 ? (1..3).to_a.shuffle.sample : 1
+  Message.create!(body: "#{n+1}:#{channel_id} - #{Faker::Lorem.paragraph}", user_id: user_id, channel_id: channel_id, created_at: dates[n])
 end

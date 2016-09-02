@@ -1,6 +1,7 @@
 class Api::ChannelsController < ApplicationController
   def index
     @channels = current_user.subscribed_channels
+    # @channels = current_user.feed_channels
   end
 
   def public

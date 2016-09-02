@@ -7,6 +7,7 @@ import App from './app.jsx';
 import MessageIndexContainer from '../components/message/message_index_container.jsx';
 import ChannelDetailContainer from '../components/channel/channel_detail_container.jsx';
 
+import {FETCH_CONDITIONS, requestAllMessages, createMessage, removeMessage, removeMessageFromStore} from '../actions/message_actions.js';
 
 
 const AppRouter = (props, context) => {
@@ -25,13 +26,17 @@ const AppRouter = (props, context) => {
 
   };
 
+  const _fetchMessages =(nextState, replace) => {
+    let channelId = nextState.location.search.slice(1);
+    context.store.dispatch(requestAllMessages(FETCH_CONDITIONS.FIRST_FETCH, channelId));
+  };
 
   return (
     <Router history={ hashHistory }>
       <Route path="/" component={ App }>
         <IndexRoute component={ HomePage } onEnter={_redirectIfLoggedIn}/>
         <Route path='/channels' component={Content} onEnter={_ensureLoggedIn}>
-        <Route path="/channels/:channel_name" component={ChannelDetailContainer} onEnter={_ensureLoggedIn}/>
+        <Route path="/channels/:channel_name" component={ChannelDetailContainer} onEnter={_fetchMessages}/>
         </Route>
       </Route>
       <Route path="/messages" component={MessageIndexContainer} />

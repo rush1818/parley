@@ -1,5 +1,5 @@
 import {merge} from 'lodash';
-import {MESSAGE_ACTIONS} from '../actions/message_actions.js';
+import {MESSAGE_ACTIONS, FETCH_CONDITIONS} from '../actions/message_actions.js';
 
 
 const MessageReducer = (state = {}, action) => {
@@ -32,6 +32,12 @@ const MessageReducer = (state = {}, action) => {
         let newState2 = merge({}, state);
         delete newState2[action.messageId];
         return newState2;
+      case MESSAGE_ACTIONS.REQUEST_ALL_MESSAGES:
+        if (action.condition === FETCH_CONDITIONS.FIRST_FETCH){
+          return {};
+        } else {
+          return state;
+        }
       default:
         return state;
     }

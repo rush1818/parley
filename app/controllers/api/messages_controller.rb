@@ -2,8 +2,7 @@ class Api::MessagesController < ApplicationController
 
   before_action :require_login
   def index
-    # put logic to check if current_user is subscribed to channel.
-    @messages = Message.message_feed(1, 20, params[:date])
+    @messages = Message.message_feed(params[:channel_id], 20, params[:date])
   end
 
   def create

@@ -30,7 +30,10 @@ const MessageMiddleware = store => next => action => {
       if (action.condition === FETCH_CONDITIONS.ALL_MESSAGES || action.condition === FETCH_CONDITIONS.FIRST_FETCH) {
          receiveAllSuccess = (data) => {
           setTimeout(()=>{
-             $(".msg-list-item").get(19).scrollIntoView();
+            if (!$(".msg-list-item").length) return;
+            
+            let len = $(".msg-list-item").length < 19 ? $(".msg-list-item").length : 20;
+             $(".msg-list-item").get((len - 1)).scrollIntoView();
           },20);
           return store.dispatch(receiveAllMessages(data));
         };
@@ -40,7 +43,7 @@ const MessageMiddleware = store => next => action => {
          return store.dispatch(receiveAllMessages(data));
        };
        }
-      receiveMessagesAPI(action.date, receiveAllSuccess, errorCallback);
+      receiveMessagesAPI(action.channelId, action.date, receiveAllSuccess, errorCallback);
       return next(action);
     default:
       return next(action);

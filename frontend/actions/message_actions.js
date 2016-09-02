@@ -18,10 +18,11 @@ export const receiveNewMessage = (message) => ({
   message
 });
 
-export const requestAllMessages = (condition, date) => ({
+export const requestAllMessages = (condition, channelId, date) => ({
   type: MESSAGE_ACTIONS.REQUEST_ALL_MESSAGES,
-  date,
-  condition
+  condition,
+  channelId,
+  date
 });
 
 export const receiveAllMessages = (messages) => ({
