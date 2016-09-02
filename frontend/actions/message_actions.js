@@ -30,8 +30,9 @@ export const receiveAllMessages = (messages) => ({
   messages
 });
 
-export const createMessage = (message) => ({
+export const createMessage = (channelId, message) => ({
   type: MESSAGE_ACTIONS.CREATE_MESSAGE,
+  channelId,
   message
 });
 

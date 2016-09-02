@@ -33,11 +33,11 @@ export const receiveMessagesAPI = (id, date = null, success, error)=>{
   });
 };
 
-export const createMessageAPI = (data, success, error)=>{
+export const createMessageAPI = (id, data, success, error)=>{
   if (!success) {success = testFn;}
   if (!error) {error = testFn;}
   $.ajax({
-    url: '/api/messages',
+    url: `/api/channels/${id}/messages`,
     method: 'POST',
     data,
     success,

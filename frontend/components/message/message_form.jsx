@@ -3,7 +3,7 @@ import React from 'react';
 class MessageForm extends React.Component{
   constructor(props){
     super(props);
-    this.state = {body:"", channel_id: 1, errors:"", channelName: this.props.channelName, channelId: this.props.channelId};
+    this.state = {body:"", errors:"", channelName: this.props.channelName, channelId: this.props.channelId};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEnter = this.handleEnter.bind(this);
@@ -37,8 +37,8 @@ class MessageForm extends React.Component{
   handleSubmit(e){
     e.preventDefault();
     if (this.state.body.length > 0) {
-      this.props.createMessage({message: {body: this.state.body, channel_id: this.state.channel_id}});
-      this.setState({body:"", channel_id: 1});
+      this.props.createMessage(this.state.channelId, {message: {body: this.state.body}});
+      this.setState({body:""});
       setTimeout(()=>{
         let messageList = document.getElementById("message-list-data");
         messageList.scrollTop = messageList.scrollHeight;

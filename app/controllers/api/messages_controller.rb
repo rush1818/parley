@@ -8,6 +8,7 @@ class Api::MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message.user = current_user
+    @message.channel_id = params[:channel_id]
     if @message.save
       Pusher.trigger('messages', 'new_message', {}) #change channel name to channel_id after channels is implemented
       render "api/messages/show"
@@ -31,6 +32,6 @@ class Api::MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:body, :channel_id)
+    params.require(:message).permit(:body)
   end
 end

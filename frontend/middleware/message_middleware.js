@@ -13,6 +13,7 @@ const MessageMiddleware = store => next => action => {
 
   switch (action.type) {
     case MESSAGE_ACTIONS.CREATE_MESSAGE:
+    debugger
       const createSuccess = (data) => {
         setTimeout(()=>{
           let messageList = document.getElementById("message-list-data");
@@ -20,7 +21,7 @@ const MessageMiddleware = store => next => action => {
         },50);
         store.dispatch(receiveNewMessage(data));
       };
-      createMessageAPI(action.message, createSuccess, errorCallback);
+      createMessageAPI(action.channelId, action.message, createSuccess, errorCallback);
       return next(action);
     case MESSAGE_ACTIONS.REMOVE_MESSAGE:
       removeMessageAPI(action.messageId, ()=>next(action));
@@ -31,7 +32,7 @@ const MessageMiddleware = store => next => action => {
          receiveAllSuccess = (data) => {
           setTimeout(()=>{
             if (!$(".msg-list-item").length) return;
-            
+
             let len = $(".msg-list-item").length < 19 ? $(".msg-list-item").length : 20;
              $(".msg-list-item").get((len - 1)).scrollIntoView();
           },20);
