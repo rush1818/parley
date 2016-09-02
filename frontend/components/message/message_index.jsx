@@ -3,12 +3,14 @@ import React from 'react';
 import MessageList from './message_list.jsx';
 import MessageFormContainer from './message_form_container.jsx';
 import {FETCH_CONDITIONS} from '../../actions/message_actions.js';
+import {withRouter} from 'react-router';
 
 class MessageIndex extends React.Component {
   constructor(props){
     super(props);
     this.fetchMore = this.fetchMore.bind(this);
-    this.channelName = this.props.params.channel_name;
+    this.channelName = this.props.channelName;
+    this.channelId = this.props.channelId;
   }
 
   fetchMore (){
@@ -18,7 +20,8 @@ class MessageIndex extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
-    this.channelName = newProps.params.channel_name;
+    this.channelName = newProps.channelName;
+    this.channelId = newProps.channelId;
   }
 
   componentDidMount(){
@@ -71,10 +74,7 @@ class MessageIndex extends React.Component {
 
   render() {
     return(
-      <section className='message-index'>
-        <section className='message-index-info'>
-          ChannelInfoGoesHere
-        </section>
+      <section className=''>
         <MessageList messages={this.props.messages} currentUser={this.props.currentUser} removeMessage={this.props.removeMessage} users={this.props.users}/>
         <MessageFormContainer />
       </section>
@@ -82,4 +82,4 @@ class MessageIndex extends React.Component {
   }
 }
 
-export default MessageIndex;
+export default withRouter(MessageIndex);

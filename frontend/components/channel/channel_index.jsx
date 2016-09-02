@@ -1,6 +1,5 @@
 import React from 'react';
 import ChannelList from './channel_list.jsx';
-import Loading from 'react-loading';
 import Spinner from 'react-spinkit';
 
 class ChannelIndex extends React.Component {

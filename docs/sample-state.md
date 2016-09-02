@@ -22,9 +22,10 @@
       "author_id": 4,
       "channel_id": 1
     },
-    "date": "Tue Aug 30 2016 21:32:43 GMT-0700 (PDT)"
+    "date": "Tue Aug 30 2016 21:32:43 GMT-0700 (PDT) (Used for auto fetch)",
+    "limit": "true (Used for auto fetch)"
   },
-  "channels": {
+  "sub-channels (public/private subscribed channels)": {
     "1": {
       "id": 1,
       "name": "Rails",
@@ -33,19 +34,19 @@
     "2": {
       "id": 2,
       "name": "React",
-      "private": false
+      "private": true
     }
   },
-  "privateDMs": {
+  "other-channels (public channels not subscribed to)": {
     "5": {
       "id": 5,
       "name": "Rails",
-      "private": true
+      "private": false
     },
     "10": {
       "id": 1,
       "name": "React",
-      "private": true
+      "private": false
     }
   },
   "allUsers": []

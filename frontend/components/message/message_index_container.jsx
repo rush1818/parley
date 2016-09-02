@@ -8,7 +8,10 @@ const mapStateToProps = (state, ownProps) => {
     return({
       messages: state.messages,
       currentUser: state.session.currentUser,
-      users: state.users
+      users: state.users,
+      own: ownProps,
+      channelId: parseInt(ownProps.channelId),  //This comes from channel detail
+      channelName: ownProps.channelName
     });
   } else {
     return({

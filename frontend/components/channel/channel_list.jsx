@@ -9,7 +9,7 @@ class ChannelList extends React.Component {
 
   handleChannelClick(e){
     e.preventDefault();
-    this.props.router.push(`channels/${this.props.channel.name}`);
+    this.props.router.push(`channels/${this.props.channel.name}?${this.props.channel.id}`);
   }
 
   render() {
