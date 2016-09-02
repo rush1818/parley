@@ -10,8 +10,8 @@ class MessageIndex extends React.Component {
     super(props);
     this.fetchMore = this.fetchMore.bind(this);
     this.state = {channelId: this.props.channelId, channelName: this.props.channelName};
-    this.fetchInterval = this.fetchInterval.bind(this);
-
+    this._fetchInterval = this._fetchInterval.bind(this);
+    this._createPusherChannel = this._createPusherChannel.bind(this);
   }
 
   fetchMore (){
@@ -27,50 +27,21 @@ class MessageIndex extends React.Component {
     if(this.pusher) {
       this.pusher.unsubscribe('messages');
       this.pusher.unsubscribe('message_deleted');
-      var channel = this.pusher.subscribe('messages');
-      channel.bind('new_message', function(data) {
-        that.props.fetchMessages(FETCH_CONDITIONS.NEW_MESSAGE, that.state.channelId);
-      });
-
-      channel.bind('message_deleted', function(data) {
-        that.props.removeMessageFromStore(data.id);
-      });
-      this.pusher.connection.bind( 'error', function( err ) {
-        if( err.data.code === 4004 ) {
-          console.log('>>> Pusher limit detected');
-        }
-      });
+      this._createPusherChannel()
     }
-    this.fetchInterval();
+    this._fetchInterval();
   }
 
   componentDidMount(){
     console.log('index mounted');
     if (this.state.channelName){
       this.props.fetchUsers();
-      let that = this;
-      this.pusher = new Pusher(window.myPusherK, {
-        encrypted: true
-      });
-
-      var channel = this.pusher.subscribe('messages');
-      channel.bind('new_message', function(data) {
-        that.props.fetchMessages(FETCH_CONDITIONS.NEW_MESSAGE, that.state.channelId);
-      });
-
-      channel.bind('message_deleted', function(data) {
-        that.props.removeMessageFromStore(data.id);
-      });
-      this.pusher.connection.bind( 'error', function( err ) {
-        if( err.data.code === 4004 ) {
-          console.log('>>> Pusher limit detected');
-        }
-      });
+      this._createPusherChannel();
+      this._fetchInterval();
     }
-    this.fetchInterval();
   }
 
-  fetchInterval () {
+  _fetchInterval () {
     const that = this;
     setTimeout(()=>{
       that.autoFetch = window.setInterval(()=>{
@@ -89,6 +60,27 @@ class MessageIndex extends React.Component {
         }
       }, 500);
     }, 100);
+  }
+
+  _createPusherChannel(){
+    let that = this;
+    this.pusher = new Pusher(window.myPusherK, {
+      encrypted: true
+    });
+
+    var channel = this.pusher.subscribe('messages');
+    channel.bind('new_message', function(data) {
+      that.props.fetchMessages(FETCH_CONDITIONS.NEW_MESSAGE, that.state.channelId);
+    });
+
+    channel.bind('message_deleted', function(data) {
+      that.props.removeMessageFromStore(data.id);
+    });
+    this.pusher.connection.bind( 'error', function( err ) {
+      if( err.data.code === 4004 ) {
+        console.log('>>> Pusher limit detected');
+      }
+    });
   }
 
 
