@@ -8,7 +8,7 @@ const SessionMiddleware = store => next => action => {
   const loginSuccess = (user) => {
       const redirectLogin = setInterval((()=>{
         if (store.getState().session.currentUser) {
-          hashHistory.push('/channels');
+          hashHistory.push('/channels/general?1');
           clearInterval(redirectLogin);
         }
       }), 50);

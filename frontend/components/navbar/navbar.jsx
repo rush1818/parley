@@ -26,7 +26,7 @@ class NavBar extends React.Component {
     this.props.logout();
     const redirectInt = setInterval((()=>{
       if (!this.props.loggedIn) {
-          hashHistory.push('/channels');
+          hashHistory.push('/channels/general?1');
           clearInterval(redirectInt);
         }
       }), 50);
