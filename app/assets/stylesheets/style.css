@@ -55,8 +55,17 @@ img {
   --message-background: #eee;
 }
 
-/*---------*/
+/*----Button effects-----*/
+button, input[type="submit"] {
+ cursor: pointer;
+ transition: filter .3s, -webkit-filter .3s;
+}
 
+button:hover, input[type="submit"]:hover {
+ filter: brightness(85%);
+ -webkit-filter: brightness(85%);
+}
+/*---------*/
 body {
   font-family: 'Roboto', sans-serif;
   line-height: normal;
@@ -204,6 +213,7 @@ body {
   color: black;
   font-style: 'Roboto';
   border-radius: 5px;
+  transition: filter .5s, -webkit-filter .5s;
 }
 .new-session .session-options .session-notselected{
   background: #dbdbdb;
@@ -211,6 +221,8 @@ body {
 }
 .new-session .session-options .session-notselected:hover{
   background: var(--green-color);
+  filter: brightness(85%);
+  -webkit-filter: brightness(85%);
 }
 .session-options .session-selected {
   background: var(--green-color);
@@ -367,15 +379,7 @@ body {
   margin-right: 20px;
   margin-top: 15px;
 }
-button, input[type="submit"] {
- cursor: pointer;
- transition: filter .3s, -webkit-filter .3s;
-}
 
-button:hover, input[type="submit"]:hover {
- filter: brightness(85%);
- -webkit-filter: brightness(85%);
-}
 /*------------    ------------*/
 
 /*Channel Index*/
