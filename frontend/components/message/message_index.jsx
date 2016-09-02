@@ -23,11 +23,10 @@ class MessageIndex extends React.Component {
   componentWillReceiveProps(newProps){
     // console.log(newProps);
     this.setState({channelId: newProps.channelId, channelName: newProps.channelName });
-    const that = this;
-    if(this.pusher) {
-      this.pusher.unsubscribe('messages');
-      this.pusher.unsubscribe('message_deleted');
-      this._createPusherChannel()
+    if(window.myPusherApp) {
+      window.myPusherApp.unsubscribe('messages');
+      window.myPusherApp.unsubscribe('message_deleted');
+      this._createPusherChannel();
     }
     this._fetchInterval();
   }
@@ -64,11 +63,8 @@ class MessageIndex extends React.Component {
 
   _createPusherChannel(){
     let that = this;
-    this.pusher = new Pusher(window.myPusherK, {
-      encrypted: true
-    });
 
-    var channel = this.pusher.subscribe('messages');
+    var channel = window.myPusherApp.subscribe('messages');
     channel.bind('new_message', function(data) {
       that.props.fetchMessages(FETCH_CONDITIONS.NEW_MESSAGE, that.state.channelId);
     });
@@ -76,7 +72,7 @@ class MessageIndex extends React.Component {
     channel.bind('message_deleted', function(data) {
       that.props.removeMessageFromStore(data.id);
     });
-    this.pusher.connection.bind( 'error', function( err ) {
+    window.myPusherApp.connection.bind( 'error', function( err ) {
       if( err.data.code === 4004 ) {
         console.log('>>> Pusher limit detected');
       }
@@ -87,8 +83,8 @@ class MessageIndex extends React.Component {
   componentWillUnmount(){
     console.log("msg index unmounted!");
     const that = this;
-    this.pusher.unsubscribe('messages');
-    this.pusher.unsubscribe('message_deleted');
+    window.myPusherApp.unsubscribe('messages');
+    window.myPusherApp.unsubscribe('message_deleted');
     clearInterval(that.autoFetch);
   }
 

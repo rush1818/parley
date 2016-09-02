@@ -1,6 +1,8 @@
+/*globals Pusher*/
 import React from 'react';
 import ChannelList from './channel_list.jsx';
 import Spinner from 'react-spinkit';
+import {withRouter} from 'react-router';
 
 class ChannelIndex extends React.Component {
   constructor(props){
@@ -11,6 +13,11 @@ class ChannelIndex extends React.Component {
   componentDidMount(){
     console.log('channel will mount');
     this.props.fetchSubChannels();
+    if(!window.myPusherApp){
+      window.myPusherApp = new Pusher(window.myPusherK, {
+        encrypted: true
+      });
+    }
   }
 
   render() {
@@ -35,6 +42,6 @@ class ChannelIndex extends React.Component {
   }
 }
 
-export default ChannelIndex;
+export default withRouter(ChannelIndex);
 
 /*<Loading type='balls' color='#989595' />*/

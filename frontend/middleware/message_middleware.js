@@ -17,7 +17,7 @@ const MessageMiddleware = store => next => action => {
         setTimeout(()=>{
           let messageList = document.getElementById("message-list-data");
           messageList.scrollTop = messageList.scrollHeight;
-        },50);
+        },100);
         store.dispatch(receiveNewMessage(data));
       };
       createMessageAPI(action.channelId, action.message, createSuccess, errorCallback);
@@ -40,6 +40,10 @@ const MessageMiddleware = store => next => action => {
       } else {
         console.log("in else");
         receiveAllSuccess = (data) => {
+          setTimeout(()=>{
+            let len = $(".msg-list-item").length;
+            $(".msg-list-item").get((len - 1)).scrollIntoView();
+          },25);
          return store.dispatch(receiveAllMessages(data));
        };
        }
