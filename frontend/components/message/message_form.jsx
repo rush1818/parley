@@ -3,10 +3,15 @@ import React from 'react';
 class MessageForm extends React.Component{
   constructor(props){
     super(props);
-    this.state = {body:"", channel_id: 1, errors:""};
+    this.state = {body:"", channel_id: 1, errors:"", channelName: this.props.channelName, channelId: this.props.channelId};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEnter = this.handleEnter.bind(this);
+  }
+
+  componentWillReceiveProps(newProps){
+    console.log("Form");
+    this.setState({channelName: newProps.channelName, channelId: newProps.channelId});
   }
 
   handleChange(field){
@@ -45,7 +50,7 @@ class MessageForm extends React.Component{
   render(){
     return (<form className="message-form" onSubmit={this.handleSubmit}>
       <label htmlFor="msg-body"></label>
-      <textarea id='msg-body' type='text' onChange={this.handleChange('body')} value={this.state.body} onKeyPress={this.handleEnter} placeholder={this.state.errors.length ? this.state.errors : "New Message"}></textarea>
+      <textarea id='msg-body' type='text' onChange={this.handleChange('body')} value={this.state.body} onKeyPress={this.handleEnter} placeholder={this.state.errors.length ? this.state.errors : `Message #${this.state.channelName}`}></textarea>
     </form>);
   }
 }

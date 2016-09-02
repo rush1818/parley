@@ -20,7 +20,8 @@ class MessageIndex extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
-    // this.setState({channelId: newProps.channelId, channelName: newProps.channelName });
+    // console.log(newProps);
+    this.setState({channelId: newProps.channelId, channelName: newProps.channelName });
   }
 
   componentDidMount(){
@@ -71,10 +72,11 @@ class MessageIndex extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     return(
       <section className="message-list-container group">
         <MessageList messages={this.props.messages} currentUser={this.props.currentUser} removeMessage={this.props.removeMessage} users={this.props.users}/>
-        <MessageFormContainer />
+        <MessageFormContainer channelName={this.state.channelName} channelId={this.state.channelId}/>
       </section>
     );
   }

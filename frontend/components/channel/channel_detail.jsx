@@ -10,7 +10,7 @@ class ChannelDetail extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
-    // this.setState({channelId: newProps.location.search.slice(1), channelName: newProps.params.channel_name});
+    this.setState({channelId: newProps.location.search.slice(1), channelName: newProps.params.channel_name});
   }
 
   render() {
