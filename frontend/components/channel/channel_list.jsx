@@ -8,7 +8,6 @@ class ChannelList extends React.Component {
   }
 
   handleChannelClick(e){
-    // debugger
     e.preventDefault();
     this.props.router.push(`channels/${this.props.channel.name}`);
   }
