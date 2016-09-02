@@ -1,5 +1,7 @@
 import React from 'react';
 import ChannelList from './channel_list.jsx';
+import Loading from 'react-loading';
+import Spinner from 'react-spinkit';
 
 class ChannelIndex extends React.Component {
   constructor(props){
@@ -19,6 +21,10 @@ class ChannelIndex extends React.Component {
       channelLis = keys.map(key=>{
         return (<ChannelList channel={this.props.channels[key]} key={key + this.props.channels[key].name}/>);
       });
+    } else {
+      channelLis = (
+        <Spinner spinnerName="rotating-plane" className="spinner-rotating-plane"/>
+      );
     }
     return(
       <div>
@@ -31,3 +37,5 @@ class ChannelIndex extends React.Component {
 }
 
 export default ChannelIndex;
+
+/*<Loading type='balls' color='#989595' />*/

@@ -17,42 +17,49 @@ class MessageIndex extends React.Component {
     this.props.fetchMessages(FETCH_CONDITIONS.ALL_MESSAGES ,oldDate);
   }
 
+  componentWillReceiveProps(newProps){
+    this.channelName = newProps.params.channel_name;
+  }
+
   componentDidMount(){
     console.log('index mounted');
-    this.props.fetchUsers();
-    this.props.fetchMessages(FETCH_CONDITIONS.FIRST_FETCH);
+    if (this.channelName){
 
-    let that = this;
-    this.pusher = new Pusher(window.myPusherK, {
-      encrypted: true
-    });
+      this.props.fetchUsers();
+      this.props.fetchMessages(FETCH_CONDITIONS.FIRST_FETCH);
 
-    var channel = this.pusher.subscribe('messages');
-    channel.bind('new_message', function(data) {
-      that.props.fetchMessages(FETCH_CONDITIONS.NEW_MESSAGE);
-    });
+      let that = this;
+      this.pusher = new Pusher(window.myPusherK, {
+        encrypted: true
+      });
 
-    channel.bind('message_deleted', function(data) {
-      that.props.removeMessageFromStore(data.id);
-    });
+      var channel = this.pusher.subscribe('messages');
+      channel.bind('new_message', function(data) {
+        that.props.fetchMessages(FETCH_CONDITIONS.NEW_MESSAGE);
+      });
 
-    setTimeout(()=>{
-      that.autoFetch = window.setInterval(()=>{
-        if (!that.props.messages.limit) {
-          setTimeout(()=>{
+      channel.bind('message_deleted', function(data) {
+        that.props.removeMessageFromStore(data.id);
+      });
 
-            let messageList = document.getElementById("message-list-data");
-            if (messageList && messageList.scrollTop === 0){
-              if (that.props.currentUser){
-                that.fetchMore();
+      setTimeout(()=>{
+        that.autoFetch = window.setInterval(()=>{
+          if (!that.props.messages.limit) {
+            setTimeout(()=>{
+
+              let messageList = document.getElementById("message-list-data");
+              if (messageList && messageList.scrollTop === 0){
+                if (that.props.currentUser){
+                  that.fetchMore();
+                }
               }
-            }
-          }, 300);
-        } else {
-          clearInterval(that.autoFetch);
-        }
-      }, 500);
-    }, 100);
+            }, 300);
+          } else {
+            clearInterval(that.autoFetch);
+          }
+        }, 500);
+      }, 100);
+    }
   }
 
   componentWillUnmount(){

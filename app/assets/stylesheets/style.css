@@ -394,3 +394,30 @@ body {
   padding: 15px;
 
 }
+
+/*------------    ------------*/
+
+/*Spinners*/
+
+/*.icon-loading {
+  position: absolute;
+  width: 150px;
+  top: 50%;
+  left: 40%;
+}
+*/
+
+.fade-in {
+  position: absolute;
+  top: 50%;
+  left: 50%
+}
+
+.spinner-rotating-plane{
+  width: 10vh;
+  height: 10vh
+}
+.spinner-rotating-plane div{
+  width: 10vh;
+  height: 10vh
+}
