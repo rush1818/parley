@@ -5,7 +5,7 @@ import NavBarContainer from './navbar/navbar_container.jsx';
 const App = ({children}) => (
   <div>
   <div className="splash-img-box group" >
-    <img className="splash-img" src={window.myBackgroundPath} alt="parley" />
+    {/* <img className="splash-img" src={window.myBackgroundPath} alt="parley" /> */}
   </div>
     <NavBarContainer />
     {children}

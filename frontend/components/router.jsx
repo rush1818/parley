@@ -4,7 +4,7 @@ import HomePage from './home_page/home_page.jsx';
 import NavBarContainer from './navbar/navbar_container.jsx';
 import Content from './content/content.jsx';
 import App from './app.jsx';
-
+import MessageIndexContainer from '../components/message/message_index.jsx'
 
 
 
@@ -27,6 +27,7 @@ const AppRouter = (props, context) => {
       <Route path="/" component={ App }>
         <IndexRoute component={ HomePage } onEnter={_redirectIfLoggedIn}/>
         <Route path='/channels' component={Content} onEnter={_ensureLoggedIn}>
+        <Route path="/channels/:channel_name" component={MessageIndexContainer} />
         </Route>
       </Route>
     </Router>
