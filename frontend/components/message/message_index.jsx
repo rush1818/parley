@@ -74,7 +74,7 @@ class MessageIndex extends React.Component {
 
   render() {
     return(
-      <section className=''>
+      <section className="message-list-container group">
         <MessageList messages={this.props.messages} currentUser={this.props.currentUser} removeMessage={this.props.removeMessage} users={this.props.users}/>
         <MessageFormContainer />
       </section>

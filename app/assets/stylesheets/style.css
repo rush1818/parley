@@ -303,10 +303,13 @@ body {
   box-sizing: border-box;
 }
 
-.message-list-data{  /* The actual list container*/
-  height: 90%;
+.message-list-container{  /* The actual list container*/
   padding-top: 20px;
+}
+
+.message-list-data{  /* The actual list data*/
   overflow: scroll;
+  height: 72vh;
 }
 .message-form {
   height: 15%;
