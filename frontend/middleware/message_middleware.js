@@ -13,7 +13,6 @@ const MessageMiddleware = store => next => action => {
 
   switch (action.type) {
     case MESSAGE_ACTIONS.CREATE_MESSAGE:
-    debugger
       const createSuccess = (data) => {
         setTimeout(()=>{
           let messageList = document.getElementById("message-list-data");

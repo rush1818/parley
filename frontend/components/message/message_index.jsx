@@ -10,6 +10,7 @@ class MessageIndex extends React.Component {
     super(props);
     this.fetchMore = this.fetchMore.bind(this);
     this.state = {channelId: this.props.channelId, channelName: this.props.channelName};
+    this.fetchInterval = this.fetchInterval.bind(this);
 
   }
 
@@ -22,14 +23,31 @@ class MessageIndex extends React.Component {
   componentWillReceiveProps(newProps){
     // console.log(newProps);
     this.setState({channelId: newProps.channelId, channelName: newProps.channelName });
+    const that = this;
+    if(this.pusher) {
+      this.pusher.unsubscribe('messages');
+      this.pusher.unsubscribe('message_deleted');
+      var channel = this.pusher.subscribe('messages');
+      channel.bind('new_message', function(data) {
+        that.props.fetchMessages(FETCH_CONDITIONS.NEW_MESSAGE, that.state.channelId);
+      });
+
+      channel.bind('message_deleted', function(data) {
+        that.props.removeMessageFromStore(data.id);
+      });
+      this.pusher.connection.bind( 'error', function( err ) {
+        if( err.data.code === 4004 ) {
+          console.log('>>> Pusher limit detected');
+        }
+      });
+    }
+    this.fetchInterval();
   }
 
   componentDidMount(){
     console.log('index mounted');
     if (this.state.channelName){
-      // this.props.fetchMessages(FETCH_CONDITIONS.FIRST_FETCH, this.state.channelId);
       this.props.fetchUsers();
-
       let that = this;
       this.pusher = new Pusher(window.myPusherK, {
         encrypted: true
@@ -43,31 +61,42 @@ class MessageIndex extends React.Component {
       channel.bind('message_deleted', function(data) {
         that.props.removeMessageFromStore(data.id);
       });
-
-      setTimeout(()=>{
-        that.autoFetch = window.setInterval(()=>{
-          if (!that.props.messages.limit) {
-            setTimeout(()=>{
-
-              let messageList = document.getElementById("message-list-data");
-              if (messageList && messageList.scrollTop === 0){
-                if (that.props.currentUser){
-                  that.fetchMore();
-                }
-              }
-            }, 300);
-          } else {
-            clearInterval(that.autoFetch);
-          }
-        }, 500);
-      }, 100);
+      this.pusher.connection.bind( 'error', function( err ) {
+        if( err.data.code === 4004 ) {
+          console.log('>>> Pusher limit detected');
+        }
+      });
     }
+    this.fetchInterval();
   }
+
+  fetchInterval () {
+    const that = this;
+    setTimeout(()=>{
+      that.autoFetch = window.setInterval(()=>{
+        if (!that.props.messages.limit) {
+          setTimeout(()=>{
+
+            let messageList = document.getElementById("message-list-data");
+            if (messageList && messageList.scrollTop === 0){
+              if (that.props.currentUser){
+                that.fetchMore();
+              }
+            }
+          }, 300);
+        } else {
+          clearInterval(that.autoFetch);
+        }
+      }, 500);
+    }, 100);
+  }
+
 
   componentWillUnmount(){
     console.log("msg index unmounted!");
     const that = this;
     this.pusher.unsubscribe('messages');
+    this.pusher.unsubscribe('message_deleted');
     clearInterval(that.autoFetch);
   }
 
