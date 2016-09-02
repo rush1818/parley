@@ -28,7 +28,7 @@ class MessageList extends React.Component {
       let date = new Date(message.date);
       if (this.props.currentUser && this.props.currentUser.id === message.user_id){
         button = (
-          <button className="msg-delete-button" onClick={this.handleDelete(this.props.messages[key].id)}>Delete</button>
+          <button className="msg-delete-button" onClick={this.handleDelete(this.props.messages[key].id)}><i className="material-icons">delete</i></button>
         );
       }
       return (

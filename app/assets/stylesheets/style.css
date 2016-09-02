@@ -1,5 +1,6 @@
 /* --- RESET --- */
 
+
 html, body, header, nav, h1, a, ul, li,
 strong, main, section, img, div, h2, p,
 form, fieldset, label, input, textarea,
@@ -84,8 +85,9 @@ body {
 
 .landing-page-navbar {
   color: white;
-  background: var(--background-color-nav) ;      /* light-black*/
+  background: var(--background-color-nav);      /* light-black*/
   padding-top: 15px;
+  margin-bottom: 8px;
 }
 
 .landing-page-navbar h1{
@@ -294,28 +296,38 @@ body {
   float: right;
   width: 70%;
   flex-direction: column;
-  height: 96vh;
+  /* height: 44vh; */
   box-sizing: border-box;
   padding-left: 15px;
   padding-right: 15px;
+}
+/*----Channel Title----*/
 
-}
-.message-index-info {
-  height: 8vh;
-  border: 1px solid black;
+.message-index-info {  /* container that has channel title*/
+  height: 6vh;
+  border-bottom: 1px solid black;
   box-sizing: border-box;
+  /*background: transparent;*/
 }
+
+.channel-title {
+  padding-left: 20px;
+  display: inline-block;
+  font-style: oblique;
+  color: black;
+}
+/*------------    ------------*/
 
 .message-list-container{  /* The actual list container*/
-  padding-top: 20px;
+  padding-top: 15px;
 }
 
 .message-list-data{  /* The actual list data*/
   overflow: scroll;
-  height: 72vh;
+  height: 76vh;
 }
 .message-form {
-  height: 15%;
+  height: 6%;
 }
 
 .msg-list-item {  /*Individual items*/
@@ -358,11 +370,11 @@ body {
 .msg-list-item .msg-delete-button {
   display: none;
   background: var(--message-background);
-  border: 0.5px solid #ccc;
+  /*border: 0.5px solid #ccc;*/
   box-sizing: border-box;
-  padding: 3px;
-  font-size: 12px;
-  border-radius: 5px;
+  /*padding: 3px;*/
+  /*font-size: 12px;*/
+  /*border-radius: 5px;*/
   margin-left: 10px;
 }
 .msg-list-item:hover .msg-delete-button{
@@ -375,7 +387,7 @@ body {
 
 .message-form textarea {
   border: 1px solid #bbb;
-  height: 50px;
+  height: 48px;
   border-radius: 5px;
   width: 100%;
   padding: 7px;
@@ -395,12 +407,39 @@ body {
   float: left;
   width: 30%;
   flex-direction: column;
-  height: 96vh;
+  height: 94vh;
   box-sizing: border-box;
   padding: 15px;
+  padding-top: 0px;
+  background: green;
+}
+.pub-channels-options{
+  height: 6vh;
+  border-bottom: 1px solid black;
+  box-sizing: border-box;
+  padding-top: 10px;
+}
+.pub-channels-options > h2{
+  display: inline-block;
+}
+.add-pub-channel-icon{
+  float: right;
+}
+.material-icons.add-ch-button{
+  cursor: pointer;
+  transition: filter .3s, -webkit-filter .3s;
+}
+.material-icons.add-ch-button:hover{
+  filter: brightness(85%);
+  -webkit-filter: brightness(85%);
+}
+.public-channel-box{
 
 }
 
+.pub-channel-lis{
+
+}
 /*------------    ------------*/
 
 /*Spinners*/

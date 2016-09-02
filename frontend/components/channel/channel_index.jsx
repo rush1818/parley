@@ -25,7 +25,9 @@ class ChannelIndex extends React.Component {
     let keys = Object.keys(this.props.channels);
     if(keys.length){
       channelLis = keys.map(key=>{
-        return (<ChannelList channel={this.props.channels[key]} key={key + this.props.channels[key].name}/>);
+        return (
+            <ChannelList channel={this.props.channels[key]} key={key + this.props.channels[key].name}/>
+        );
       });
     } else {
       channelLis = (
@@ -34,9 +36,15 @@ class ChannelIndex extends React.Component {
     }
     return(
       <div>
-        <ul>
-          {channelLis}
+      <section className="pub-channels-options">
+        <h2>Channels</h2>
+        <button className="add-pub-channel-icon"><i className="material-icons add-ch-button">playlist_add</i></button>
+      </section>
+      <section className="public-channel-box">
+        <ul className="pub-channel-lis">
+        {channelLis}
         </ul>
+      </section>
       </div>
     );
   }
