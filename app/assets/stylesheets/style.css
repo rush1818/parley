@@ -71,7 +71,7 @@ body {
   font-family: 'Roboto', sans-serif;
   line-height: normal;
   line-height: 1.3;
-  overflow: auto;
+  overflow-x: hidden;
 }
 
 .landing-page {
