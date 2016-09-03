@@ -37,6 +37,8 @@ class MessageIndex extends React.Component {
       this.props.fetchUsers();
       this._createPusherChannel();
       this._fetchInterval();
+      let body = document.getElementById("body");
+      body.scrollTop = 0;
     }
   }
 

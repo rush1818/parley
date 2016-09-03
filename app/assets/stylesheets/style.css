@@ -52,7 +52,7 @@ img {
 :root {
   --green-color: #56B68B;
   --background-color: #202426;
-  --background-color-nav: rgba(32,36,38,0);
+  --background-color-nav: rgba(32,36,38,1);
   --message-background: #eee;
 }
 
@@ -71,7 +71,7 @@ body {
   font-family: 'Roboto', sans-serif;
   line-height: normal;
   line-height: 1.3;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .landing-page {
@@ -85,7 +85,6 @@ body {
 
 .landing-page-navbar {
   color: white;
-  background: var(--background-color-nav);      /* light-black*/
   padding-top: 15px;
   margin-bottom: 8px;
 }
@@ -152,6 +151,44 @@ body {
   text-shadow: 1px 1px 1px #000;
 }
 
+
+/*---Logged In Navbar*/
+
+.logged-in-navbar {
+  color: white;
+  background-color: var(--background-color-nav);      /* light-black*/
+  padding-top: 15px;
+  padding-bottom: 8px;
+}
+
+.logged-in-navbar h1{
+  font-size: 32px;
+  font-style: oblique;
+  margin-left: 40px;
+  display: inline-block;
+  cursor: default;
+}
+.logged-in-navbar ul {
+  float: right;
+  margin-right: 20px;
+}
+
+.logged-in-navbar button {
+  /*border-left: 0.5px solid white;*/
+  border: 0.5px solid #e7e7e7;
+  height: 40px;
+  padding: 5px;
+  box-sizing: border-box;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.logged-in-navbar button:hover {
+  background: var(--green-color);
+  cursor: pointer;
+  color: black;
+  border: 0.5px solid white;
+}
 /*------------New Session Modal------------*/
 .ReactModal__Overlay {
   -webkit-perspective: 600;
@@ -277,20 +314,23 @@ body {
 /*------------  MAIN CONTENT ------------*/
 
 .main-content {
+  width: 100.1%;
+  /*height: 100%;*/
+  /*width: 100%;*/
+  height: 100%;
+  /*position: fixed;*/
   background: var(--message-background);
-  width: 100.5%;
-  height: 100%;
 }
-.main-content .main-content-back {
+/*.main-content-back {
   background-image: url("Black_background.jpg");
-  width: 100%;
-  height: 100%;
   position: fixed;
+  width: 100%;
+  height: 90%;
   left: 0px;
   top: 0px;
-  z-index: -10;
+  z-index: -9;
   background-size: cover;
-}
+}*/
 /*------------Message Index------------*/
 
 .message-index {
@@ -317,6 +357,7 @@ body {
   display: inline-block;
   font-style: oblique;
   color: black;
+  line-height: 0.5;
 }
 /*------------    ------------*/
 
@@ -326,7 +367,7 @@ body {
 
 .message-list-data{  /* The actual list data*/
   overflow: scroll;
-  height: 76vh;
+  height: 74vh;
 }
 .message-form {
   height: 6%;
@@ -409,7 +450,7 @@ body {
   float: left;
   width: 30%;
   flex-direction: column;
-  height: 94vh;
+  height: 90vh;
   box-sizing: border-box;
   padding: 15px;
   padding-top: 0px;

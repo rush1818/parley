@@ -36,8 +36,8 @@ class NavBar extends React.Component {
     let content;
     if (this.props.loggedIn){
       content = (
-        <section className="landing-page-nav">
-          <nav className="landing-page-navbar group">
+        <section className="logged-in-nav">
+          <nav className="logged-in-navbar group">
             <h1><a href="#">parley</a></h1>
             <ul>
               <li>Welcome, {this.props.username}<button type="button" onClick={this.handleLogout}>&nbsp;&nbsp;&nbsp;Logout&nbsp;&nbsp;&nbsp;</button></li>

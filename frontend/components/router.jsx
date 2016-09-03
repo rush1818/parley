@@ -13,7 +13,7 @@ import {FETCH_CONDITIONS, requestAllMessages, createMessage, removeMessage, remo
 const AppRouter = (props, context) => {
   const _redirectIfLoggedIn = (nextState, replace) => {
     if(context.store.getState().session.currentUser){
-      replace('/channels');
+      replace('/channels/general?1');
     }
   };
 
