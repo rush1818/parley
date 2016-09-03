@@ -16,7 +16,7 @@ class ChannelDetail extends React.Component {
   render() {
     return(
       <section className='message-index'>
-        <section className='message-index-info'>
+        <section className='message-index-info group'>
           <h3 className="channel-title">#{this.state.channelName}</h3>
         </section>
         <MessageIndexContainer channelId={this.state.channelId} channelName={this.state.channelName} />

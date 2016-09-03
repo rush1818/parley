@@ -1,6 +1,18 @@
 import React from 'react';
 import { hashHistory } from 'react-router';
 
+Array.prototype.getUnique = function(){
+   var u = {}, a = [];
+   for(var i = 0, l = this.length; i < l; ++i){
+      if(u.hasOwnProperty(this[i])) {
+         continue;
+      }
+      a.push(this[i]);
+      u[this[i]] = 1;
+   }
+   return a;
+}
+
 class SessionForm extends React.Component {
   constructor(props){
     super(props);
@@ -17,6 +29,10 @@ class SessionForm extends React.Component {
   //   console.log('session update');
 	// 	this.redirectIfLoggedIn();
 	// }
+
+  componentWillReceiveProps(newProp){
+    // debugger
+  }
 
   redirectIfLoggedIn(){
     if (this.props.currentUser){
@@ -85,7 +101,7 @@ class SessionForm extends React.Component {
     if (this.props.errors.length > 0) {
       // debugger
       errorContent = (
-        <li className='user-errors'>{this.props.errors.join(", ")}</li>
+        <li className='user-errors'>{this.props.errors.getUnique().join(", ")}</li>
       );
     }
     let sessionOptions, buttonText;
@@ -116,11 +132,11 @@ class SessionForm extends React.Component {
         <ul>
           {errorContent}
         </ul>
-        <label htmlFor="session_username">Username</label>
+        <label htmlFor="session_username">&nbsp;</label>
         <input id="session_username" type="text" onChange={this.handleChange('username')}
           value={this.state.username} placeholder="Username"/>
 
-        <label htmlFor="session_password">Password</label>
+        <label htmlFor="session_password">&nbsp;</label>
         <input id="session_password" type="password" placeholder="Password"
           value={this.state.password}
           onChange={this.handleChange('password')}/>

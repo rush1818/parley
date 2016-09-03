@@ -196,18 +196,19 @@ body {
 .new-session .session-options{
   box-sizing: border-box;
   display: block;
-  margin: 5px 0 30px 70px;
+  margin: 5px 0 30px 60px;
 }
-.new-session .session-options:first-child{
+/*.new-session .session-options:first-child{
   border-left: 1px solid black;
-  border-radius: 5px;
-}
+  border-radius: 4px;
+}*/
 .new-session .session-options li{
   float: left;
-  margin: 0 auto;
-  border-right: 1px solid black;
+  margin: 0 4px;
+  border: 1px solid black;
+  /*border-right: 1px solid black;
   border-top: 1px solid black;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid black;*/
   width: 90px;
   height: 40px;
   padding: 5px;
@@ -216,7 +217,7 @@ body {
   text-align: center;
   color: black;
   font-style: 'Roboto';
-  border-radius: 5px;
+  border-radius: 4px;
   transition: filter .5s, -webkit-filter .5s;
 }
 .new-session .session-options .session-notselected{

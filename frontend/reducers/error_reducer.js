@@ -9,9 +9,9 @@ const defaultState = Object.freeze({
 const ErrorReducer = (state = defaultState, action) => {
   switch(action.type){
       case ERROR_CONSTANTS.RECEIVE_SESSION_ERRORS:
-        return merge({}, state, {sessionErrors: action.errors});
+        return merge({}, {sessionErrors: action.errors});
       case ERROR_CONSTANTS.RECEIVE_MESSAGE_ERRORS:
-        return merge({}, state, {}, {messageErrors: action.errors});
+        return merge({}, {messageErrors: action.errors});
       default:
         return state;
     }

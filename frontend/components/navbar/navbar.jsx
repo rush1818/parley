@@ -51,7 +51,7 @@ class NavBar extends React.Component {
           <nav className="landing-page-navbar group">
             <h1><a href="#">parley</a></h1>
             <ul>
-              <li><button type="button" onClick={this.openModal}>Login/Signup</button></li>
+              <li><button type="button" onClick={this.openModal}>Login/Sign Up</button></li>
             </ul>
           </nav>
           <Modal
@@ -79,7 +79,8 @@ const modalStyle = {
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(32,36,38, 0.60)'  //Same as style.css in hex color is #202426
+    backgroundColor: 'rgba(32,36,38, 0.60)' , //Same as style.css in hex color is #202426
+    backgroundColor: 'rgba(73,73,73,.6)'
   },
   content: {
     position: 'fixed',
@@ -93,7 +94,7 @@ const modalStyle = {
     width: '400px',
     height: '300px',
     margin: '0 auto',
-    borderRadius: '10%'
+    // borderRadius: '10%'
 
   }
 };
