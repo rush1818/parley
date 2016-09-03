@@ -17,6 +17,11 @@ const ChannelReducer = (state = {}, action) => {
           result1[channel.id] = channel;
         });
         return merge({}, state, result1 );
+      case CHANNEL_CONSTANTS.RECEIVE_PUB_CHANNEL:
+        let newCh = action.channel;
+        let newId = newCh.id;
+        let returnCh = {[newId]: newCh};
+        return merge({}, state, returnCh);
       default:
         return state;
     }

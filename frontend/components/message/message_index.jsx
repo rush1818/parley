@@ -15,7 +15,10 @@ class MessageIndex extends React.Component {
   }
 
   fetchMore (){
-    let oldDate = this.props.messages.date.toUTCString();
+    let oldDate = null;
+    if (this.props.messages.date){
+      oldDate = this.props.messages.date.toUTCString();
+    }
     let channelId = this.state.channelId;
     this.props.fetchMessages(FETCH_CONDITIONS.ALL_MESSAGES , channelId, oldDate);
   }

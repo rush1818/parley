@@ -10,16 +10,17 @@ import Collapsible from 'react-collapsible';
 class ChannelIndex extends React.Component {
   constructor(props){
     super(props);
-    this.state = {modalOpen: false, formType: ""};
+    this.state = {modalOpen: false, formType: "", selectChannelId: ""};
     this.closeModal = this.closeModal.bind(this);
-    this.openModal = this.openModal.bind(this);
+    // this.openModal = this.openModal.bind(this);
     this.addClick = this.addClick.bind(this);
+    this.selectChannel = this.selectChannel.bind(this);
   }
   closeModal(){
     this.setState({modalOpen: false, formType: ""});
   }
 
-  openModal(formType){
+  openForm(formType){
     this.setState({modalOpen: true, formType });
   }
 
@@ -33,10 +34,18 @@ class ChannelIndex extends React.Component {
     }
   }
 
+  selectChannel(id){
+    this.setState({selectChannelId: id});
+  }
+
+  componentWillReceiveProps(newProps){
+    // debugger
+  }
+
   addClick(formType){
     return (e) =>{
       e.preventDefault();
-      this.openModal(formType);
+      this.openForm(formType);
     };
   }
 
@@ -45,8 +54,9 @@ class ChannelIndex extends React.Component {
     let keys = Object.keys(this.props.channels);
     if(keys.length){
       channelLis = keys.map(key=>{
+        let active = this.state.selectChannelId === this.props.channels[key].id ? true : false;
         return (
-            <ChannelList channel={this.props.channels[key]} key={key + this.props.channels[key].name}/>
+            <ChannelList channel={this.props.channels[key]} key={key + this.props.channels[key].name} onClick={this.selectChannel} active={active}/>
         );
       });
     } else {
@@ -57,10 +67,10 @@ class ChannelIndex extends React.Component {
 
     const openArrow = (
       <i class="material-icons">keyboard_arrow_down</i>
-    )
+    );
     const closeArrow = (
       <i class="material-icons">keyboard_arrow_up</i>
-    )
+    );
     return(
       <div className="channel-sidebar">
 
@@ -75,45 +85,11 @@ class ChannelIndex extends React.Component {
         </section>
          </Collapsible>
          <button className="add-pub-channel-icon"><i className="material-icons add-ch-button" onClick={this.addClick("PUB")}>playlist_add</i></button>
-          <section>
-          <Modal
-            isOpen={this.state.modalOpen}
-            onRequestClose={this.closeModal}
-            style={modalStyle}
-            closeTimeoutMS={5}>
-            <ChannelFormContainer formType={this.state.formType}/>
-          </Modal>
-        </section>
+         <ChannelFormContainer open={this.state.modalOpen} close={this.closeModal} />
       </div>
     );
   }
 }
-
-const modalStyle = {
-  overlay: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(32,36,38, 0.60)'  //Same as style.css in hex color is #202426
-  },
-  content: {
-    position: 'fixed',
-    top: '100px',
-    left: '150px',
-    right: '150px',
-    bottom: '100px',
-    // border: '1px solid #ccc',
-    padding: '20px',
-    background: 'rgba(255,255,255,.9)',
-    width: '400px',
-    height: '300px',
-    margin: '0 auto',
-    // borderRadius: '10%'
-
-  }
-};
 
 export default withRouter(ChannelIndex);
 

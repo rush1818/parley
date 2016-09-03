@@ -29,6 +29,7 @@ class Channel < ActiveRecord::Base
 
   before_save do
     self.name = self.name.downcase
+    self.name = self.name.split(" ").join("-")
   end
 
   def unique_name

@@ -483,9 +483,12 @@ body {
   color: var(--channel-font-color);
   display: inline-block;
 }
-.pub-channels-options:hover{
-  color: white;
+/*.pub-channels-options:hover span{
   cursor: pointer;
+}*/
+.pub-channels-options__trigger:hover{
+  cursor: pointer;
+  color: white;
 }
 .pub-channels-options > h2{
   display: inline-block;
@@ -508,11 +511,19 @@ body {
 .public-channel-box{
 
 }
-
+.selected-channel{
+  color: green;
+}
+.pub-channels-options__contentInner{
+  height: 40vh;
+  overflow-y: scroll;
+}
 .pub-channel-lis{
   color: var(--channel-font-color)
 }
-
+.pub-channel-lis:hover{
+  cursor: default;
+}
 .pub-channel-lis:selected{
   color: white
 }
