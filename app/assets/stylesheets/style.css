@@ -336,7 +336,7 @@ body {
 .message-index {
   display: flex;
   float: right;
-  width: 70%;
+  width: 75%;
   flex-direction: column;
   /* height: 44vh; */
   box-sizing: border-box;
@@ -367,7 +367,7 @@ body {
 
 .message-list-data{  /* The actual list data*/
   overflow: scroll;
-  height: 74vh;
+  height: 72vh;
 }
 .message-form {
   height: 6%;
@@ -386,12 +386,12 @@ body {
   font-weight: 400;
 }
 .msg-list-item:nth-child(2n){
-  background: #dcf1d3
+  background: #dfdfdf
 
 }
 .msg-list-item:hover{
   border: 0.5px solid #bbb;
-  background: #c4f0b1
+  background: #c1c1c1
 
 }
 
@@ -422,7 +422,8 @@ body {
 }
 .msg-list-item:hover .msg-delete-button{
   display: inline-block;
-
+  filter: brightness(81%);
+  -webkit-filter: brightness(81%);
 }
 /*------------    ------------*/
 
@@ -436,7 +437,7 @@ body {
   padding: 7px;
   overflow-y: scroll;
   overflow-x: hidden;
-  resize: vertical;
+  resize: none;
   margin-right: 20px;
   margin-top: 15px;
 }
@@ -448,9 +449,9 @@ body {
 .channel-index {
   display: flex;
   float: left;
-  width: 30%;
+  width: 25%;
   flex-direction: column;
-  height: 90vh;
+  height: 92vh;
   box-sizing: border-box;
   padding: 15px;
   padding-top: 0px;
