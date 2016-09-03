@@ -146,9 +146,10 @@ body {
 .landing-page .intro-text{
   /*position: relative;*/
   font-size: 36px;
-  font-weight: bold;
+  /*font-weight: bold;*/
   color: black;
   cursor: default;
+  text-shadow: 1px 1px 1px #000;
 }
 
 /*------------New Session Modal------------*/
@@ -439,6 +440,37 @@ body {
 
 .pub-channel-lis{
 
+}
+/*------------    ------------*/
+/*------------  Channel Form  ------------*/
+.channel-form > label{
+  display: block;
+  font-weight: 700;
+  font-size: 18px
+}
+.channel-name-input{
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  padding: 7px;
+  padding-left: 6px;
+  margin-top: 10px;
+  width: 85%;
+}
+.user-name-result-box{
+  position: relative;
+  display: block;
+  width: 85%;
+  height: 100px;
+  background: black;
+  margin: 10px 0;
+}
+.user-name-input{
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  padding: 7px;
+  padding-left: 6px;
+  margin-top: 10px;
+  width: 85%;
 }
 /*------------    ------------*/
 
