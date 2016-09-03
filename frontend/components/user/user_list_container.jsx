@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import UserList from './user_list.jsx';
-import {requestUsers} from '../../actions/user_actions.js';
+import {requestUsers, saveUserList} from '../../actions/user_actions.js';
 
 const mapStateToProps = (state, ownProps) => {
   if (state.session.currentUser) {
@@ -14,7 +14,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return ({
-    fetchUsers: () => dispatch(requestUsers())
+    fetchUsers: () => dispatch(requestUsers()),
+    saveUserList: (list) => dispatch(saveUserList(list))
   });
 };
 

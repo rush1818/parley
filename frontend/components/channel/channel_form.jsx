@@ -28,11 +28,11 @@ class ChannelForm extends React.Component {
 
         <UserListContainer />
 
-        <ul className="user-name-result-box">
+        {/* <ul className="user-name-result-box">
         <li>
         Results
         </li>
-        </ul>
+        </ul> */}
       <button>Create</button>
     </form>
   );

@@ -65,7 +65,7 @@ class ChannelIndex extends React.Component {
       <div className="channel-sidebar">
 
          <Collapsible trigger={`CHANNELS`} classParentString="pub-channels-options" easing={'cubic-bezier(0.175, 0.885, 0.32, 2.275)'}
-         triggerWhenOpen={`CHANNELS`}>
+         triggerWhenOpen={`CHANNELS`} open={true}>
          {/* <section className="pub-channels-options">
         </section> */}
         <section className="public-channel-box">

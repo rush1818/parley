@@ -12,6 +12,10 @@ const UserReducer = (state = {}, action) => {
         });
         const ans = merge({}, state, {users: newUsers, arrayUsers: action.users} );
         return ans;
+      case USER_CONSTANTS.SAVE_USER_LIST:
+        let ans2 = merge({}, state);
+        ans2['savedUsersList'] = action.list;
+        return ans2;
       default:
         return state;
     }

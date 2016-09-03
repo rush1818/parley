@@ -29,6 +29,7 @@
     "react-router": "^2.7.0",
     "react-search-bar": "^1.1.4",
     "react-spinkit": "^1.1.11",
+    "react-tag-autocomplete": "^5.0.1",
     "react-tag-input": "^4.3.1",
     "redux": "^3.5.2",
     "spinkit": "^1.2.5",
