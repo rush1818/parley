@@ -1,5 +1,6 @@
 import React from 'react';
-import SearchBar from 'react-search-bar';
+import UserListContainer from '../user/user_list_container.jsx';
+
 class ChannelForm extends React.Component {
   constructor(props){
     super(props);
@@ -25,8 +26,7 @@ class ChannelForm extends React.Component {
         <label htmlFor="channelName">Channel Name</label>
         <input id="channelName"className="channel-name-input" type="text" onChange={this.handleChange("name")} value={this.state.name} placeholder="Name"/>
 
-        <label htmlFor="user-name-result-box">Usernames</label>
-        <input id="usernames" className="user-name-input" type="text" onChange={this.handleChange("username")} value={this.state.name} placeholder="Enter username"/>
+        <UserListContainer />
 
         <ul className="user-name-result-box">
         <li>

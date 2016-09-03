@@ -10,7 +10,8 @@ const UserReducer = (state = {}, action) => {
         action.users.forEach(user=>{
           newUsers[user.id] = user;
         });
-        return merge({}, state, newUsers );
+        const ans = merge({}, state, {users: newUsers, arrayUsers: action.users} );
+        return ans;
       default:
         return state;
     }

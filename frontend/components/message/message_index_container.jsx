@@ -4,11 +4,12 @@ import {requestAllMessages, createMessage, removeMessage, removeMessageFromStore
 import {requestUsers} from '../../actions/user_actions.js';
 
 const mapStateToProps = (state, ownProps) => {
+  // debugger
   if (state.session.currentUser) {
     return({
       messages: state.messages,
       currentUser: state.session.currentUser,
-      users: state.users,
+      users: state.users.users,
       own: ownProps,
       channelId: parseInt(ownProps.channelId),  //This comes from channel detail
       channelName: ownProps.channelName

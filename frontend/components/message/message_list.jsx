@@ -1,4 +1,5 @@
 import React from 'react';
+import Spinner from 'react-spinkit';
 
 class MessageList extends React.Component {
   constructor(props){
@@ -14,8 +15,8 @@ class MessageList extends React.Component {
 
   render(){
     let that = this;
-    if (!this.props.currentUser){
-      return (<div></div>);
+    if (!this.props.currentUser || !this.props.users){
+      return (<Spinner spinnerName="rotating-plane" className="spinner-rotating-plane"/>);
     }
     // debugger
     let messageKeys = Object.keys(this.props.messages);
@@ -32,7 +33,7 @@ class MessageList extends React.Component {
         );
       }
       return (
-        <li className="msg-list-item group" key={`${key} ${message.date}`}><span className="message-info group"><span className="msg-username">{this.props.users[message.user_id] ? this.props.users[message.user_id].username : this.props.currentUser.username}</span><span className='message-date'>{`${date.toDateString().slice(4)} ${date.toLocaleTimeString()}`}</span>{button}</span>{message.body}</li>
+        <li className="msg-list-item group" key={`${key} ${message.date}`}><span className="message-info group"><span className="msg-username">{this.props.users[message.user_id] ? this.props.users[message.user_id].text : this.props.currentUser.username}</span><span className='message-date'>{`${date.toDateString().slice(4)} ${date.toLocaleTimeString()}`}</span>{button}</span>{message.body}</li>
       );
     });
     return (

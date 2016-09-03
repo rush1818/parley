@@ -31,6 +31,9 @@ class MessageIndex extends React.Component {
     this._fetchInterval();
   }
 
+  componentWillMount(){
+    this.props.fetchUsers();
+  }
   componentDidMount(){
     console.log('index mounted');
     if (this.state.channelName){
