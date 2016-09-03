@@ -53,7 +53,10 @@ img {
   --green-color: #56B68B;
   --background-color: #202426;
   --background-color-nav: rgba(32,36,38,1);
-  --message-background: #eee;
+  --background-color-nav: rgba(77,57,75,1);
+  /*--message-background: #eee;*/
+  --message-background: #fff;
+  --channel-font-color: rgb(171,155,169);
 }
 
 /*----Button effects-----*/
@@ -159,6 +162,7 @@ body {
   background-color: var(--background-color-nav);      /* light-black*/
   padding-top: 15px;
   padding-bottom: 8px;
+  border-bottom: 1px solid grey;
 }
 
 .logged-in-navbar h1{
@@ -386,13 +390,13 @@ body {
   font-weight: 400;
 }
 .msg-list-item:nth-child(2n){
-  background: #dfdfdf
+  /*background: #dfdfdf*/
+  background: #f6f6f6
 
 }
 .msg-list-item:hover{
-  border: 0.5px solid #bbb;
-  background: #c1c1c1
-
+  /*border: 0.5px solid #bbb;*/
+  /*background: #f4f4f4*/
 }
 
 .msg-list-item .message-info {
@@ -407,7 +411,8 @@ body {
   float: right;
   margin-bottom: 10px;
   font-style: oblique;
-  color: grey;
+  /*color: grey;*/
+  color: rgb(158,158,166);
 }
 
 .msg-list-item .msg-delete-button {
@@ -422,8 +427,16 @@ body {
 }
 .msg-list-item:hover .msg-delete-button{
   display: inline-block;
-  filter: brightness(81%);
-  -webkit-filter: brightness(81%);
+  filter: brightness(95%);
+  -webkit-filter: brightness(95%);
+}
+.msg-delete-button .material-icons{
+  font-size: 16px;
+  transition: filter .3s, -webkit-filter .3s;
+}
+.msg-delete-button .material-icons:hover{
+  filter: brightness(85%);
+  -webkit-filter: brightness(85%);
 }
 /*------------    ------------*/
 
@@ -455,13 +468,17 @@ body {
   box-sizing: border-box;
   padding: 15px;
   padding-top: 0px;
-  background: green;
+  /*background: green;*/
+  background: var(--background-color-nav)
+
 }
 .pub-channels-options{
   height: 6vh;
   border-bottom: 1px solid black;
   box-sizing: border-box;
   padding-top: 10px;
+  font-size: 14px;
+  color: var(--channel-font-color)
 }
 .pub-channels-options > h2{
   display: inline-block;
@@ -482,7 +499,7 @@ body {
 }
 
 .pub-channel-lis{
-
+  color: var(--channel-font-color)
 }
 /*------------    ------------*/
 /*------------  Channel Form  ------------*/

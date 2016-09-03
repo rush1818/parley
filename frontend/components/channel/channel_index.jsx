@@ -57,7 +57,7 @@ class ChannelIndex extends React.Component {
     return(
       <div>
         <section className="pub-channels-options">
-          <h2>Channels</h2>
+          <h2>CHANNELS</h2>
           <button className="add-pub-channel-icon"><i className="material-icons add-ch-button" onClick={this.addClick("PUB")}>playlist_add</i></button>
         </section>
         <section className="public-channel-box">

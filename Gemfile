@@ -60,3 +60,4 @@ group :production do
   gem 'rails_12factor'
 end
 gem 'pusher'
+gem "autoprefixer-rails"
