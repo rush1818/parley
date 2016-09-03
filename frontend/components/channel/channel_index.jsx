@@ -5,7 +5,7 @@ import Spinner from 'react-spinkit';
 import {withRouter} from 'react-router';
 import ChannelFormContainer from './channel_form_container.jsx';
 import Modal from 'react-modal';
-
+import Collapsible from 'react-collapsible';
 
 class ChannelIndex extends React.Component {
   constructor(props){
@@ -54,17 +54,27 @@ class ChannelIndex extends React.Component {
         <Spinner spinnerName="rotating-plane" className="spinner-rotating-plane"/>
       );
     }
+
+    const openArrow = (
+      <i class="material-icons">keyboard_arrow_down</i>
+    )
+    const closeArrow = (
+      <i class="material-icons">keyboard_arrow_up</i>
+    )
     return(
-      <div>
-        <section className="pub-channels-options">
-          <h2>CHANNELS</h2>
-          <button className="add-pub-channel-icon"><i className="material-icons add-ch-button" onClick={this.addClick("PUB")}>playlist_add</i></button>
-        </section>
+      <div className="channel-sidebar">
+
+         <Collapsible trigger={`CHANNELS`} classParentString="pub-channels-options" easing={'cubic-bezier(0.175, 0.885, 0.32, 2.275)'}
+         triggerWhenOpen={`CHANNELS`}>
+         {/* <section className="pub-channels-options">
+        </section> */}
         <section className="public-channel-box">
           <ul className="pub-channel-lis">
           {channelLis}
           </ul>
         </section>
+         </Collapsible>
+         <button className="add-pub-channel-icon"><i className="material-icons add-ch-button" onClick={this.addClick("PUB")}>playlist_add</i></button>
           <section>
           <Modal
             isOpen={this.state.modalOpen}

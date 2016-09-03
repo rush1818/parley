@@ -458,7 +458,9 @@ body {
 /*------------    ------------*/
 
 /*Channel Index*/
+.channel-sidebar{
 
+}
 .channel-index {
   display: flex;
   float: left;
@@ -474,21 +476,30 @@ body {
 }
 .pub-channels-options{
   height: 6vh;
-  border-bottom: 1px solid black;
+  /*border-bottom: 1px solid black;*/
   box-sizing: border-box;
   padding-top: 10px;
   font-size: 14px;
-  color: var(--channel-font-color)
+  color: var(--channel-font-color);
+  display: inline-block;
+}
+.pub-channels-options:hover{
+  color: white;
+  cursor: pointer;
 }
 .pub-channels-options > h2{
   display: inline-block;
 }
 .add-pub-channel-icon{
   float: right;
+  margin-top: 6px;
 }
 .material-icons.add-ch-button{
   cursor: pointer;
   transition: filter .3s, -webkit-filter .3s;
+  /*position: absolute;
+  top: 11vh;
+  left: 22vh;*/
 }
 .material-icons.add-ch-button:hover{
   filter: brightness(85%);
@@ -500,6 +511,10 @@ body {
 
 .pub-channel-lis{
   color: var(--channel-font-color)
+}
+
+.pub-channel-lis:selected{
+  color: white
 }
 /*------------    ------------*/
 /*------------  Channel Form  ------------*/
