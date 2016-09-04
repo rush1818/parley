@@ -1,7 +1,14 @@
 class Api::ChannelsController < ApplicationController
+  before_action :require_login
+
   def index
-    @channels = current_user.subscribed_channels
-    # @channels = current_user.feed_channels
+    if params[:private]
+      @channels = current_user.private_channels
+      render "api/channels/index"
+    else
+      @channels = current_user.public_channels
+      render "api/channels/index"
+    end
   end
 
   def public

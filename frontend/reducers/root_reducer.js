@@ -4,7 +4,7 @@ import ErrorReducer from './error_reducer.js';
 import MessageReducer from './message_reducer.js';
 import UserReducer from './user_reducer.js';
 import ChannelReducer from './channel_reducer.js';
-
+import PrivateChannelReducer from './channel_private_reducer.js';
 
 export default combineReducers(
   {
@@ -12,6 +12,7 @@ export default combineReducers(
     errors: ErrorReducer,
     messages: MessageReducer,
     users: UserReducer,
-    channels: ChannelReducer
+    channels: ChannelReducer,
+    privateChannels: PrivateChannelReducer
   }
 );

@@ -26,10 +26,18 @@ channel_names.length.times do |n|
   a.subscriber_ids = User.all.ids if n %2 == 0
 end
 
+#Create Private Channels
+ch = Channel.create!(name: 'upgrade project', user_id: User.first.id, private: true)
+ch.subscriber_ids = [1,2,3]
+
+ch = Channel.create!(name: 'team', user_id: User.first.id, private: true)
+ch.subscriber_ids = [1,2,3, 5]
+
+#Create Messages
 dates = []
-100.times { dates.push(rand(1.month).seconds.ago)}
+150.times { dates.push(rand(1.month).seconds.ago)}
 dates.sort!
-100.times do |n|
+150.times do |n|
   user_id = n % 5 == 0 ? 2 : [1].concat((3..15).to_a).shuffle.sample
   channel_id = n % 3 == 0 ? (1..5).to_a.shuffle.sample : 1
   Message.create!(body: "#{n+1}:#{channel_id} - #{Faker::Lorem.paragraph}", user_id: user_id, channel_id: channel_id, created_at: dates[n])

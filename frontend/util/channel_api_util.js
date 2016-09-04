@@ -17,3 +17,13 @@ export const createPubChannelAPI = (channel, success, error) => {
     errors: () => console.log('Error in Channels')
   });
 };
+
+
+export const requestPrivateChannelsAPI = (success) => {
+  $.ajax({
+    method: 'GET',
+    url: '/api/channels?private=1',
+    success,
+    errors: () => console.log('Error in Channels')
+  });
+};
