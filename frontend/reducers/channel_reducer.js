@@ -11,7 +11,7 @@ import {CHANNEL_CONSTANTS} from '../actions/channel_actions.js';
 
 const ChannelReducer = (state = {}, action) => {
   switch(action.type){
-      case CHANNEL_CONSTANTS.RECEIVE_ALL_SUB_CHANNELS :
+      case CHANNEL_CONSTANTS.RECEIVE_ALL_PUB_CHANNELS :
         let result1 = {};
         action.channels.forEach(channel=>{
           result1[channel.id] = channel;

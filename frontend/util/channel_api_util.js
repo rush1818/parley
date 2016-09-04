@@ -1,4 +1,4 @@
-export const requestSubChannelsAPI = (success) => {
+export const requestPubChannelsAPI = (success) => {
   $.ajax({
     method: 'GET',
     url: '/api/channels',

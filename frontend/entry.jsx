@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 import configureStore from './store/store.js';
 import Root from './components/root.jsx';
 import * as MessageAPI from './util/message_api_util.js';
-import {requestSubChannels} from './actions/channel_actions.js';
+import {requestPubChannels} from './actions/channel_actions.js';
 
   document.addEventListener('DOMContentLoaded', ()=>{
   const rootEl = document.getElementById('root');
@@ -20,6 +20,6 @@ import {requestSubChannels} from './actions/channel_actions.js';
   ReactDOM.render(<Root store={store}/>, rootEl);
 
   window.fetchSubChannels = () =>{
-    store.dispatch(requestSubChannels());
+    store.dispatch(requestPubChannels());
   };
 });
