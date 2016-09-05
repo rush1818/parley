@@ -29,9 +29,8 @@ class ChannelForm extends React.Component {
     this.getSuggestionValue = this.getSuggestionValue.bind(this);
     this.renderSuggestion = this.renderSuggestion.bind(this);
     this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
-    this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this)
+    this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
     this.handleSuggestion = this.handleSuggestion.bind(this);
-    // this.onSuggestionSelected = this.onSuggestionSelected.bind(this);
   }
 
   componentWillReceiveProps(newProps){
@@ -74,10 +73,7 @@ class ChannelForm extends React.Component {
       suggestions: []
     });
   }
-  onSuggestionSelected(event, { suggestion, suggestionValue, sectionIndex, method }) {
-    debugger
-    event.preventDefault();
-  }
+
   handleSuggestion(event, {newValue}){
     this.setState({
      value: newValue
@@ -121,7 +117,7 @@ class ChannelForm extends React.Component {
             <input id="channelName"className="channel-name-input" type="text" onChange={this.handleChange("value")} value={this.state.value} placeholder="Name"/>
 
             <UserListContainer />
-          <button>Create</button>
+          <button className="create-channel-button">Create</button>
         </form>
       );
     } else {
@@ -140,7 +136,7 @@ class ChannelForm extends React.Component {
            getSuggestionValue={this.getSuggestionValue}
            renderSuggestion={this.renderSuggestion}
            inputProps={inputProps} />
-        <button>Create/Join Channel</button>
+        <button className="create-channel-button">Create/Join Channel</button>
         </form>
       );
     }

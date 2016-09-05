@@ -620,6 +620,10 @@ body {
   margin-top: 10px;
   width: 85%;
 }
+.create-channel-button{
+  margin: 0 auto;
+  display: block;
+}
 /*------------    ------------*/
 
 /*Spinners*/
@@ -682,4 +686,42 @@ body {
 
 .tooltip:hover .tooltiptext {
     visibility: visible;
+}
+
+
+.react-autosuggest__container{
+
+}
+
+.react-autosuggest__container--open{
+}
+
+.react-autosuggest__input{
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  padding: 7px;
+  padding-left: 6px;
+  margin-top: 10px;
+  width: 85%;
+}
+
+.react-autosuggest__suggestions-container{
+  height: 100px;
+  overflow-y: scroll;
+}
+
+.react-autosuggest__suggestions-list{
+
+}
+
+.react-autosuggest__suggestion{
+}
+
+.react-autosuggest__suggestion--focused{
+}
+.react-autosuggest__section-container{
+
+ }
+.react-autosuggest__section-title{
+
 }
