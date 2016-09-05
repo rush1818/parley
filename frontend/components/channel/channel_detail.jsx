@@ -22,7 +22,7 @@ class ChannelDetail extends React.Component {
   }
 
   render() {
-    let button = (<button onClick={this.handleClick}>Remove Channel</button>);
+    let button = (<button className="remove-channel-button tooltip"onClick={this.handleClick}><i className="material-icons remove-channel-icon">indeterminate_check_box</i><span className="tooltiptext">Leave Channel</span></button>);
 
     if (PERMANENT_CHANNELS.includes(this.state.channelName)){
       button = (<span></span>);

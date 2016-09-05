@@ -113,7 +113,7 @@ class ChannelIndex extends React.Component {
           </ul>
         </section>
          </Collapsible>
-         <button className="add-pub-channel-icon"><i className="material-icons add-ch-button" onClick={this.addClick("PUB")}>playlist_add</i></button>
+         <button className="add-pub-channel-icon"><i className="material-icons add-ch-button" onClick={this.addClick("PUB")}>add</i></button>
          <ChannelFormContainer open={this.state.pubModalOpen} close={this.closeModal("pubModalOpen")} formType={this.state.formType}/>
 
          </section>
@@ -132,7 +132,7 @@ class ChannelIndex extends React.Component {
           </ul>
         </section>
          </Collapsible>
-         <button className="add-direct-channel-icon"><i className="material-icons add-ch-button" onClick={this.addClick("PRI")}>playlist_add</i></button>
+         <button className="add-direct-channel-icon"><i className="material-icons add-ch-button" onClick={this.addClick("PRI")}>add</i></button>
          <ChannelFormContainer open={this.state.priModalOpen} close={this.closeModal("priModalOpen")} formType={this.state.formType} />
          </section>
 
