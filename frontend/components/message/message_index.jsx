@@ -24,18 +24,18 @@ class MessageIndex extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
-    // console.log(newProps);
+    console.log(newProps);
     this.setState({channelId: newProps.channelId, channelName: newProps.channelName });
-    if(window.myPusherApp) {
-      window.myPusherApp.unsubscribe('messages');
-      window.myPusherApp.unsubscribe('message_deleted');
-      this._createPusherChannel();
+    if(window.myPusherApp && this.channel) {
+      // window.myPusherApp.unsubscribe('messages');
+      // window.myPusherApp.unsubscribe('message_deleted');
+      // this._createPusherChannel();
     }
     this._fetchInterval();
   }
 
   componentWillMount(){
-    this.props.fetchUsers();
+    // this.props.fetchUsers();
   }
   componentDidMount(){
     console.log('index mounted');
@@ -72,16 +72,16 @@ class MessageIndex extends React.Component {
   _createPusherChannel(){
     let that = this;
 
-    var channel = window.myPusherApp.subscribe('messages');
-    channel.bind('new_message', function(data) {
+    that.channel = window.myPusherApp.subscribe('messages');
+    that.channel.bind('new_message', function(data) {
       that.props.fetchMessages(FETCH_CONDITIONS.NEW_MESSAGE, that.state.channelId);
     });
 
-    channel.bind('message_deleted', function(data) {
+    that.channel.bind('message_deleted', function(data) {
       that.props.removeMessageFromStore(data.id);
     });
     window.myPusherApp.connection.bind( 'error', function( err ) {
-      if( err.data.code === 4004 ) {
+      if( err && err.data && err.data.code === 4004 ) {
         console.log('>>> Pusher limit detected');
       }
     });
