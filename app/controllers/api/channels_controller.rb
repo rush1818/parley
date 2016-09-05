@@ -47,6 +47,17 @@ class Api::ChannelsController < ApplicationController
     end
   end
 
+  def destroy
+    @channel = Channel.find(params[:id])
+    subscriber_ids = @channel.subscriber_ids if @channel
+    if @channel && subscriber_ids.include?(current_user.id)
+      @channel.subscriber_ids = subscriber_ids.reject{|el| el == current_user.id}
+      render "api/channels/show"
+    else
+      render json: ["Invalid Channel"], status: 422
+    end
+  end
+
   def channel_params
     params.require(:channel).permit(:name, subscriber_ids: [])
   end

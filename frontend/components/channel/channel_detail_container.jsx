@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ChannelDetail from './channel_detail.jsx';
-import {requestPubChannels} from '../../actions/channel_actions.js';
+import {unsubscribeChannel} from '../../actions/channel_actions.js';
 
 const mapStateToProps = (state, ownProps) => {
   return({
@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return ({
-    dispatch: () => dispatch
+    unsubscribeChannel: (id) => dispatch(unsubscribeChannel(id))
   });
 };
 

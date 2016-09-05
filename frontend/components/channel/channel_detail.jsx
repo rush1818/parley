@@ -7,6 +7,12 @@ class ChannelDetail extends React.Component {
     this.channelId = this.props.location.search.slice(1);
     this.channelName = this.props.params.channel_name;
     this.state = {channelId:this.props.location.search.slice(1), channelName: this.props.params.channel_name  };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e){
+    e.preventDefault();
+    this.props.unsubscribeChannel(this.state.channelId);
   }
 
   componentWillReceiveProps(newProps){
@@ -18,6 +24,7 @@ class ChannelDetail extends React.Component {
       <section className='message-index'>
         <section className='message-index-info group'>
           <h3 className="channel-title">#{this.state.channelName}</h3>
+          <button onClick={this.handleClick}>Remove Channel</button>
         </section>
         <MessageIndexContainer channelId={this.state.channelId} channelName={this.state.channelName} />
       </section>

@@ -16,6 +16,12 @@ const PrivateChannelReducer = (state = {}, action) => {
         let newId = newCh.id;
         let returnCh = {[newId]: newCh};
         return merge({}, state, returnCh);
+      case CHANNEL_CONSTANTS.REMOVE_SINGLE_CHANNEL:
+        let newState2 = merge({}, state);
+        if (newState2[action.channelId]){
+          delete newState2[action.messageId];
+        }
+        return newState2;
       default:
         return state;
     }

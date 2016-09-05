@@ -10,7 +10,16 @@ export const CHANNEL_CONSTANTS = {
   RECEIVE_ALL_PRIVATE_CHANNELS: 'RECEIVE_ALL_PRIVATE_CHANNELS',
   CREATE_PRIVATE_CHANNEL: 'CREATE_PRIVATE_CHANNEL',
   RECEIVE_PRIVATE_CHANNEL: 'RECEIVE_PRIVATE_CHANNEL',
-  SUBSCRIBE_PUB_CHANNEL: 'SUBSCRIBE_PUB_CHANNEL'
+  SUBSCRIBE_PUB_CHANNEL: 'SUBSCRIBE_PUB_CHANNEL',
+
+  // UNSUBSCRIBE_PUB_CHANNEL: 'UNSUBSCRIBE_PUB_CHANNEL',
+  // REMOVE_SINGLE_PUB_CHANNEL: 'REMOVE_SINGLE_PUB_CHANNEL',
+
+  // UNSUBSCRIBE_PRIVATE_CHANNEL: 'UNSUBSCRIBE_PRIVATE_CHANNEL',
+  // REMOVE_SINGLE_PRIVATE_CHANNEL: 'REMOVE_SINGLE_PRIVATE_CHANNEL',
+
+  UNSUBSCRIBE_CHANNEL: 'UNSUBSCRIBE_CHANNEL',
+  REMOVE_SINGLE_CHANNEL: 'REMOVE_SINGLE_CHANNEL'
 };
 
 
@@ -65,4 +74,34 @@ export const createPrivateChannel = (channel) =>({
 export const receivePrivateChannel = (channel) =>({
   type: CHANNEL_CONSTANTS.RECEIVE_PRIVATE_CHANNEL,
   channel
+});
+
+// export const unsubscribePubChannel = (channelId) =>({
+//   type: CHANNEL_CONSTANTS.UNSUBSCRIBE_PUB_CHANNEL,
+//   channelId
+// });
+//
+// export const removeSinglePubChannel = (channelId) =>({
+//   type: CHANNEL_CONSTANTS.UNSUBSCRIBE_PUB_CHANNEL,
+//   channelId
+// });
+//
+// export const unsubscribePrivateChannel = (channelId) =>({
+//   type: CHANNEL_CONSTANTS.UNSUBSCRIBE_PUB_CHANNEL,
+//   channelId
+// });
+//
+// export const removeSinglePrivateChannel = (channelId) =>({
+//   type: CHANNEL_CONSTANTS.UNSUBSCRIBE_PRIVATE_CHANNEL,
+//   channelId
+// });
+
+export const unsubscribeChannel = (channelId) =>({
+  type: CHANNEL_CONSTANTS.UNSUBSCRIBE_CHANNEL,
+  channelId
+});
+
+export const removeSingleChannel = (channelId) =>({
+  type: CHANNEL_CONSTANTS.REMOVE_SINGLE_CHANNEL,
+  channelId
 });
