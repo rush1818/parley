@@ -10,7 +10,7 @@ import Collapsible from 'react-collapsible';
 class ChannelIndex extends React.Component {
   constructor(props){
     super(props);
-    this.state = {modalOpen: false, formType: "", selectChannelId: ""};
+    this.state = {modalOpen: false, formType: "", selectChannelId: 1};
     this.closeModal = this.closeModal.bind(this);
     // this.openModal = this.openModal.bind(this);
     this.addClick = this.addClick.bind(this);
@@ -27,6 +27,7 @@ class ChannelIndex extends React.Component {
   componentDidMount(){
     console.log('channel will mount');
     this.props.fetchSubChannels();
+    this.props.fetchPrivateChannels();
     if(!window.myPusherApp){
       window.myPusherApp = new Pusher(window.myPusherK, {
         encrypted: true
@@ -51,12 +52,21 @@ class ChannelIndex extends React.Component {
 
   render() {
     let channelLis = (<li>Channel List</li>);
+    let privateLis = (<li>Private Channel List</li>);
     let keys = Object.keys(this.props.channels);
-    if(keys.length){
+    let privateKeys = Object.keys(this.props.privateChannels);
+    if(keys.length && privateKeys.length){
       channelLis = keys.map(key=>{
         let active = this.state.selectChannelId === this.props.channels[key].id ? true : false;
         return (
             <ChannelList channel={this.props.channels[key]} key={key + this.props.channels[key].name} onClick={this.selectChannel} active={active}/>
+        );
+      });
+
+      privateLis = privateKeys.map(key=>{
+        let active = this.state.selectChannelId === this.props.privateChannels[key].id ? true : false;
+        return (
+            <ChannelList channel={this.props.privateChannels[key]} key={key + this.props.privateChannels[key].name} onClick={this.selectChannel} active={active}/>
         );
       });
     } else {
@@ -81,6 +91,23 @@ class ChannelIndex extends React.Component {
         <section className="public-channel-box">
           <ul className="pub-channel-lis">
           {channelLis}
+          </ul>
+        </section>
+         </Collapsible>
+         <button className="add-pub-channel-icon"><i className="material-icons add-ch-button" onClick={this.addClick("PUB")}>playlist_add</i></button>
+         <ChannelFormContainer open={this.state.modalOpen} close={this.closeModal} />
+
+
+
+
+
+
+
+         <Collapsible trigger={`DIRECT MESSAGES`} classParentString="pub-channels-options" easing={'cubic-bezier(0.175, 0.885, 0.32, 2.275)'}
+         triggerWhenOpen={`DIRECT MESSAGES`} open={true}>
+        <section className="public-channel-box">
+          <ul className="pub-channel-lis">
+          {privateLis}
           </ul>
         </section>
          </Collapsible>

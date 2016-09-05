@@ -261,7 +261,7 @@ body {
   border-radius: 4px;
   transition: filter .5s, -webkit-filter .5s;
   cursor: default;
-  
+
 }
 .new-session .session-options .session-notselected{
   background: #dbdbdb;
@@ -517,7 +517,7 @@ body {
   color: green;
 }
 .pub-channels-options__contentInner{
-  height: 40vh;
+  max-height: 40vh;
   overflow-y: scroll;
 }
 .pub-channel-lis{

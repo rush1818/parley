@@ -25,7 +25,7 @@
     "date": "Tue Aug 30 2016 21:32:43 GMT-0700 (PDT) (Used for auto fetch)",
     "limit": "true (Used for auto fetch)"
   },
-  "sub-channels (public/private subscribed channels)": {
+  "channels (public subscribed channels)": {
     "1": {
       "id": 1,
       "name": "Rails",
@@ -34,21 +34,41 @@
     "2": {
       "id": 2,
       "name": "React",
+      "private": false
+    }
+  },
+  "privateChannels (private subscribed channels)": {
+    "4": {
+      "id": 4,
+      "name": "Rails",
+      "private": true
+    },
+    "5": {
+      "id": 5,
+      "name": "React",
       "private": true
     }
   },
-  "other-channels (public channels not subscribed to)": {
-    "5": {
-      "id": 5,
+  "other-channels (public channels not subscribed to)": [
+    {
+      "id": 8,
       "name": "Rails",
       "private": false
     },
-    "10": {
+    {
       "id": 1,
       "name": "React",
       "private": false
     }
-  },
-  "allUsers": []
+    ],
+  "users": {
+    "users": {
+      "1": {
+        "id": 1,
+        "name": "User1"
+      }
+    },
+    "usersArray": [] "Used for selecting users"
+  }
 }
 ```
