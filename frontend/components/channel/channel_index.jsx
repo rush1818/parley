@@ -10,18 +10,25 @@ import Collapsible from 'react-collapsible';
 class ChannelIndex extends React.Component {
   constructor(props){
     super(props);
-    this.state = {modalOpen: false, formType: "", selectChannelId: 1};
+    this.state = {pubModalOpen: false, priModalOpen: false, formType: "", selectChannelId: 1};
     this.closeModal = this.closeModal.bind(this);
     // this.openModal = this.openModal.bind(this);
     this.addClick = this.addClick.bind(this);
     this.selectChannel = this.selectChannel.bind(this);
   }
-  closeModal(){
-    this.setState({modalOpen: false, formType: ""});
+  closeModal(type){
+    return ()=>{
+      this.setState({[type]: false, formType: ""});
+    };
   }
 
   openForm(formType){
-    this.setState({modalOpen: true, formType });
+    if (formType === "priModalOpen"){
+      this.setState({priModalOpen: true, formType });
+    } else {
+      this.setState({pubModalOpen: true, formType });
+    }
+
   }
 
   componentDidMount(){
@@ -95,7 +102,7 @@ class ChannelIndex extends React.Component {
         </section>
          </Collapsible>
          <button className="add-pub-channel-icon"><i className="material-icons add-ch-button" onClick={this.addClick("PUB")}>playlist_add</i></button>
-         <ChannelFormContainer open={this.state.modalOpen} close={this.closeModal} />
+         <ChannelFormContainer open={this.state.pubModalOpen} close={this.closeModal("pubModalOpen")} formType={this.state.formType}/>
 
 
 
@@ -111,8 +118,8 @@ class ChannelIndex extends React.Component {
           </ul>
         </section>
          </Collapsible>
-         <button className="add-pub-channel-icon"><i className="material-icons add-ch-button" onClick={this.addClick("PUB")}>playlist_add</i></button>
-         <ChannelFormContainer open={this.state.modalOpen} close={this.closeModal} />
+         <button className="add-pub-channel-icon"><i className="material-icons add-ch-button" onClick={this.addClick("PRI")}>playlist_add</i></button>
+         <ChannelFormContainer open={this.state.priModalOpen} close={this.closeModal("priModalOpen")} formType={this.state.formType} />
       </div>
     );
   }

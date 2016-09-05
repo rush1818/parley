@@ -21,13 +21,14 @@ class ChannelForm extends React.Component {
     this.state = {name: ""};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.modalClose = this.modalClose.bind(this);
   }
 
   handleChange(field){
-    return (e) =>{
+    return ((e) =>{
       e.preventDefault();
       this.setState({[field]: e.target.value});
-    };
+    });
   }
 
   handleSubmit(e){
@@ -46,12 +47,19 @@ class ChannelForm extends React.Component {
     this.props.close();
   }
 
+  modalClose(){
+    return ((e)=>{
+      console.log(this.props.formType);
+      this.props.close();
+      this.setState({name: ""});
+    });
+  }
+
   render() {
-    console.log("hi");
     return (
       <Modal
         isOpen={this.props.open}
-        onRequestClose={this.props.close}
+        onRequestClose={this.modalClose()}
         style={modalStyle}
         closeTimeoutMS={5}>
     <form className="channel-form" onSubmit={this.handleSubmit}>
