@@ -1,6 +1,6 @@
 import { requestPubChannelsAPI, createPubChannelAPI, requestPrivateChannelsAPI, createPrivateChannelAPI, unsubscribeChannelAPI} from './../util/channel_api_util.js';
 import {CHANNEL_CONSTANTS, receivePubChannels, receivePubChannel, receivePrivateChannels, receivePrivateChannel, removeSingleChannel} from '../actions/channel_actions.js';
-
+import { hashHistory } from 'react-router';
 
 const ChannelMiddleware = store => next => action => {
 
@@ -23,19 +23,12 @@ const ChannelMiddleware = store => next => action => {
         store.dispatch(receivePrivateChannel(data));
       });
       return next(action);
-    // case CHANNEL_CONSTANTS.UNSUBSCRIBE_PUB_CHANNEL:
-    //   unsubscribeChannelAPI(action.channelId, () =>{
-    //     store.dispatch(removeSinglePubChannel(action.channelId));
-    //   });
-    //   return next(action);
-    // case CHANNEL_CONSTANTS.UNSUBSCRIBE_PRIVATE_CHANNEL:
-    //   unsubscribeChannelAPI(action.channelId, () =>{
-    //     store.dispatch(removeSinglePrivateChannel(action.channelId));
-    //   });
-    //   return next(action);
     case CHANNEL_CONSTANTS.UNSUBSCRIBE_CHANNEL:
     unsubscribeChannelAPI(action.channelId, () =>{
       store.dispatch(removeSingleChannel(action.channelId));
+      setTimeout(()=>{
+        hashHistory.push("/channels/general?1");
+      }, 100);
     });
     return next(action);
     default:

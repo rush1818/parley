@@ -1,6 +1,5 @@
 import {merge} from 'lodash';
 import {CHANNEL_CONSTANTS} from '../actions/channel_actions.js';
-
 // const defaultState = {
 //   id: {
 //     id: 1,
@@ -25,7 +24,7 @@ const ChannelReducer = (state = {}, action) => {
       case CHANNEL_CONSTANTS.REMOVE_SINGLE_CHANNEL:
       let newState2 = merge({}, state);
       if (newState2[action.channelId]){
-        delete newState2[action.messageId];
+        delete newState2[action.channelId];
       }
       return newState2;
       default:
