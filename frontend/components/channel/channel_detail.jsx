@@ -1,6 +1,8 @@
 import React from 'react';
 import MessageIndexContainer from '../message/message_index_container.jsx';
 
+const PERMANENT_CHANNELS = ["general"];
+
 class ChannelDetail extends React.Component {
   constructor(props){
     super(props);
@@ -20,11 +22,17 @@ class ChannelDetail extends React.Component {
   }
 
   render() {
+    let button = (<button onClick={this.handleClick}>Remove Channel</button>);
+
+    if (PERMANENT_CHANNELS.includes(this.state.channelName)){
+      button = (<span></span>);
+    }
+
     return(
       <section className='message-index'>
         <section className='message-index-info group'>
           <h3 className="channel-title">#{this.state.channelName}</h3>
-          <button onClick={this.handleClick}>Remove Channel</button>
+            {button}
         </section>
         <MessageIndexContainer channelId={this.state.channelId} channelName={this.state.channelName} />
       </section>
