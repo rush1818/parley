@@ -15,9 +15,14 @@ class Api::ChannelsController < ApplicationController
     @channel = Channel.new(channel_params)
     @channel.user = current_user
     @channel.subscriber_ids = @channel.subscriber_ids << current_user.id
-
+    duplicate_channel = @channel.duplicate_channel
     @channel.private = false
     if @channel.save
+      Pusher.trigger('channels', 'new_channel', {})
+      render "api/channels/show"
+    elsif duplicate_channel
+      @channel = duplicate_channel
+      @channel.subscriber_ids = @channel.subscriber_ids << current_user.id
       Pusher.trigger('channels', 'new_channel', {})
       render "api/channels/show"
     else

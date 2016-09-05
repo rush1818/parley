@@ -32,12 +32,27 @@ class Channel < ActiveRecord::Base
     self.name = self.name.split(" ").join("-")
   end
 
+  def change_name
+    self.name = self.name.downcase
+    self.name = self.name.split(" ").join("-")
+  end
+
   def unique_name
     if !self.private
-      channel2 = Channel.find_by(name: self.name.downcase)
+      channel2 = Channel.find_by(name: self.change_name)
       if channel2 && !channel2.private
         self.errors[:name] << "Channel already exists"
       end
+    end
+  end
+
+  def duplicate_channel
+    # byebug
+    channel = Channel.find_by(name: self.change_name)
+    if channel && !channel.private
+      return channel
+    else
+      return nil
     end
   end
 end
