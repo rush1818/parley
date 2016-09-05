@@ -40,7 +40,7 @@ class NavBar extends React.Component {
           <nav className="logged-in-navbar group">
             <h1><a href="#">parley</a></h1>
             <ul>
-              <li>Welcome, {this.props.username}<button type="button" onClick={this.handleLogout}>&nbsp;&nbsp;&nbsp;Logout&nbsp;&nbsp;&nbsp;</button></li>
+              <li>Welcome, {this.props.username}<button type="button" onClick={this.handleLogout}>&nbsp;&nbsp;&nbsp;Log Out&nbsp;&nbsp;&nbsp;</button></li>
             </ul>
           </nav>
         </section>
@@ -51,7 +51,7 @@ class NavBar extends React.Component {
           <nav className="landing-page-navbar group">
             <h1><a href="#">parley</a></h1>
             <ul>
-              <li><button type="button" onClick={this.openModal}>Login/Sign Up</button></li>
+              <li><button type="button" onClick={this.openModal}>Log In/Sign Up</button></li>
             </ul>
           </nav>
           <Modal

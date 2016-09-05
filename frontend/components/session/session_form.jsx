@@ -109,7 +109,7 @@ class SessionForm extends React.Component {
       buttonText= "Login";
       sessionOptions = (
         <ul className="session-options group">
-          <li className="session-selected">Login</li>
+          <li className="session-selected">Log In</li>
           <li className="session-notselected hvr-grow" onClick={this.changeSessionType('true')}>Sign Up</li>
           <li className="session-notselected hvr-grow" onClick={this.guestLogin}>Demo</li>
         </ul>
@@ -118,7 +118,7 @@ class SessionForm extends React.Component {
       buttonText= "Sign Up";
       sessionOptions = (
         <ul className="session-options group">
-          <li className="session-notselected hvr-grow" onClick={this.changeSessionType('false')}>Login</li>
+          <li className="session-notselected hvr-grow" onClick={this.changeSessionType('false')}>Log In</li>
           <li className="session-selected">Sign Up</li>
           <li className="session-notselected hvr-grow" onClick={this.guestLogin}>Demo</li>
         </ul>
