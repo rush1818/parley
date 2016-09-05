@@ -2,7 +2,8 @@ import React from 'react';
 import UserListContainer from '../user/user_list_container.jsx';
 import {withRouter} from 'react-router';
 import Modal from 'react-modal';
-import ReactTags from 'react-tag-autocomplete';
+// import ReactTags from 'react-tag-autocomplete';
+import Autosuggest from 'react-autosuggest';
 
 Array.prototype.getUnique = function(){
    var u = {}, a = [];
@@ -19,16 +20,22 @@ Array.prototype.getUnique = function(){
 class ChannelForm extends React.Component {
   constructor(props){
     super(props);
-    this.state = {name: "", tags: [], suggestions: this.props.channelFeed};
+    this.state = {value: "", tags: [], suggestions: [], allSuggestions: this.props.channelFeed};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.modalClose = this.modalClose.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
-    this.handleAddition = this.handleAddition.bind(this);
+
+    this.getSuggestions = this.getSuggestions.bind(this);
+    this.getSuggestionValue = this.getSuggestionValue.bind(this);
+    this.renderSuggestion = this.renderSuggestion.bind(this);
+    this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
+    this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this)
+    this.handleSuggestion = this.handleSuggestion.bind(this);
+    // this.onSuggestionSelected = this.onSuggestionSelected.bind(this);
   }
 
   componentWillReceiveProps(newProps){
-    this.setState({suggestions: newProps.channelFeed});
+    this.setState({allSuggestions: newProps.channelFeed});
   }
   handleChange(field){
     return ((e) =>{
@@ -36,27 +43,50 @@ class ChannelForm extends React.Component {
       this.setState({[field]: e.target.value});
     });
   }
+  getSuggestions(value) {
+    // debugger
+    const inputValue = value.trim().toLowerCase();
+    const inputLength = inputValue.length;
 
-  handleDelete (i) {
-    debugger
-    let tags = this.state.tags;
-    tags.splice(i, 1);
-    this.setState({ tags: tags });
-    // this.props.saveUserList(tags);
+    return inputLength === 0 ? [] : this.state.allSuggestions.filter(channel =>
+      channel.name.toLowerCase().slice(0, inputLength) === inputValue
+    );
   }
 
-  handleAddition (tag) {
-    let tags = this.state.tags;
-    if (tags.length < 1){
-      tags.push(tag);
-      this.setState({ tags: tags });
-    }
-    // this.props.saveUserList(tags);
-   }
+  getSuggestionValue(suggestion) {
+    return suggestion.name;
+  }
+
+  renderSuggestion(suggestion) {
+    return (
+      <span>{suggestion.name}</span>
+    );
+  }
+
+  onSuggestionsFetchRequested ({ value }) {
+    this.setState({
+      suggestions: this.getSuggestions(value)
+    });
+  }
+
+  onSuggestionsClearRequested () {
+    this.setState({
+      suggestions: []
+    });
+  }
+  onSuggestionSelected(event, { suggestion, suggestionValue, sectionIndex, method }) {
+    debugger
+    event.preventDefault();
+  }
+  handleSuggestion(event, {newValue}){
+    this.setState({
+     value: newValue
+   });
+  }
 
   handleSubmit(e){
     e.preventDefault();
-    let channelName = this.state.name;
+    let channelName = this.state.value;
     let selectedUsers = this.props.userList;
     let subscriber_ids = [];
     if (selectedUsers){
@@ -70,7 +100,7 @@ class ChannelForm extends React.Component {
     } else {
       this.props.createPrivateChannel(({name: channelName, subscriber_ids: subscriber_ids }));
     }
-    this.setState({name: ""});
+    this.setState({value: ""});
     this.props.close();
   }
 
@@ -78,7 +108,7 @@ class ChannelForm extends React.Component {
     return ((e)=>{
       console.log(this.props.formType);
       this.props.close();
-      this.setState({name: ""});
+      this.setState({value: ""});
     });
   }
 
@@ -88,23 +118,29 @@ class ChannelForm extends React.Component {
       formContent = (
         <form className="channel-form" onSubmit={this.handleSubmit}>
             <label htmlFor="channelName">Channel Name</label>
-            <input id="channelName"className="channel-name-input" type="text" onChange={this.handleChange("name")} value={this.state.name} placeholder="Name"/>
+            <input id="channelName"className="channel-name-input" type="text" onChange={this.handleChange("value")} value={this.state.value} placeholder="Name"/>
 
             <UserListContainer />
           <button>Create</button>
         </form>
       );
     } else {
+       const { value, suggestions } = this.state;
+      const inputProps = {
+        placeholder: 'Type a channel name',
+        value,
+        onChange: this.handleSuggestion
+      };
       formContent = (
         <form className="channel-form" onSubmit={this.handleSubmit}>
-        <ReactTags tags={this.state.tags}
-        suggestions={this.state.suggestions}
-        handleDelete={this.handleDelete}
-        handleAddition={this.handleAddition}
-        placeholder="Enter Channel Name"
-        minQueryLength={1} allowNew={true} />
-
-        <button>Create</button>
+          <Autosuggest
+           suggestions={suggestions}
+           onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+           onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+           getSuggestionValue={this.getSuggestionValue}
+           renderSuggestion={this.renderSuggestion}
+           inputProps={inputProps} />
+        <button>Create/Join Channel</button>
         </form>
       );
     }
