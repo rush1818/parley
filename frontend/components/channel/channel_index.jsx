@@ -91,8 +91,8 @@ class ChannelIndex extends React.Component {
     return(
       <div className="channel-sidebar">
 
-         <Collapsible trigger={`CHANNELS`} classParentString="pub-channels-options" easing={'cubic-bezier(0.175, 0.885, 0.32, 2.275)'}
-         triggerWhenOpen={`CHANNELS`} open={true}>
+         <Collapsible trigger={`${String.fromCharCode(9656)} CHANNELS`} classParentString="pub-channels-options" easing={'cubic-bezier(0.175, 0.885, 0.32, 2.275)'}
+         triggerWhenOpen={`${String.fromCharCode(9662)} CHANNELS`} open={true}>
          {/* <section className="pub-channels-options">
         </section> */}
         <section className="public-channel-box">
@@ -110,8 +110,8 @@ class ChannelIndex extends React.Component {
 
 
 
-         <Collapsible trigger={`DIRECT MESSAGES`} classParentString="pub-channels-options" easing={'cubic-bezier(0.175, 0.885, 0.32, 2.275)'}
-         triggerWhenOpen={`DIRECT MESSAGES`} open={true}>
+         <Collapsible trigger={`${String.fromCharCode(9656)} DIRECT MESSAGES`} classParentString="pub-channels-options" easing={'cubic-bezier(0.175, 0.885, 0.32, 2.275)'}
+         triggerWhenOpen={`${String.fromCharCode(9662)} DIRECT MESSAGES`} open={true}>
         <section className="public-channel-box">
           <ul className="pub-channel-lis">
           {privateLis}
