@@ -18,6 +18,7 @@ class Api::ChannelsController < ApplicationController
 
     @channel.private = false
     if @channel.save
+      Pusher.trigger('channels', 'new_channel', {})
       render "api/channels/show"
     else
       render json: @channel.errors.full_messages, status: 422
@@ -30,6 +31,7 @@ class Api::ChannelsController < ApplicationController
     @channel.subscriber_ids = @channel.subscriber_ids << current_user.id
     @channel.private = true
     if @channel.save
+      Pusher.trigger('channels', 'new_channel', {})
       render "api/channels/show"
     else
       render json: @channel.errors.full_messages, status: 422

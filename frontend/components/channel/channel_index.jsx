@@ -40,6 +40,12 @@ class ChannelIndex extends React.Component {
         encrypted: true
       });
     }
+    const that = this;
+    const channel = window.myPusherApp.subscribe('channels');
+    channel.bind('new_channel', function(data) {
+      that.props.fetchSubChannels();
+      that.props.fetchPrivateChannels();
+    });
   }
 
   selectChannel(id){
@@ -55,6 +61,10 @@ class ChannelIndex extends React.Component {
       e.preventDefault();
       this.openForm(formType);
     };
+  }
+
+  componentWillUnmount(){
+    window.myPusherApp.unsubscribe('channels');
   }
 
   render() {
@@ -125,7 +135,7 @@ class ChannelIndex extends React.Component {
          <button className="add-direct-channel-icon"><i className="material-icons add-ch-button" onClick={this.addClick("PRI")}>playlist_add</i></button>
          <ChannelFormContainer open={this.state.priModalOpen} close={this.closeModal("priModalOpen")} formType={this.state.formType} />
          </section>
-         
+
       </div>
     );
   }
