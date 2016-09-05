@@ -2,6 +2,7 @@ import React from 'react';
 import UserListContainer from '../user/user_list_container.jsx';
 import {withRouter} from 'react-router';
 import Modal from 'react-modal';
+import ReactTags from 'react-tag-autocomplete';
 
 Array.prototype.getUnique = function(){
    var u = {}, a = [];
@@ -18,18 +19,40 @@ Array.prototype.getUnique = function(){
 class ChannelForm extends React.Component {
   constructor(props){
     super(props);
-    this.state = {name: ""};
+    this.state = {name: "", tags: [], suggestions: this.props.channelFeed};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.modalClose = this.modalClose.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleAddition = this.handleAddition.bind(this);
   }
 
+  componentWillReceiveProps(newProps){
+    this.setState({suggestions: newProps.channelFeed});
+  }
   handleChange(field){
     return ((e) =>{
       e.preventDefault();
       this.setState({[field]: e.target.value});
     });
   }
+
+  handleDelete (i) {
+    debugger
+    let tags = this.state.tags;
+    tags.splice(i, 1);
+    this.setState({ tags: tags });
+    // this.props.saveUserList(tags);
+  }
+
+  handleAddition (tag) {
+    let tags = this.state.tags;
+    if (tags.length < 1){
+      tags.push(tag);
+      this.setState({ tags: tags });
+    }
+    // this.props.saveUserList(tags);
+   }
 
   handleSubmit(e){
     e.preventDefault();
@@ -74,10 +97,14 @@ class ChannelForm extends React.Component {
     } else {
       formContent = (
         <form className="channel-form" onSubmit={this.handleSubmit}>
-            <label htmlFor="channelName">Channel Name</label>
-            <input id="channelName"className="channel-name-input" type="text" onChange={this.handleChange("name")} value={this.state.name} placeholder="Name"/>
+        <ReactTags tags={this.state.tags}
+        suggestions={this.state.suggestions}
+        handleDelete={this.handleDelete}
+        handleAddition={this.handleAddition}
+        placeholder="Enter Channel Name"
+        minQueryLength={1} allowNew={true} />
 
-          <button>Create</button>
+        <button>Create</button>
         </form>
       );
     }

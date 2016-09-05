@@ -76,25 +76,6 @@ export const receivePrivateChannel = (channel) =>({
   channel
 });
 
-// export const unsubscribePubChannel = (channelId) =>({
-//   type: CHANNEL_CONSTANTS.UNSUBSCRIBE_PUB_CHANNEL,
-//   channelId
-// });
-//
-// export const removeSinglePubChannel = (channelId) =>({
-//   type: CHANNEL_CONSTANTS.UNSUBSCRIBE_PUB_CHANNEL,
-//   channelId
-// });
-//
-// export const unsubscribePrivateChannel = (channelId) =>({
-//   type: CHANNEL_CONSTANTS.UNSUBSCRIBE_PUB_CHANNEL,
-//   channelId
-// });
-//
-// export const removeSinglePrivateChannel = (channelId) =>({
-//   type: CHANNEL_CONSTANTS.UNSUBSCRIBE_PRIVATE_CHANNEL,
-//   channelId
-// });
 
 export const unsubscribeChannel = (channelId) =>({
   type: CHANNEL_CONSTANTS.UNSUBSCRIBE_CHANNEL,

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ChannelIndex from './channel_index.jsx';
-import {requestPubChannels, requestPrivateChannels} from '../../actions/channel_actions.js';
+import {requestPubChannels, requestPrivateChannels, requestFeedChannels} from '../../actions/channel_actions.js';
 
 const mapStateToProps = (state, ownProps) => {
   return({
@@ -12,7 +12,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return ({
     fetchSubChannels: () => dispatch(requestPubChannels()),
-    fetchPrivateChannels: () => dispatch(requestPrivateChannels())
+    fetchPrivateChannels: () => dispatch(requestPrivateChannels()),
+    requestFeedChannels: () => dispatch(requestFeedChannels())
   });
 };
 

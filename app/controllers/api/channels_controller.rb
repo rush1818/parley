@@ -5,6 +5,9 @@ class Api::ChannelsController < ApplicationController
     if params[:private]
       @channels = current_user.private_channels
       render "api/channels/index"
+    elsif params[:feed]
+      @channels = current_user.feed_channels
+      render "api/channels/index"
     else
       @channels = current_user.public_channels
       render "api/channels/index"

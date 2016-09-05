@@ -48,3 +48,13 @@ export const unsubscribeChannelAPI = (channelId, success, error) => {
     errors: () => console.log('Error in PriChannels')
   });
 };
+
+
+export const requestFeedChannelsAPI = (success) => {
+  $.ajax({
+    method: 'GET',
+    url: '/api/channels?feed=1',
+    success,
+    errors: () => console.log('Error in Feed')
+  });
+};

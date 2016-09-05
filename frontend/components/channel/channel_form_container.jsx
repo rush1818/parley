@@ -7,7 +7,8 @@ const mapStateToProps = (state, ownProps) => {
     formType: ownProps.formType,
     userList: state.users.savedUsersList,
     open: ownProps.open,
-    close: ownProps.close
+    close: ownProps.close,
+    channelFeed: state.channelFeed
   });
 };
 

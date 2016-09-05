@@ -10,7 +10,6 @@ class MessageForm extends React.Component{
   }
 
   componentWillReceiveProps(newProps){
-    console.log("Form");
     this.setState({channelName: newProps.channelName, channelId: newProps.channelId});
   }
 

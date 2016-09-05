@@ -26,9 +26,9 @@ class ChannelIndex extends React.Component {
     if (formType === "priModalOpen"){
       this.setState({priModalOpen: true, formType });
     } else {
+      this.props.requestFeedChannels();
       this.setState({pubModalOpen: true, formType });
     }
-
   }
 
   componentDidMount(){
