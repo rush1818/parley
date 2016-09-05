@@ -1,4 +1,4 @@
-import { requestPubChannelsAPI, createPubChannelAPI, requestPrivateChannelsAPI} from './../util/channel_api_util.js';
+import { requestPubChannelsAPI, createPubChannelAPI, requestPrivateChannelsAPI, createPrivateChannelAPI} from './../util/channel_api_util.js';
 import {CHANNEL_CONSTANTS, receivePubChannels, receivePubChannel, receivePrivateChannels, receivePrivateChannel} from '../actions/channel_actions.js';
 
 
@@ -19,7 +19,10 @@ const ChannelMiddleware = store => next => action => {
       });
       return next(action);
     case CHANNEL_CONSTANTS.CREATE_PRIVATE_CHANNEL:
-      break;
+      createPrivateChannelAPI(action.channel, (data) => {
+        store.dispatch(receivePrivateChannel(data));
+      });
+      return next(action);
     default:
       return next(action);
   }

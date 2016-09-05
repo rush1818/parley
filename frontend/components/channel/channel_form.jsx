@@ -42,7 +42,11 @@ class ChannelForm extends React.Component {
       });
     }
     subscriber_ids = subscriber_ids.getUnique();
-    this.props.createPubChannel({name: channelName, subscriber_ids: subscriber_ids });
+    if (this.props.formType === "PUB"){
+      this.props.createPubChannel({name: channelName});
+    } else {
+      this.props.createPrivateChannel(({name: channelName, subscriber_ids: subscriber_ids }));
+    }
     this.setState({name: ""});
     this.props.close();
   }
@@ -56,27 +60,37 @@ class ChannelForm extends React.Component {
   }
 
   render() {
+    let formContent;
+    if (this.props.formType === "PRI") {
+      formContent = (
+        <form className="channel-form" onSubmit={this.handleSubmit}>
+            <label htmlFor="channelName">Channel Name</label>
+            <input id="channelName"className="channel-name-input" type="text" onChange={this.handleChange("name")} value={this.state.name} placeholder="Name"/>
+
+            <UserListContainer />
+          <button>Create</button>
+        </form>
+      );
+    } else {
+      formContent = (
+        <form className="channel-form" onSubmit={this.handleSubmit}>
+            <label htmlFor="channelName">Channel Name</label>
+            <input id="channelName"className="channel-name-input" type="text" onChange={this.handleChange("name")} value={this.state.name} placeholder="Name"/>
+
+          <button>Create</button>
+        </form>
+      );
+    }
     return (
       <Modal
         isOpen={this.props.open}
         onRequestClose={this.modalClose()}
         style={modalStyle}
         closeTimeoutMS={5}>
-    <form className="channel-form" onSubmit={this.handleSubmit}>
-        <label htmlFor="channelName">Channel Name</label>
-        <input id="channelName"className="channel-name-input" type="text" onChange={this.handleChange("name")} value={this.state.name} placeholder="Name"/>
-
-        <UserListContainer />
-
-        {/* <ul className="user-name-result-box">
-        <li>
-        Results
-        </li>
-        </ul> */}
-      <button>Create</button>
-    </form>
+        {formContent}
     </Modal>
-  );
+
+    );
   }
 }
 
