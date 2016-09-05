@@ -91,6 +91,8 @@ class ChannelIndex extends React.Component {
     return(
       <div className="channel-sidebar">
 
+        <section className="pub-channel-container">
+
          <Collapsible trigger={`${String.fromCharCode(9656)} CHANNELS`} classParentString="pub-channels-options" easing={'cubic-bezier(0.175, 0.885, 0.32, 2.275)'}
          triggerWhenOpen={`${String.fromCharCode(9662)} CHANNELS`} open={true}>
          {/* <section className="pub-channels-options">
@@ -104,22 +106,26 @@ class ChannelIndex extends React.Component {
          <button className="add-pub-channel-icon"><i className="material-icons add-ch-button" onClick={this.addClick("PUB")}>playlist_add</i></button>
          <ChannelFormContainer open={this.state.pubModalOpen} close={this.closeModal("pubModalOpen")} formType={this.state.formType}/>
 
+         </section>
 
 
 
 
 
+         <section className="direct-channel-container">
 
-         <Collapsible trigger={`${String.fromCharCode(9656)} DIRECT MESSAGES`} classParentString="pub-channels-options" easing={'cubic-bezier(0.175, 0.885, 0.32, 2.275)'}
+         <Collapsible trigger={`${String.fromCharCode(9656)} DIRECT MESSAGES`} classParentString="direct-channels-options" easing={'cubic-bezier(0.175, 0.885, 0.32, 2.275)'}
          triggerWhenOpen={`${String.fromCharCode(9662)} DIRECT MESSAGES`} open={true}>
-        <section className="public-channel-box">
-          <ul className="pub-channel-lis">
+        <section className="direct-channel-box">
+          <ul className="direct-channel-lis">
           {privateLis}
           </ul>
         </section>
          </Collapsible>
-         <button className="add-pub-channel-icon"><i className="material-icons add-ch-button" onClick={this.addClick("PRI")}>playlist_add</i></button>
+         <button className="add-direct-channel-icon"><i className="material-icons add-ch-button" onClick={this.addClick("PRI")}>playlist_add</i></button>
          <ChannelFormContainer open={this.state.priModalOpen} close={this.closeModal("priModalOpen")} formType={this.state.formType} />
+         </section>
+         
       </div>
     );
   }
