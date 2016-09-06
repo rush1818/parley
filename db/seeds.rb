@@ -16,6 +16,9 @@ end
 usernames.each do |username|
   User.create!(username: username, password: Figaro.env.user_passwords)
 end
+#Create general channel. Subscribe all users to General.
+Channel.create!(name: 'general', user_id: User.first.id, private: false)
+Channel.find_by(name: 'general').subscriber_ids = User.all.ids
 
 #Create Bot Channels
 users = User.all
@@ -24,9 +27,7 @@ users.each do |user|
   ch.subscriber_ids = user.id
 end
 
-#Create public channels. Subscribe all users to General.
-Channel.create!(name: 'general', user_id: User.first.id, private: false)
-Channel.find_by(name: 'general').subscriber_ids = User.all.ids
+#Create public channels.
 
 channel_names = ['design', 'sf', 'alumni']
 channel_names.length.times do |n|
