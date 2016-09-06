@@ -76,6 +76,10 @@ class MessageIndex extends React.Component {
     that.channel.bind('new_message', function(data) {
       that.props.fetchMessages(FETCH_CONDITIONS.NEW_MESSAGE, that.state.channelId);
     });
+    that.channel_users = window.myPusherApp.subscribe('users');
+    that.channel_users.bind('new_users', function(data) {
+      this.props.fetchUsers();
+    });
 
     that.channel.bind('message_deleted', function(data) {
       that.props.removeMessageFromStore(data.id);
@@ -93,6 +97,7 @@ class MessageIndex extends React.Component {
     const that = this;
     window.myPusherApp.unsubscribe('messages');
     window.myPusherApp.unsubscribe('message_deleted');
+    window.myPusherApp.unsubscribe('users');
     clearInterval(that.autoFetch);
   }
 

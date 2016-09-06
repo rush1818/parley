@@ -8,6 +8,7 @@ class Api::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      Pusher.trigger('users', 'new_user', {})
       @user.subscribed_channel_ids = 1
       login!(@user)
       render "api/users/show"
