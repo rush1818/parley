@@ -1,5 +1,6 @@
 import React from 'react';
 import Spinner from 'react-spinkit';
+import ReactEmoji from 'react-emoji';
 
 class MessageList extends React.Component {
   constructor(props){
@@ -33,7 +34,7 @@ class MessageList extends React.Component {
         );
       }
       return (
-        <li className="msg-list-item group" key={`${key} ${message.date}`}><span className="message-info group"><span className="msg-username">{this.props.users[message.user_id] ? this.props.users[message.user_id].name : this.props.currentUser.username}</span><span className='message-date'>{`${date.toDateString().slice(4)} ${date.toLocaleTimeString()}`}</span>{button}</span>{message.body}</li>
+        <li className="msg-list-item group" key={`${key} ${message.date}`}><span className="message-info group"><span className="msg-username">{this.props.users[message.user_id] ? this.props.users[message.user_id].name : this.props.currentUser.username}</span><span className='message-date'>{`${date.toDateString().slice(4)} ${date.toLocaleTimeString()}`}</span>{button}</span>{ReactEmoji.emojify(message.body, {attributes: {className: "emoji-class"}} )}</li>
       );
     });
     return (

@@ -777,3 +777,8 @@ body {
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
+
+.emoji-class{
+  display: inline-block;
+  width: 20px;
+}
