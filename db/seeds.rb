@@ -58,13 +58,13 @@ channel = Channel.find_by(name: 'general')
 channel_id = channel.id
 user_ids = [3, 4, 5, 9, 11]
 
-Message.create!(user_id: 3, channel_id: channel_id, body: "Hi there!", created_at: dates[0])
+Message.create!(user_id: 3, channel_id: channel_id, body: "Hi there! :)", created_at: dates[0])
 
-Message.create!(user_id: 3, channel_id: channel_id, body: "Did you guys hear about working during the long weekend?", created_at: dates[1])
+Message.create!(user_id: 3, channel_id: channel_id, body: "Did you guys hear about working during the long weekend? :o", created_at: dates[1])
 
 Message.create!(user_id: 4, channel_id: channel_id, body: "Yes! Hopefully it is not a long day", created_at: dates[2])
 
-Message.create!(user_id: 3, channel_id: channel_id, body: "Worse part is that the air conditioner will be off", created_at: dates[3])
+Message.create!(user_id: 3, channel_id: channel_id, body: "Worst part is that the air conditioner will be off :o", created_at: dates[3])
 
 Message.create!(user_id: 5, channel_id: channel_id, body: "Did anyone have plans though?", created_at: dates[4])
 
@@ -90,7 +90,7 @@ Message.create!(user_id: 4, channel_id: channel_id, body: "Something that can he
 
 Message.create!(user_id: 3, channel_id: channel_id, body: "Search for React-Tags, there are a bunch of components that can help you out with this.", created_at: dates[10])
 
-Message.create!(user_id: 4, channel_id: channel_id, body: "That helps sp much! Thank you!", created_at: dates[11])
+Message.create!(user_id: 4, channel_id: channel_id, body: "That helps sp much! Thank you! :)", created_at: dates[11])
 
 
 
@@ -102,4 +102,4 @@ Message.create!(user_id: 3, channel_id: channel_id, body: "Hey Team, incase you 
 
 Message.create!(user_id: 11, channel_id: channel_id, body: "Don't worry everyone, I talked to our director and got us a half-day on Monday, and also a day off the following week. It is a good thing that our team has a good director.", created_at: dates[13])
 
-Message.create!(user_id: 3, channel_id: channel_id, body: "It is a good thing that our team has a good director.", created_at: dates[14])
+Message.create!(user_id: 3, channel_id: channel_id, body: "It is a good thing that our team has a good director. :D", created_at: dates[14])
