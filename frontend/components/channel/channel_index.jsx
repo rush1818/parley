@@ -69,10 +69,10 @@ class ChannelIndex extends React.Component {
 
   render() {
     let channelLis = (<li>Channel List</li>);
-    let privateLis = (<li>Private Channel List</li>);
+    let privateLis = (<li></li>);
     let keys = Object.keys(this.props.channels);
     let privateKeys = Object.keys(this.props.privateChannels);
-    if(keys.length && privateKeys.length){
+    if(keys.length){
       channelLis = keys.map(key=>{
         let active = this.state.selectChannelId === this.props.channels[key].id ? true : false;
         return (
@@ -80,12 +80,14 @@ class ChannelIndex extends React.Component {
         );
       });
 
-      privateLis = privateKeys.map(key=>{
-        let active = this.state.selectChannelId === this.props.privateChannels[key].id ? true : false;
-        return (
-            <ChannelList channel={this.props.privateChannels[key]} key={key + this.props.privateChannels[key].name} onClick={this.selectChannel} active={active}/>
-        );
-      });
+      if (privateKeys.length){
+        privateLis = privateKeys.map(key=>{
+          let active = this.state.selectChannelId === this.props.privateChannels[key].id ? true : false;
+          return (
+              <ChannelList channel={this.props.privateChannels[key]} key={key + this.props.privateChannels[key].name} onClick={this.selectChannel} active={active}/>
+          );
+        });
+      }
     } else {
       channelLis = (
         <Spinner spinnerName="rotating-plane" className="spinner-rotating-plane"/>
