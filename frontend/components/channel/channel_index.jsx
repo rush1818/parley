@@ -32,7 +32,7 @@ class ChannelIndex extends React.Component {
   }
 
   componentDidMount(){
-    console.log('channel will mount');
+    // console.log('channel will mount');
     this.props.fetchSubChannels();
     this.props.fetchPrivateChannels();
     if(!window.myPusherApp){

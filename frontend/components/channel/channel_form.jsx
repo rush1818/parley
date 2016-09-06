@@ -102,7 +102,7 @@ class ChannelForm extends React.Component {
 
   modalClose(){
     return ((e)=>{
-      console.log(this.props.formType);
+      // console.log(this.props.formType);
       this.props.close();
       this.setState({value: ""});
     });

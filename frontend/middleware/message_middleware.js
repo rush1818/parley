@@ -38,7 +38,7 @@ const MessageMiddleware = store => next => action => {
           return store.dispatch(receiveAllMessages(data));
         };
       } else {
-        console.log("in else");
+        // console.log("in else");
         receiveAllSuccess = (data) => {
           setTimeout(()=>{
             let len = $(".msg-list-item").length;

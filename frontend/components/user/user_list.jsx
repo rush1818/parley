@@ -23,7 +23,7 @@ class UserList extends React.Component{
   handleDelete (i) {
     let tags = this.state.tags;
     tags.splice(i, 1);
-    console.log(tags);
+    // console.log(tags);
     this.setState({ tags: tags });
     this.props.saveUserList(tags);
   }
