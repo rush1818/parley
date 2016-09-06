@@ -172,7 +172,7 @@ const modalStyle = {
     padding: '20px',
     background: 'rgba(255,255,255,.9)',
     width: '400px',
-    height: '300px',
+    height: '250px',
     margin: '0 auto',
     // borderRadius: '10%'
 

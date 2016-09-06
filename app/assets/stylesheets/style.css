@@ -635,10 +635,16 @@ body {
 
 }
 .react-tags__selected{
-
+  margin: 5px 0 0 20px;
 }
 .react-tags__selected-tag{
-
+  padding: 2px 5px;
+  border: 1px solid black;
+  margin-right: 4px;
+  border-radius: 3px;
+  background: lightgrey;
+}
+.react-tags__selected-tag{
 }
 .react-tags__selected-tag-name{
 
@@ -656,7 +662,17 @@ body {
   margin-bottom: 10px;
 }
 .react-tags__suggestions{
-
+  max-width: 450px;
+  max-height: 300px;
+  overflow: auto;
+}
+.react-tags__suggestions li{
+  margin: 5px 0 5px 22px;
+  padding: 2px 5px;
+  border: 1px solid black;
+  background: lightgrey;
+  display: inline-block;
+  font-size: 12px
 }
 /*------------    ------------*/
 /*------------  Feed Channel Suggestions  ------------*/
@@ -678,7 +694,7 @@ body {
 }
 
 .react-autosuggest__suggestions-container{
-  height: 50px;
+  height: 150px;
   overflow-y: auto;
   margin: 0 0 0 25px;
 }
