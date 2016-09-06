@@ -139,11 +139,11 @@ body {
 }
 .landing-page .intro-text-box{
   position: absolute;
-  top: 44vh;
-  right: 25vh;
+  top: 50%;
+  left: 26%;
   /* background: #ffffff; */
   /* opacity: 0.6; */
-  left: 30vh;
+  /*left: 30vh;*/
 }
 .landing-page .intro-text{
   /*position: relative;*/

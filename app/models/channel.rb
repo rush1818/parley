@@ -11,6 +11,11 @@
 #
 
 class Channel < ActiveRecord::Base
+
+  def self.clean_empty_channels
+    channels = Channel.all.select{|ch| ch.subscriber_ids == []}
+    channels.each{|ch| ch.destroy}
+  end
   validates :name, :user, presence: true
   validates :private, exclusion: {in: [nil] }
   validate :unique_name
