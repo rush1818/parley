@@ -97,7 +97,7 @@ body {
   font-style: oblique;
   margin-left: 40px;
   display: inline-block;
-  cursor: default;
+  cursor: pointer;
 }
 .landing-page-navbar ul {
   float: right;
@@ -170,7 +170,7 @@ body {
   font-style: oblique;
   margin-left: 40px;
   display: inline-block;
-  cursor: default;
+  cursor: pointer;
 }
 .logged-in-navbar ul {
   float: right;
@@ -260,7 +260,7 @@ body {
   font-style: 'Roboto';
   border-radius: 4px;
   transition: filter .5s, -webkit-filter .5s;
-  cursor: default;
+  cursor: pointer;
 
 }
 .new-session .session-options .session-notselected{
@@ -536,7 +536,7 @@ body {
   color: var(--channel-font-color)
 }
 .pub-channel-lis:hover{
-  cursor: default;
+  cursor: pointer;
 }
 .pub-channel-lis:selected{
   color: white
@@ -581,7 +581,7 @@ body {
   color: var(--channel-font-color)
 }
 .direct-channel-lis:hover{
-  cursor: default;
+  cursor: pointer;
 }
 .direct-channel-lis:selected{
   color: white
