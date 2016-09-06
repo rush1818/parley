@@ -1,7 +1,7 @@
 import React from 'react';
 import MessageIndexContainer from '../message/message_index_container.jsx';
 
-const PERMANENT_CHANNELS = ["general"];
+const PERMANENT_CHANNELS = ["general", "bot"];
 
 class ChannelDetail extends React.Component {
   constructor(props){

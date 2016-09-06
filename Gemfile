@@ -61,3 +61,4 @@ group :production do
 end
 gem 'pusher'
 gem "autoprefixer-rails"
+gem 'cleverbot_io'

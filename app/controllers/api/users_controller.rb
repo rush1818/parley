@@ -10,6 +10,8 @@ class Api::UsersController < ApplicationController
     if @user.save
       Pusher.trigger('users', 'new_user', {})
       @user.subscribed_channel_ids = 1
+      ch = Channel.create!(name:"bot", user_id: 2, private: true)
+      ch.subscriber_ids = @user.id
       login!(@user)
       render "api/users/show"
     else
