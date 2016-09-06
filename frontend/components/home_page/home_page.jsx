@@ -8,7 +8,7 @@ class HomePage extends React.Component {
 
   componentDidMount(){
     let i = 0;
-    const remainingGreeting = " adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+    const remainingGreeting = " that are oceans apart!";
     this.animateTyping = setInterval(() => {
       if (i > remainingGreeting.length - 4) {
         this.setState({cursor: ""});
@@ -43,7 +43,7 @@ class HomePage extends React.Component {
         </div>
         <div className="intro-text-box">
         <h2 className="intro-text">
-          Lorem ipsum dolor sit amet, consectetur{this.state.greeting}{this.state.cursor}
+          A messaging app for teams{this.state.greeting}{this.state.cursor}
         </h2></div>
       </section>
     );
