@@ -21,7 +21,7 @@ const SessionMiddleware = store => next => action => {
         hashHistory.push('/');
         clearInterval(redirectLogout);
       }
-    }), 50);
+    }), 5);
     return next(action);
   };
 

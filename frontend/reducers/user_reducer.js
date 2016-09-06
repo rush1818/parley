@@ -1,5 +1,6 @@
 import {merge} from 'lodash';
 import {USER_CONSTANTS} from '../actions/user_actions.js';
+import {SESSION_CONSTANTS} from '../actions/session_actions.js';
 
 
 const UserReducer = (state = {}, action) => {
@@ -16,6 +17,8 @@ const UserReducer = (state = {}, action) => {
         let ans2 = merge({}, state);
         ans2['savedUsersList'] = action.list;
         return ans2;
+      case SESSION_CONSTANTS.LOGOUT:
+        return {};
       default:
         return state;
     }

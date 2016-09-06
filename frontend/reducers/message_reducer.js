@@ -1,5 +1,6 @@
 import {merge} from 'lodash';
 import {MESSAGE_ACTIONS, FETCH_CONDITIONS} from '../actions/message_actions.js';
+import {SESSION_CONSTANTS} from '../actions/session_actions.js';
 
 
 const MessageReducer = (state = {}, action) => {
@@ -36,6 +37,8 @@ const MessageReducer = (state = {}, action) => {
         } else {
           return state;
         }
+      case SESSION_CONSTANTS.LOGOUT:
+        return {};
       default:
         return state;
     }

@@ -1,5 +1,6 @@
 import {merge} from 'lodash';
 import {CHANNEL_CONSTANTS} from '../actions/channel_actions.js';
+import {SESSION_CONSTANTS} from '../actions/session_actions.js';
 
 
 const PrivateChannelReducer = (state = {}, action) => {
@@ -21,6 +22,8 @@ const PrivateChannelReducer = (state = {}, action) => {
           delete newState2[action.channelId];
         }
         return newState2;
+      case SESSION_CONSTANTS.LOGOUT:
+        return {};
       default:
         return state;
     }

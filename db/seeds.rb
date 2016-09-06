@@ -34,6 +34,14 @@ ch.subscriber_ids = [1,2,3]
 ch = Channel.create!(name: 'team', user_id: User.first.id, private: true)
 ch.subscriber_ids = [1,2,3, 5]
 
+
+#Create Bot Channels
+users = User.all
+users.each do |user|
+  ch = Channel.create!(name:"bot", user_id: 2, private: true)
+  ch.subscriber_ids = user.id
+end
+
 #Create Messages
 dates = []
 150.times { dates.push(rand(1.month).seconds.ago)}

@@ -98,7 +98,7 @@ class SessionForm extends React.Component {
   }
   render() {
     let errorContent;
-    if (this.props.errors.length && this.props.errors.length > 0) {
+    if (this.props.errors && this.props.errors.length) {
       // debugger
       errorContent = (
         <li className='user-errors'>{this.props.errors.getUnique().join(", ")}</li>
