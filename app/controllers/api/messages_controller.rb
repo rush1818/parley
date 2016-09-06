@@ -12,9 +12,14 @@ class Api::MessagesController < ApplicationController
     @message.channel_id = params[:channel_id]
     @channel = Channel.find(params[:channel_id])
     if @channel.name == 'bot' && @channel.user_id == 2
-      bot = Cleverbot.new(Figaro.env.cleverbot_user!, Figaro.env.cleverbot_api!)
+      # bot = Cleverbot.new(Figaro.env.cleverbot_user!, Figaro.env.cleverbot_api!)
       if @message.save
-        bot_msg = Message.create(body:bot.say(@message.body), channel_id: params[:channel_id], user_id: 2 )
+        # bot_msg = Message.create(body:bot.say(@message.body), channel_id: params[:channel_id], user_id: 2 )
+        client = ApiAiRuby::Client.new(
+            :client_access_token => Figaro.env.api_ai!
+        )
+        response = client.text_request @message.body
+        Message.create(body: response[:result][:fulfillment][:speech], channel_id: params[:channel_id], user_id: 2 )
         Pusher.trigger('messages', 'new_message', {})
         render "api/messages/show"
       else
