@@ -503,6 +503,7 @@ body {
   padding: 7px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+  /*position: relative;*/
 }
 
 .emoji-button:hover {

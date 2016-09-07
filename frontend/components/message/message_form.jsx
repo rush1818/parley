@@ -4,10 +4,11 @@ import EmojiInput from '../emoji/emoji.jsx';
 class MessageForm extends React.Component{
   constructor(props){
     super(props);
-    this.state = {body:"", errors:"", channelName: this.props.channelName, channelId: this.props.channelId};
+    this.state = {body:"", errors:"", channelName: this.props.channelName, channelId: this.props.channelId, emoji: ""};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEnter = this.handleEnter.bind(this);
+    this.handleEmoji = this.handleEmoji.bind(this);
   }
 
   componentWillReceiveProps(newProps){
@@ -19,6 +20,10 @@ class MessageForm extends React.Component{
       e.preventDefault();
       this.setState({[field]: e.target.value});
     };
+  }
+
+  handleEmoji(emoji){
+    this.setState({body: `${this.state.body}${emoji}`});
   }
 
   handleEnter(e){
@@ -50,7 +55,7 @@ class MessageForm extends React.Component{
   render(){
     return (<form className="message-form" onSubmit={this.handleSubmit}>
       <label htmlFor="msg-body"></label>
-      <textarea id='msg-body' type='text' onChange={this.handleChange('body')} value={this.state.body} onKeyPress={this.handleEnter} placeholder={this.state.errors.length ? this.state.errors : `Message #${this.state.channelName}`}></textarea><EmojiInput />
+      <textarea id='msg-body' type='text' onChange={this.handleChange('body')} value={this.state.body} onKeyPress={this.handleEnter} placeholder={this.state.errors.length ? this.state.errors : `Message #${this.state.channelName}`}></textarea><EmojiInput handleEmoji={this.handleEmoji}/>
     </form>);
   }
 }
