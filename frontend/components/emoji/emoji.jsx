@@ -6,8 +6,8 @@ import Smile from 'react-icons/lib/fa/smile-o';
 // styles for the emoji picker wrapper
 const emojiPickerStyles = {
   position: "absolute",
-  top: "0",
-  left: "0",
+  top: "50%",
+  left: "10%",
   backgroundColor: "#FDF6E3",
   width: "30%",
   padding: ".3em .6em",
