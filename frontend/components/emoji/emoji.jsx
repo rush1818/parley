@@ -87,7 +87,7 @@ class MyEmojiInput extends React.Component{
 
   render() {
     return (
-      <p ref="emoji">
+      <p className="emoji-button" ref="emoji">
         <label htmlFor="emoji"><Smile /></label>
         {this.emojiPicker()}
       </p>

@@ -202,6 +202,7 @@ body {
 
 .ReactModal__Overlay--after-open {
   opacity: 1;
+  -webkit-transition: opacity 150ms ease-out;
   transition: opacity 150ms ease-out;
 }
 
@@ -213,6 +214,7 @@ body {
 .ReactModal__Content--after-open {
   -webkit-transform: scale(1) rotateX(0deg);
   transform: scale(1) rotateX(0deg);
+  -webkit-transition: all 150ms ease-in;
   transition: all 150ms ease-in;
 }
 
@@ -223,6 +225,7 @@ body {
 .ReactModal__Content--before-close {
   -webkit-transform: scale(0.5) rotateX(30deg);
   transform: scale(0.5) rotateX(30deg);
+  -webkit-transition: all 150ms ease-in;
   transition: all 150ms ease-in;
 }
 
@@ -323,7 +326,7 @@ body {
   width: 100.1%;
   /*height: 100%;*/
   /*width: 100%;*/
-  height: 100%;
+  height: calc(100% - 65px);
   /*position: fixed;*/
   background: var(--message-background);
 }
@@ -340,14 +343,20 @@ body {
 /*------------Message Index------------*/
 
 .message-index {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  float: right;
+  /* float: right; */
   width: 75%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   /* height: 44vh; */
   box-sizing: border-box;
   padding-left: 15px;
   padding-right: 15px;
+  height: 100%;
 }
 /*----Channel Title----*/
 
@@ -381,14 +390,16 @@ body {
 
 .message-list-container{  /* The actual list container*/
   padding-top: 15px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .message-list-data{  /* The actual list data*/
   overflow: scroll;
-  height: 72vh;
-}
-.message-form {
-  height: 6%;
+  /* height: 85%; */
+  flex: 1;
 }
 
 .msg-list-item {  /*Individual items*/
@@ -456,17 +467,65 @@ body {
 
 /*Message form*/
 
+.message-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  /* height: 6%; */
+  margin: 20px 0;
+}
 .message-form textarea {
+  float: left;
   border: 1px solid #bbb;
   height: 48px;
-  border-radius: 5px;
-  width: 100%;
-  padding: 7px;
+  /*border-radius: 5px;*/
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  width: 94%;
+  padding: 7px;  /* should match emoji button*/
   overflow-y: scroll;
   overflow-x: hidden;
   resize: none;
-  margin-right: 20px;
-  margin-top: 15px;
+  /*margin-right: 20px;*/
+  margin-top: 15px; /* should match emoji button*/
+}
+
+
+.emoji-button{
+  border: 1px solid #bbb;
+  border-left: none;
+  height: 48px;
+  display: inline-block;
+  float: left;
+  font-size: 22px;
+  margin-top: 15px;  /* should match textarea*/
+  color: #aaa;
+  padding: 7px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.emoji-button:hover {
+  color: black
+}
+
+.emoji-class{
+  display: inline-block;
+  width: 20px;
+}
+
+.emoji-picker-emoji{  /*emoji sizes*/
+  width: 25px;
+  height: 25px;
+}
+
+#emoji{ /* this is search box*/
+  border: 1px solid #ccc;
+}
+.emoji-picker-emoji img{
+  width: 25px;
+  height: 25px;
+  display: inline-block;
 }
 
 /*------------    ------------*/
@@ -476,17 +535,21 @@ body {
 
 }
 .channel-index {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   float: left;
   width: 25%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
-  height: 92vh;
+  height: 100%;
   box-sizing: border-box;
   padding: 15px;
   padding-top: 0px;
   /*background: green;*/
-  background: var(--background-color-nav)
-
+  background: var(--background-color-nav);
 }
 .pub-channels-options{
   height: 6vh;
@@ -524,6 +587,9 @@ body {
 }
 .public-channel-box{
 
+}
+.not-selected-channel:hover{
+  color: white;
 }
 .selected-channel{
   color: green;
@@ -776,23 +842,4 @@ body {
 
 .tooltip:hover .tooltiptext {
     visibility: visible;
-}
-
-.emoji-class{
-  display: inline-block;
-  width: 20px;
-}
-
-.emoji-picker-emoji{
-  width: 25px;
-  height: 25px;
-}
-
-#emoji{ /* this is search box*/
-  border: 1px solid #ccc;
-}
-.emoji-picker-emoji img{
-  width: 25px;
-  height: 25px;
-  display: inline-block;
 }

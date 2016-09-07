@@ -20,7 +20,7 @@ class ChannelList extends React.Component {
 
   render() {
     return(
-      <li onClick={this.handleChannelClick} className={this.props.active ? "selected-channel" : ""}>
+      <li onClick={this.handleChannelClick} className={this.props.active ? "selected-channel" : "not-selected-channel"}>
         {this.props.channel.name}
       </li>
     );
