@@ -12,7 +12,6 @@ class ChannelIndex extends React.Component {
     super(props);
     this.state = {pubModalOpen: false, priModalOpen: false, formType: "", selectChannelId: 1};
     this.closeModal = this.closeModal.bind(this);
-    // this.openModal = this.openModal.bind(this);
     this.addClick = this.addClick.bind(this);
     this.selectChannel = this.selectChannel.bind(this);
   }
@@ -50,10 +49,6 @@ class ChannelIndex extends React.Component {
 
   selectChannel(id){
     this.setState({selectChannelId: id});
-  }
-
-  componentWillReceiveProps(newProps){
-    // debugger
   }
 
   addClick(formType){
@@ -107,8 +102,6 @@ class ChannelIndex extends React.Component {
 
          <Collapsible trigger={`${String.fromCharCode(9656)} CHANNELS`} classParentString="pub-channels-options" easing={'cubic-bezier(0.175, 0.885, 0.32, 2.275)'}
          triggerWhenOpen={`${String.fromCharCode(9662)} CHANNELS`} open={true}>
-         {/* <section className="pub-channels-options">
-        </section> */}
         <section className="public-channel-box">
           <ul className="pub-channel-lis">
           {channelLis}

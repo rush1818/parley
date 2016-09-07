@@ -12,9 +12,6 @@ class UserList extends React.Component{
     this.handleAddition = this.handleAddition.bind(this);
   }
 
-  componentWillReceiveProps(newProps) {
-    //  this.setState({suggestions: newProps.userList});
-  }
 
   componentWillMount(){
     this.props.fetchUsers();

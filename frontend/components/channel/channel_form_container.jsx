@@ -14,7 +14,6 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return ({
-    //Add create channel actions.
     createPubChannel: (channel) => dispatch(createPubChannel(channel)),
     createPrivateChannel: (channel) => dispatch(createPrivateChannel(channel))
   });

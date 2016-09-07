@@ -97,10 +97,3 @@ class MyEmojiInput extends React.Component{
 }
 
 export default MyEmojiInput;
-
-
-
-
-{/* <input name="emoji" id="emoji" value={this.state.emoji || ""} autoComplete="on"
-type={this.state.showEmojiPicker ? "search" : "text"}
-onChange={this.updateState} onKeyDown={this.grabKeyPress}/> */}

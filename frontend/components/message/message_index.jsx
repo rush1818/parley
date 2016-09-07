@@ -24,21 +24,11 @@ class MessageIndex extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
-    // console.log(newProps);
     this.setState({channelId: newProps.channelId, channelName: newProps.channelName });
-    if(window.myPusherApp && this.channel) {
-      // window.myPusherApp.unsubscribe('messages');
-      // window.myPusherApp.unsubscribe('message_deleted');
-      // this._createPusherChannel();
-    }
     this._fetchInterval();
   }
 
-  componentWillMount(){
-    // this.props.fetchUsers();
-  }
   componentDidMount(){
-    // console.log('index mounted');
     if (this.state.channelName){
       this.props.fetchUsers();
       this._createPusherChannel();
@@ -93,7 +83,6 @@ class MessageIndex extends React.Component {
 
 
   componentWillUnmount(){
-    // console.log("msg index unmounted!");
     const that = this;
     window.myPusherApp.unsubscribe('messages');
     window.myPusherApp.unsubscribe('message_deleted');

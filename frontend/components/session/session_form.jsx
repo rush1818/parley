@@ -25,14 +25,6 @@ class SessionForm extends React.Component {
     this.redirectIfLoggedIn = this.redirectIfLoggedIn.bind(this);
 
   }
-  // componentDidUpdate(){
-  //   console.log('session update');
-	// 	this.redirectIfLoggedIn();
-	// }
-
-  componentWillReceiveProps(newProp){
-    // debugger
-  }
 
   redirectIfLoggedIn(){
     if (this.props.currentUser){

@@ -13,11 +13,6 @@ class ChannelList extends React.Component {
     this.props.onClick(this.props.channel.id);
   }
 
-  componentWillReceiveProps(newProps){
-    // debugger
-    // if (newProps.router)
-  }
-
   render() {
     return(
       <li onClick={this.handleChannelClick} className={this.props.active ? "selected-channel" : "not-selected-channel"}>

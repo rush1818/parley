@@ -36,7 +36,6 @@ const SessionMiddleware = store => next => action => {
       return next(action);
     case SESSION_CONSTANTS.LOGOUT:
       return logout(logoutSuccess);
-      // return logout(() => next(action));
     case SESSION_CONSTANTS.SIGNUP:
       signup(action.user, loginSuccess, errorCallback);
       return next(action);
