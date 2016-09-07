@@ -515,17 +515,17 @@ body {
   width: 20px;
 }
 
-.emoji-picker-emoji{  /*emoji sizes*/
-  width: 25px;
-  height: 25px;
+.emoji-picker-emoji{  /*emoji container sizes*/
+  width: 20px;
+  height: 20px;
 }
 
 #emoji{ /* this is search box*/
   border: 1px solid #ccc;
 }
-.emoji-picker-emoji img{
-  width: 25px;
-  height: 25px;
+.emoji-picker-emoji img{  /*emoji sizes*/
+  width: 20px;
+  height: 20px;
   display: inline-block;
 }
 
