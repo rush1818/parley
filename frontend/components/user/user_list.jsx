@@ -44,7 +44,7 @@ class UserList extends React.Component{
                   suggestions={suggestions}
                   handleDelete={this.handleDelete}
                   handleAddition={this.handleAddition}
-                  placeholder="Select Users"
+                  placeholder="Enter Username"
                   minQueryLength={1}/>
           </div>
       );

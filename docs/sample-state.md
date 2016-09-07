@@ -1,13 +1,14 @@
 ```json
 {
-  "currentUser": {
-    "id": 1,
-    "username": "markov"
+  "session": {
+    "currentUser": { "id": 1,
+                    "username": "markov"
+                  },
+    "errors": "[]"
   },
   "errors": {
-    "signUp": [],
-    "logIn": [],
-    "createChannel": []
+    "messageErrors": [],
+    "sessionErrors": []
   },
   "messages": {
     "1": {
@@ -49,7 +50,7 @@
       "private": true
     }
   },
-  "other-channels (public channels not subscribed to)": [
+  "channelFeed (public channels not subscribed to)": [
     {
       "id": 8,
       "name": "Rails",

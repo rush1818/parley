@@ -20,7 +20,7 @@ Array.prototype.getUnique = function(){
 class ChannelForm extends React.Component {
   constructor(props){
     super(props);
-    this.state = {value: "", tags: [], suggestions: [], allSuggestions: this.props.channelFeed};
+    this.state = {value: "", tags: [], suggestions: [], allSuggestions: this.props.channelFeed, errors:""};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.modalClose = this.modalClose.bind(this);
@@ -83,6 +83,14 @@ class ChannelForm extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     let channelName = this.state.value;
+    if (!this.state.value.length){
+      const that = this;
+      that.setState({errors: "Channel name is required"});
+      setTimeout(()=>{
+        that.setState({errors: ""});
+      }, 2000);
+      return;
+    }
     let selectedUsers = this.props.userList;
     let subscriber_ids = [];
     if (selectedUsers){
@@ -113,8 +121,8 @@ class ChannelForm extends React.Component {
     if (this.props.formType === "PRI") {
       formContent = (
         <form className="channel-form" onSubmit={this.handleSubmit}>
-            <label htmlFor="channelName">Channel Name</label>
-            <input id="channelName"className="channel-name-input" type="text" onChange={this.handleChange("value")} value={this.state.value} placeholder="Name"/>
+            <label htmlFor="channelName"></label>
+            <input id="channelName"className="channel-name-input" type="text" onChange={this.handleChange("value")} value={this.state.value} placeholder={this.state.errors.length ? "Conversation name is required":"Conversation Name"}/>
 
             <UserListContainer />
           <button className="create-channel-button">Create</button>
@@ -123,7 +131,7 @@ class ChannelForm extends React.Component {
     } else {
        const { value, suggestions } = this.state;
       const inputProps = {
-        placeholder: 'Type a channel name',
+        placeholder: `${this.state.errors.length ? this.state.errors : "Enter a channel name"}`,
         value,
         onChange: this.handleSuggestion
       };

@@ -3,9 +3,6 @@ import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import configureStore from './store/store.js';
 import Root from './components/root.jsx';
-import * as MessageAPI from './util/message_api_util.js';
-import {requestPubChannels, requestPrivateChannels} from './actions/channel_actions.js';
-import MyEmojiInput from './components/emoji/emoji.jsx';
 
 
   document.addEventListener('DOMContentLoaded', ()=>{
@@ -14,18 +11,11 @@ import MyEmojiInput from './components/emoji/emoji.jsx';
   let store;
   if(window.currentUser){
     const preloadedState = {session: {currentUser: window.currentUser, errors:[]}};
-    store = window.store = configureStore(preloadedState);
+    store = configureStore(preloadedState);
   } else {
-    store = window.store = configureStore();
+    store = configureStore();
   }
 
   ReactDOM.render(<Root store={store}/>, rootEl);
-  // ReactDOM.render(<MyEmojiInput />, rootEl);
 
-  window.fetchPubChannels = () =>{
-    store.dispatch(requestPubChannels());
-  };
-  window.fetchPrivateChannels = () =>{
-    store.dispatch(requestPrivateChannels());
-  };
 });
