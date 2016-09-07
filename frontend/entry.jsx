@@ -5,6 +5,8 @@ import configureStore from './store/store.js';
 import Root from './components/root.jsx';
 import * as MessageAPI from './util/message_api_util.js';
 import {requestPubChannels, requestPrivateChannels} from './actions/channel_actions.js';
+import MyEmojiInput from './components/emoji/emoji.jsx';
+
 
   document.addEventListener('DOMContentLoaded', ()=>{
   const rootEl = document.getElementById('root');
@@ -18,6 +20,7 @@ import {requestPubChannels, requestPrivateChannels} from './actions/channel_acti
   }
 
   ReactDOM.render(<Root store={store}/>, rootEl);
+  // ReactDOM.render(<MyEmojiInput />, rootEl);
 
   window.fetchPubChannels = () =>{
     store.dispatch(requestPubChannels());

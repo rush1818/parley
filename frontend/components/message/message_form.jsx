@@ -1,4 +1,5 @@
 import React from 'react';
+import EmojiInput from '../emoji/emoji.jsx';
 
 class MessageForm extends React.Component{
   constructor(props){
@@ -49,7 +50,7 @@ class MessageForm extends React.Component{
   render(){
     return (<form className="message-form" onSubmit={this.handleSubmit}>
       <label htmlFor="msg-body"></label>
-      <textarea id='msg-body' type='text' onChange={this.handleChange('body')} value={this.state.body} onKeyPress={this.handleEnter} placeholder={this.state.errors.length ? this.state.errors : `Message #${this.state.channelName}`}></textarea>
+      <textarea id='msg-body' type='text' onChange={this.handleChange('body')} value={this.state.body} onKeyPress={this.handleEnter} placeholder={this.state.errors.length ? this.state.errors : `Message #${this.state.channelName}`}></textarea><EmojiInput />
     </form>);
   }
 }

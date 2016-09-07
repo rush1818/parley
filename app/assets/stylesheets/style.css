@@ -782,3 +782,17 @@ body {
   display: inline-block;
   width: 20px;
 }
+
+.emoji-picker-emoji{
+  width: 25px;
+  height: 25px;
+}
+
+#emoji{ /* this is search box*/
+  border: 1px solid #ccc;
+}
+.emoji-picker-emoji img{
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+}
