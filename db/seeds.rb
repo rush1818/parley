@@ -15,7 +15,7 @@ dm_user_1 = User.create!(username: 'Archie', password: Figaro.env.user_passwords
 dm_user_2 = User.create!(username: 'John', password: Figaro.env.user_passwords)
 
 usernames = []
-until usernames.length == 20
+until usernames.length == 100
   username = Faker::Name.last_name.split(" ").map{|el| el.capitalize}.join("")
   usernames << username unless usernames.include?(username)
 end
@@ -27,11 +27,11 @@ end
 Channel.create!(name: 'general', user_id: User.first.id, private: false)
 Channel.find_by(name: 'general').subscriber_ids = User.all.ids
 
-#Create Bot Channels
-users = User.all
-users.each do |user|
+#Create Bot Channels for first 20 users
+user_ids = (1..20).to_a
+user_ids.each do |user_id|
   ch = Channel.create!(name:"bot", user_id: 2, private: true)
-  ch.subscriber_ids = user.id
+  ch.subscriber_ids = user_id
 end
 
 #Create public channels.
@@ -39,7 +39,7 @@ end
 channel_names = ['accounting', 'marketing', 'sales']
 channel_names.length.times do |n|
   a = Channel.create!(name: channel_names[n], private: false, user_id: User.first.id)
-  a.subscriber_ids = User.all.ids
+  a.subscriber_ids = user_ids
 end
 
 #Create Private Channels
