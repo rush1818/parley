@@ -6,7 +6,15 @@ import ReactTags from 'react-tag-autocomplete';
 class UserList extends React.Component{
   constructor(props){
     super(props);
-    this.state = {tags:  [], suggestions: this.props.userList};
+    let suggestions = [];
+    this.props.userList.forEach((user)=>{
+      if (user.name === "bot"){
+        return;
+      } else {
+       suggestions.push(user);
+      }
+    });
+    this.state = {tags:  [], suggestions: suggestions};
 
     this.handleDelete = this.handleDelete.bind(this);
     this.handleAddition = this.handleAddition.bind(this);
@@ -27,9 +35,11 @@ class UserList extends React.Component{
 
   handleAddition (tag) {
     let tags = this.state.tags;
-    tags.push(tag);
-    this.setState({ tags: tags });
-    this.props.saveUserList(tags);
+    if (!tags.includes(tag)){
+      tags.push(tag);
+      this.setState({ tags: tags });
+      this.props.saveUserList(tags);
+    }
    }
 
   render() {

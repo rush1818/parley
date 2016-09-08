@@ -770,6 +770,11 @@ body {
   margin-top: 5px;
 }
 
+.react-autosuggest__suggestions-list > li:hover{
+  cursor: pointer;
+  color: var(--green-color);
+}
+
 .react-autosuggest__suggestion{
 }
 
