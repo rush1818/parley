@@ -575,6 +575,7 @@ body {
 .add-pub-channel-icon{
   float: right;
   margin-top: 6px;
+  color: var(--channel-font-color);
 }
 .material-icons.add-ch-button{
   cursor: pointer;
@@ -634,6 +635,7 @@ body {
 .add-direct-channel-icon{
   float: right;
   margin-top: 6px;
+  color: var(--channel-font-color);
 }
 .direct-channel-box{
 
