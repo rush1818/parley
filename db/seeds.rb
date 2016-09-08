@@ -71,7 +71,7 @@ Message.create!(user_id: 5, channel_id: channel_id, body: "Wow! This app is so c
 
 Message.create!(user_id: 5, channel_id: channel_id, body: "The user search while creating a DM is really convenient!", created_at: dates[3])
 
-Message.create!(user_id: 11, channel_id: channel_id, body: "Yeah, the bot also tells jokes! Did you any of you give the bot a try?", created_at: dates[4])
+Message.create!(user_id: 11, channel_id: channel_id, body: "Yeah, the bot also tells jokes! Did any of you give the bot a try?", created_at: dates[4])
 
 # Message.create!(user_id: 4, channel_id: channel_id, body: "The one with the neighbors and wifi was really good! :laughing:", created_at: dates[3])
 
@@ -85,7 +85,7 @@ channel_id = channel.id
 user_ids = [3, 4, 5, 9, 11]
 Message.create!(user_id: 9, channel_id: channel_id, body: "Hi team, does anyone know when our 2017 forecast numbers are due? :bar_chart:", created_at: dates[8])
 
-Message.create!(user_id: 4, channel_id: channel_id, body: "Yup, it's due at the gend of the month.", created_at: dates[9])
+Message.create!(user_id: 4, channel_id: channel_id, body: "Yup, it's due at the end of the month.", created_at: dates[9])
 
 Message.create!(user_id: 3, channel_id: channel_id, body: "How many slides do you guys have for the deck?", created_at: dates[10])
 

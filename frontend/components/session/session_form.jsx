@@ -95,7 +95,7 @@ class SessionForm extends React.Component {
       if (this.state.newUser === "true"){
         let myErrors = [];
         if (this.state.password.length < 7){
-          myErrors.push("Password must be atleast 6 characters");
+          myErrors.push("Password must be a minimum of 6 characters");
         }
         this.props.errors.forEach(error =>{
           if (error.toLowerCase().includes('taken')){
