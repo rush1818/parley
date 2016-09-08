@@ -133,29 +133,37 @@ Message.create!(user_id: 8, channel_id: channel_id, body: "Alright, I'm looking 
 
 
 
-=begin
+#Archie
+channel = Channel.find_by(name: 'archie')
+channel_id = channel.id
+user_ids = [guest_user.id, dm_user_1.id]
+
+Message.create!(user_id: dm_user_1.id, channel_id: channel_id, body: "Did you see the new Maybach they displayed at the Monterey car fest?", created_at: dates[23])
+
+Message.create!(user_id: guest_user.id, channel_id: channel_id, body: "Yeah, it looks great! The interior is beautiful. ", created_at: dates[24])
+
+Message.create!(user_id: dm_user_1.id, channel_id: channel_id, body: "The car is too long though. I liked the new Lambo over it. :car::dash: ", created_at: dates[25])
+
+Message.create!(user_id: guest_user.id, channel_id: channel_id, body: "Centenario looks amazing. It looks like a car from the future. Good thing that they didn't go crazy over the design as they did with the Veneno.", created_at: dates[26])
+
+Message.create!(user_id: dm_user_1.id, channel_id: channel_id, body: "Agree, they really went overboard with the Veneno.", created_at: dates[27])
+
+Message.create!(user_id: guest_user.id, channel_id: channel_id, body: "A friend of mine was at the event and he got to meet Koenigsegg. I admire the way Koenigsegg has developed his brand. That One:1 is a piece of art!", created_at: dates[28])
+
+
 #lunch-plans
 channel = Channel.find_by(name: 'lunch-plans')
 channel_id = channel.id
-user_ids = [3, 4, 5, 8, 11]
+user_ids = [guest_user.id, dm_user_1.id, dm_user_2.id, 9]
 
-Message.create!(user_id: 3, channel_id: channel_id, body: "Hi there! :)", created_at: dates[0])
+Message.create!(user_id: dm_user_1.id, channel_id: channel_id, body: "Are we all still a go for lunch next weekend? :fork_and_knife:", created_at: dates[50])
 
-Message.create!(user_id: 3, channel_id: channel_id, body: "Did you guys hear about working during the long weekend? :o", created_at: dates[1])
+Message.create!(user_id: dm_user_2.id, channel_id: channel_id, body: "Yes! Italian okay with everyone? :spaghetti:", created_at: dates[51])
 
-Message.create!(user_id: 4, channel_id: channel_id, body: "Yes! Hopefully it is not a long day", created_at: dates[2])
+Message.create!(user_id: 9, channel_id: channel_id, body: "Italian sounds yumm! :spaghetti::spaghetti:", created_at: dates[52])
 
-Message.create!(user_id: 3, channel_id: channel_id, body: "Worst part is that the air conditioner will be off :o", created_at: dates[3])
+Message.create!(user_id: guest_user.id, channel_id: channel_id, body: "Italian it is! Should I book a table for us for Saturday at 1pm?", created_at: dates[53])
 
-Message.create!(user_id: 5, channel_id: channel_id, body: "Did anyone have plans though?", created_at: dates[4])
+Message.create!(user_id: 9, channel_id: channel_id, body: ":ok_hand:", created_at: dates[54])
 
-Message.create!(user_id: 11, channel_id: channel_id, body: "Yeah, I had a camping trip planned", created_at: dates[5])
-
-Message.create!(user_id: 5, channel_id: channel_id, body: "Where were you going?", created_at: dates[6])
-
-Message.create!(user_id: 11, channel_id: channel_id, body: "I had plans to go to Yosemite. Heard the weather there is really good this month.", created_at: dates[7])
-
-Message.create!(user_id: 11, channel_id: channel_id, body: "Don't worry everyone, I talked to our director and got us a half-day on Monday, and also a day off the following week. It is a good thing that our team has a good director.", created_at: dates[13])
-
-Message.create!(user_id: 3, channel_id: channel_id, body: "It is a good thing that our team has a good director. :D", created_at: dates[14])
-=end
+Message.create!(user_id: dm_user_1.id, channel_id: channel_id, body: "Yup :ok_hand:", created_at: dates[54])
