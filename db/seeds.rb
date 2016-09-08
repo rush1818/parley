@@ -128,7 +128,7 @@ Message.create!(user_id: 15, channel_id: channel_id, body: "Things are looking p
 
 Message.create!(user_id: 17, channel_id: channel_id, body: "Good grief! Are there any local trade shows in the area?", created_at: dates[21])
 
-Message.create!(user_id: 8, channel_id: channel_id, body: "Alright, I'm looking into it.", created_at: dates[22])
+Message.create!(user_id: 8, channel_id: channel_id, body: "I'll look into it.", created_at: dates[22])
 
 
 
@@ -146,7 +146,7 @@ Message.create!(user_id: dm_user_1.id, channel_id: channel_id, body: "The car is
 
 Message.create!(user_id: guest_user.id, channel_id: channel_id, body: "Centenario looks amazing. It looks like a car from the future. Good thing that they didn't go crazy over the design as they did with the Veneno.", created_at: dates[26])
 
-Message.create!(user_id: dm_user_1.id, channel_id: channel_id, body: "Agree, they really went overboard with the Veneno.", created_at: dates[27])
+Message.create!(user_id: dm_user_1.id, channel_id: channel_id, body: "Agreed, they really went overboard with the Veneno.", created_at: dates[27])
 
 Message.create!(user_id: guest_user.id, channel_id: channel_id, body: "A friend of mine was at the event and he got to meet Koenigsegg. I admire the way Koenigsegg has developed his brand. That One:1 is a piece of art!", created_at: dates[28])
 

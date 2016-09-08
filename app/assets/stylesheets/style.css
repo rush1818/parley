@@ -141,6 +141,7 @@ body {
   position: absolute;
   top: 50%;
   left: 26%;
+  right: 20%;
   /* background: #ffffff; */
   /* opacity: 0.6; */
   /*left: 30vh;*/
@@ -202,8 +203,8 @@ body {
 
 .ReactModal__Overlay--after-open {
   opacity: 1;
-  -webkit-transition: opacity 150ms ease-out;
-  transition: opacity 150ms ease-out;
+  -webkit-transition: opacity 250ms ease-out;
+  transition: opacity 250ms ease-out;
 }
 
 .ReactModal__Content {
@@ -214,8 +215,8 @@ body {
 .ReactModal__Content--after-open {
   -webkit-transform: scale(1) rotateX(0deg);
   transform: scale(1) rotateX(0deg);
-  -webkit-transition: all 150ms ease-in;
-  transition: all 150ms ease-in;
+  -webkit-transition: all 250ms ease-in;
+  transition: all 250ms ease-in;
 }
 
 .ReactModal__Overlay--before-close {
@@ -225,8 +226,8 @@ body {
 .ReactModal__Content--before-close {
   -webkit-transform: scale(0.5) rotateX(30deg);
   transform: scale(0.5) rotateX(30deg);
-  -webkit-transition: all 150ms ease-in;
-  transition: all 150ms ease-in;
+  -webkit-transition: all 250ms ease-in;
+  transition: all 250ms ease-in;
 }
 
 .new-session {
