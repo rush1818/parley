@@ -83,17 +83,40 @@ Message.create!(user_id: 3, channel_id: channel_id, body: "Yeah the bot is reall
 channel = Channel.find_by(name: 'accounting')
 channel_id = channel.id
 user_ids = [3, 4, 5, 9, 11]
-Message.create!(user_id: 1, channel_id: channel_id, body: "Hi team, does anyone know when our 2017 forecast numbers are due? :bar_chart:", created_at: dates[8])
+Message.create!(user_id: 9, channel_id: channel_id, body: "Hi team, does anyone know when our 2017 forecast numbers are due? :bar_chart:", created_at: dates[8])
 
-Message.create!(user_id: 4, channel_id: channel_id, body: "Yup, it is due end of the month.", created_at: dates[9])
+Message.create!(user_id: 4, channel_id: channel_id, body: "Yup, it's due at the end of the month.", created_at: dates[9])
 
 Message.create!(user_id: 3, channel_id: channel_id, body: "How many slides do you guys have for the deck?", created_at: dates[10])
 
 Message.create!(user_id: 4, channel_id: channel_id, body: "We are still drafting out the slides but we expect about 11-12 slides.", created_at: dates[11])
 
-Message.create!(user_id: 3, channel_id: channel_id, body: "Awesome! :) Could you email me the slides once you are done so I can include them in the town hall meeting? ", created_at: dates[12])
+Message.create!(user_id: 3, channel_id: channel_id, body: "Awesome! :+1: Could you email me the slides once you are done so I can include them in the town hall meeting? ", created_at: dates[12])
 
 Message.create!(user_id: 4, channel_id: channel_id, body: "Yup, will send them over to you ASAP :)", created_at: dates[13])
+
+
+
+
+# marketing
+channel = Channel.find_by(name: 'marketing')
+channel_id = channel.id
+user_ids = [3, 7, 9, 10, 14]
+
+Message.create!(user_id: 10, channel_id: channel_id, body: "Can someone provide me a YTD campaign report for the AdWords display campaign?", created_at: dates[14])
+
+Message.create!(user_id: 14, channel_id: channel_id, body: "Sure thing", created_at: dates[15])
+
+Message.create!(user_id: 14, channel_id: channel_id, body: "Do you want me to split it out by device?", created_at: dates[15])
+
+Message.create!(user_id: 10, channel_id: channel_id, body: "That would be great. It'll be helpful to see our mobile share in display.", created_at: dates[16])
+
+Message.create!(user_id: 3, channel_id: channel_id, body: "Guys, I noticed our ad copy is a bit stale. Let's draft out some new ad text this afternoon.", created_at: dates[17])
+
+Message.create!(user_id: 9, channel_id: channel_id, body: "Okay, I'll put something on our calendars. :calendar:", created_at: dates[18])
+
+
+
 
 
 
@@ -121,13 +144,3 @@ Message.create!(user_id: 11, channel_id: channel_id, body: "I had plans to go to
 Message.create!(user_id: 11, channel_id: channel_id, body: "Don't worry everyone, I talked to our director and got us a half-day on Monday, and also a day off the following week. It is a good thing that our team has a good director.", created_at: dates[13])
 
 Message.create!(user_id: 3, channel_id: channel_id, body: "It is a good thing that our team has a good director. :D", created_at: dates[14])
-
-
-
-
-
-
-# marketing
-channel = Channel.find_by(name: 'marketing')
-channel_id = channel.id
-user_ids = [3, 9, 10]
