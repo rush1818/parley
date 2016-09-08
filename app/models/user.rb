@@ -62,7 +62,7 @@ class User < ActiveRecord::Base
 
   def feed_channels
     # @channels = Channel.joins("LEFT OUTER JOIN subscriptions as s1 ON channels.id = s1.channel_id").joins("LEFT OUTER JOIN users ON users.id = s1.user_id").where("channels.private = false AND s1.user_id IS NULL", id: self.id).order("channels.id").uniq
-    @channels = Channel.where(private: false)
+    @channels = Channel.includes(:subscribers).where(private: false)
     @feed = []
     @channels.each{|ch| @feed << ch unless ch.subscriber_ids.include?(self.id)}
     @feed
