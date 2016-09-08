@@ -85,7 +85,7 @@ channel_id = channel.id
 user_ids = [3, 4, 5, 9, 11]
 Message.create!(user_id: 9, channel_id: channel_id, body: "Hi team, does anyone know when our 2017 forecast numbers are due? :bar_chart:", created_at: dates[8])
 
-Message.create!(user_id: 4, channel_id: channel_id, body: "Yup, it's due at the end of the month.", created_at: dates[9])
+Message.create!(user_id: 4, channel_id: channel_id, body: "Yup, it's due at the gend of the month.", created_at: dates[9])
 
 Message.create!(user_id: 3, channel_id: channel_id, body: "How many slides do you guys have for the deck?", created_at: dates[10])
 
@@ -117,9 +117,23 @@ Message.create!(user_id: 9, channel_id: channel_id, body: "Okay, I'll put someth
 
 
 
+# sales
+channel = Channel.find_by(name: 'sales')
+channel_id = channel.id
+user_ids = [3, 8, 15, 16, 17]
+
+Message.create!(user_id: 16, channel_id: channel_id, body: "How is our pipeline looking for next month?", created_at: dates[19])
+
+Message.create!(user_id: 15, channel_id: channel_id, body: "Things are looking pretty slim :disappointed: ", created_at: dates[20])
+
+Message.create!(user_id: 17, channel_id: channel_id, body: "Good grief! Are there any local trade shows in the area?", created_at: dates[21])
+
+Message.create!(user_id: 8, channel_id: channel_id, body: "Alright, I'm looking into it.", created_at: dates[22])
 
 
 
+
+=begin
 #lunch-plans
 channel = Channel.find_by(name: 'lunch-plans')
 channel_id = channel.id
@@ -144,3 +158,4 @@ Message.create!(user_id: 11, channel_id: channel_id, body: "I had plans to go to
 Message.create!(user_id: 11, channel_id: channel_id, body: "Don't worry everyone, I talked to our director and got us a half-day on Monday, and also a day off the following week. It is a good thing that our team has a good director.", created_at: dates[13])
 
 Message.create!(user_id: 3, channel_id: channel_id, body: "It is a good thing that our team has a good director. :D", created_at: dates[14])
+=end

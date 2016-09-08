@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import NavBar from './navbar.jsx';
 import {logout} from '../../actions/session_actions.js';
+import {clearSessionErrors} from '../../actions/error_actions.js';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -15,6 +16,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return ({
     logout: () => dispatch(logout()),
+    clearSessionErrors: () => dispatch(clearSessionErrors())
   });
 };
 

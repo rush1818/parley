@@ -92,9 +92,28 @@ class SessionForm extends React.Component {
     let errorContent;
     if (this.props.errors && this.props.errors.length) {
       // debugger
-      errorContent = (
-        <li className='user-errors'>{this.props.errors.getUnique().join(", ")}</li>
-      );
+      if (this.state.newUser === "true"){
+        let myErrors = [];
+        if (this.state.password.length < 7){
+          myErrors.push("Password must be atleast 6 characters");
+        }
+        this.props.errors.forEach(error =>{
+          if (error.toLowerCase().includes('taken')){
+            myErrors.unshift('Username is taken');
+          }
+        });
+        if (!this.state.username.length){
+          myErrors.unshift("Username can't be blank");
+        }
+
+        errorContent = (
+          <li className='user-errors'>{myErrors.join(". ")}</li>
+        );
+      } else {
+        errorContent = (
+          <li className='user-errors'>{'Invalid username/password'}</li>
+        );
+      }
     }
     let sessionOptions, buttonText;
     if (this.state.newUser==="false"){
