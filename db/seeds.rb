@@ -7,6 +7,13 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.create!(username: 'moderator', password: 111111)
 User.create!(username: 'bot', password: Figaro.env.bot_password!)
+#guest user
+guest_user = User.create!(username: Faker::Name.last_name.split(" ").map{|el| el.capitalize}.join(""), password: Figaro.env.user_passwords)
+
+#users for DM:
+dm_user_1 = User.create!(username: 'Archie', password: Figaro.env.user_passwords)
+dm_user_2 = User.create!(username: 'John', password: Figaro.env.user_passwords)
+
 usernames = []
 until usernames.length == 20
   username = Faker::Name.last_name.split(" ").map{|el| el.capitalize}.join("")
@@ -29,18 +36,18 @@ end
 
 #Create public channels.
 
-channel_names = ['design', 'sf', 'alumni']
+channel_names = ['accounting', 'marketing', 'sales']
 channel_names.length.times do |n|
   a = Channel.create!(name: channel_names[n], private: false, user_id: User.first.id)
   a.subscriber_ids = User.all.ids
 end
 
 #Create Private Channels
-ch = Channel.create!(name: 'upgrade project', user_id: User.first.id, private: true)
-ch.subscriber_ids = [1 ,3,4, 8]
+ch = Channel.create!(name: 'Archie', user_id: User.first.id, private: true)
+ch.subscriber_ids = [1 , guest_user.id, dm_user_1.id]
 
-ch = Channel.create!(name: 'team', user_id: User.first.id, private: true)
-ch.subscriber_ids = [1, 3, 5, 4, 8, 11]
+ch = Channel.create!(name: 'lunch-plans', user_id: User.first.id, private: true)
+ch.subscriber_ids = [1, guest_user.id, dm_user_1.id, dm_user_2.id, 9]
 
 
 
@@ -57,7 +64,43 @@ dates.sort!
 #general
 channel = Channel.find_by(name: 'general')
 channel_id = channel.id
+user_ids = [3, 5, 4, 11]
+Message.create!(user_id: 11, channel_id: channel_id, body: "Welcome to Parley! :) This app has cool features such as a bot, emojis, channels, and direct messages. If you leave a channel, you can always join back by typing the name in the create/join channel form. Note that you cannot leave the bot conversation and the general channel.", created_at: dates[1])
+
+Message.create!(user_id: 5, channel_id: channel_id, body: "Wow! This app is so cool! It has a bot and emojis! :D :+1:", created_at: dates[2])
+
+Message.create!(user_id: 5, channel_id: channel_id, body: "The user search while creating a DM is really convenient!", created_at: dates[3])
+
+Message.create!(user_id: 11, channel_id: channel_id, body: "Yeah, the bot also tells jokes! Did you any of you give the bot a try?", created_at: dates[4])
+
+# Message.create!(user_id: 4, channel_id: channel_id, body: "The one with the neighbors and wifi was really good! :laughing:", created_at: dates[3])
+
+Message.create!(user_id: 3, channel_id: channel_id, body: "Yeah the bot is really entertaining! :laughing:", created_at: dates[5])
+
+
+
+#accounting
+channel = Channel.find_by(name: 'accounting')
+channel_id = channel.id
 user_ids = [3, 4, 5, 9, 11]
+Message.create!(user_id: 1, channel_id: channel_id, body: "Hi team, does anyone know when our 2017 forecast numbers are due? :bar_chart:", created_at: dates[8])
+
+Message.create!(user_id: 4, channel_id: channel_id, body: "Yup, it is due end of the month.", created_at: dates[9])
+
+Message.create!(user_id: 3, channel_id: channel_id, body: "How many slides do you guys have for the deck?", created_at: dates[10])
+
+Message.create!(user_id: 4, channel_id: channel_id, body: "We are still drafting out the slides but we expect about 11-12 slides.", created_at: dates[11])
+
+Message.create!(user_id: 3, channel_id: channel_id, body: "Awesome! :) Could you email me the slides once you are done so I can include them in the town hall meeting? ", created_at: dates[12])
+
+Message.create!(user_id: 4, channel_id: channel_id, body: "Yup, will send them over to you ASAP :)", created_at: dates[13])
+
+
+
+#lunch-plans
+channel = Channel.find_by(name: 'lunch-plans')
+channel_id = channel.id
+user_ids = [3, 4, 5, 8, 11]
 
 Message.create!(user_id: 3, channel_id: channel_id, body: "Hi there! :)", created_at: dates[0])
 
@@ -75,32 +118,16 @@ Message.create!(user_id: 5, channel_id: channel_id, body: "Where were you going?
 
 Message.create!(user_id: 11, channel_id: channel_id, body: "I had plans to go to Yosemite. Heard the weather there is really good this month.", created_at: dates[7])
 
-
-
-#design
-channel = Channel.find_by(name: 'design')
-channel_id = channel.id
-user_ids = [3, 4, 5, 9, 11]
-Message.create!(user_id: 1, channel_id: channel_id, body: "Hi everyone, feel free to share some cool CSS tricks here!", created_at: dates[8])
-
-Message.create!(user_id: 4, channel_id: channel_id, body: "Does anyone have experience using React components?", created_at: dates[9])
-
-Message.create!(user_id: 3, channel_id: channel_id, body: "What king of functionality are you look for?", created_at: dates[10])
-
-Message.create!(user_id: 4, channel_id: channel_id, body: "Something that can help with selections.", created_at: dates[11])
-
-Message.create!(user_id: 3, channel_id: channel_id, body: "Search for React-Tags, there are a bunch of components that can help you out with this.", created_at: dates[10])
-
-Message.create!(user_id: 4, channel_id: channel_id, body: "That helps sp much! Thank you! :)", created_at: dates[11])
-
-
-
-#team
-channel = Channel.find_by(name: 'team')
-channel_id = channel.id
-user_ids = [3, 5, 4, 8, 11]
-Message.create!(user_id: 3, channel_id: channel_id, body: "Hey Team, incase you missed the announcement this morning, we will be working this long weekend...", created_at: dates[12])
-
 Message.create!(user_id: 11, channel_id: channel_id, body: "Don't worry everyone, I talked to our director and got us a half-day on Monday, and also a day off the following week. It is a good thing that our team has a good director.", created_at: dates[13])
 
 Message.create!(user_id: 3, channel_id: channel_id, body: "It is a good thing that our team has a good director. :D", created_at: dates[14])
+
+
+
+
+
+
+# marketing
+channel = Channel.find_by(name: 'marketing')
+channel_id = channel.id
+user_ids = [3, 9, 10]
