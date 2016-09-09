@@ -13,11 +13,13 @@ guest_user = User.create!(username: Faker::Name.last_name.split(" ").map{|el| el
 #users for DM:
 dm_user_1 = User.create!(username: 'Archie', password: Figaro.env.user_passwords)
 dm_user_2 = User.create!(username: 'John', password: Figaro.env.user_passwords)
-
+taken_users = ['Archie', 'John', 'bot', 'moderator']
 usernames = []
 until usernames.length == 100
   username = Faker::Name.last_name.split(" ").map{|el| el.capitalize}.join("")
-  usernames << username unless usernames.include?(username)
+  if !usernames.include?(username) && !taken_users.include?(username)
+    usernames << username
+  end
 end
 
 usernames.each do |username|
