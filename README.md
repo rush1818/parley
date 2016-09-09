@@ -96,17 +96,18 @@ A `bot` user is setup which connects to an external API. For every new user that
 
 ```ruby
 def create
-    @user = User.new(user_params)
-    if @user.save
-      Pusher.trigger('users', 'new_user', {})
-      @user.subscribed_channel_ids = 1
-      ch = Channel.create!(name:"bot", user_id: 2, private: true)
-      ch.subscriber_ids = @user.id
-      login!(@user)
-      render "api/users/show"
-    else
-      render json: @user.errors.full_messages, status: 422
-    end
+  @user = User.new(user_params)
+  if @user.save
+    Pusher.trigger('users', 'new_user', {})
+    @user.subscribed_channel_ids = 1
+    ch = Channel.create!(name:"bot", user_id: 2, private: true)
+    ch.subscriber_ids = @user.id
+    login!(@user)
+    render "api/users/show"
+  else
+    render json: @user.errors.full_messages, status: 422
+  end
+end
 ```
 When a user posts a message to the `bot` conversation, if the message saves to the database, a call is made with the message content to the chatbot API. The response from the API call is saved under the `bot` username in the same channel. The bot is pre-configured by the API to reply to simple conversations.
 
