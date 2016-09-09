@@ -11,7 +11,7 @@ namespace :heroku do
   # Note: run locally with Heroku toolbelt to reset DB on app
   desc 'Reset database with seed data'
   task :reset_db, [:app_name] do |t, args|
-    run_command("pg:reset DATABASE_URL --confirm #{args.app_name}")
+    run_command("pg:reset DATABASE --confirm #{args.app_name}")
     run_command("run rake db:migrate")
     run_command("run rake db:seed")
   end

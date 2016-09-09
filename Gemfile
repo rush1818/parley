@@ -63,3 +63,4 @@ gem 'pusher'
 gem "autoprefixer-rails"
 gem 'cleverbot_io'
 gem 'api-ai-ruby'
+gem 'dynopoker'
