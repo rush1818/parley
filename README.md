@@ -64,7 +64,7 @@ The `private` attribute is a boolean value that identifies if a channel is publi
 ### Subscriptions
 Subscriptions are stored in the `Subscription` join table. The join table belongs to a `user` and a `channel`. Records in this table are created by using the following Rails Association Helper Methods:
 * `user.subscribed_channel_ids`
-* `channel.subcriber_ids`
+* `channel.subscriber_ids`
 
 When a user opens the Channel form, search results are displayed for existing channels which a user can subscribe to. If a user selects a suggested result, the `POST` request to the server subscribes the user to the channel. If the user inputs a new channel name, the `POST` request will create a new channel.
 
