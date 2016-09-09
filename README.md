@@ -1,6 +1,6 @@
 # Welcome to Parley!
 ![HomePage][home_img]
-[home_img]: ./prod_assets/gifs/home.png
+[home_img]: ./docs/prod_assets/home.png
 
 [Parley][live_site] is a single-page live-chat application inspired by [Slack][slack_link] built with Ruby-on-Rails on the backend
 and JavaScript/React.js with Redux on the front end.
@@ -32,7 +32,7 @@ Parley is a single-page application built using Rails, React, and Redux. All con
 Parley employs front-end authentication for secure login and signup. It utilizes BCrypt for storing password digests in the database. Additionally to preview Parley, automated demo login is also set up.
 
 ![Demo Login][demo_login]
-[demo_login]: ./prod_assets/gifs/demo_login.gif
+[demo_login]: ./docs/prod_assets/demo_login.gif
 
 
 ### Messaging
@@ -69,13 +69,13 @@ Subscriptions are stored in the `Subscription` join table. The join table belong
 When a user opens the Channel form, search results are displayed for existing channels which a user can subscribe to. If a user selects a suggested result, the `POST` request to the server subscribes the user to the channel. If the user inputs a new channel name, the `POST` request will create a new channel.
 
 ![Channel Suggestions][channel_demo]
-[channel_demo]: ./prod_assets/gifs/channel_demo.gif
+[channel_demo]: ./docs/prod_assets/channel_demo.gif
 
 ### Direct Messages (DM) / Group Messages
 For private channels / direct messages (DM), channel names are not validated for uniqueness. A username input box provides existing user suggestions when a user starts typing. Creating a new conversation with a user adds the conversation into the user's DM list in real time.
 
 ![DM Convo][dm_demo]
-[dm_demo]: ./prod_assets/gifs/dm_demo.gif
+[dm_demo]: ./docs/prod_assets/dm_demo.gif
 
 
 ### Real Time Events
@@ -86,10 +86,10 @@ For Real Time Message functionality, [Pusher][pusher_link] API is used to create
 [pusher_link]:https://pusher.com/
 
 ![RTM][rtm]
-[rtm]: ./prod_assets/gifs/rtm_demo.gif
+[rtm]: ./docs/prod_assets/rtm_demo.gif
 
 ![RTM Delete][rtm_delete]
-[rtm_delete]: ./prod_assets/gifs/delete_msg_demo.gif
+[rtm_delete]: ./docs/prod_assets/delete_msg_demo.gif
 
 ### Bot User
 A `bot` user is setup which connects to an external API. For every new user that joins Parley, the Rails Users Controller automatically creates a DM between the user and the `bot`.
@@ -111,7 +111,7 @@ def create
 When a user posts a message to the `bot` conversation, if the message saves to the database, a call is made with the message content to the chatbot API. The response from the API call is saved under the `bot` username in the same channel. The bot is pre-configured by the API to reply to simple conversations.
 
 ![Bot Demo][bot_demo]
-[bot_demo]: ./prod_assets/gifs/chat_bot_convo.gif
+[bot_demo]: ./docs/prod_assets/chat_bot_convo.gif
 
 ### Emojis :smiley:
 [React-Emoji][emoji_render_link] and [React-Emoji-Picker][emoji_picker_link] components are used to render emojis present in the body of the message and emoji picker.
@@ -119,7 +119,7 @@ When a user posts a message to the `bot` conversation, if the message saves to t
 [emoji_render_link]: https://github.com/banyan/react-emoji
 [emoji_picker_link]: https://github.com/chadoh/react-emoji-picker
 ![Emojis][emojis]
-[emojis]: ./prod_assets/gifs/emoji_demo.gif
+[emojis]: ./docs/prod_assets/emoji_demo.gif
 
 ## Future Directions for the Project
 In addition to the features already implemented, I plan on working on the following features.
