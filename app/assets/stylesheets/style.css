@@ -852,3 +852,26 @@ body {
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
+
+.channel-member-count{
+  font-size: 11px;
+  color: lightgray;
+  margin-left: 5px;
+}
+.channel-member-count:hover {
+  cursor: pointer;
+  color: black
+}
+
+.channel-member-list {
+  cursor: default;
+  -moz-column-count: 4;
+  -moz-column-gap: 20px;
+  -webkit-column-count: 4;
+  -webkit-column-gap: 20px;
+  column-count: 4;
+  column-gap: 20px;
+}
+.channel-member-list li {
+  margin-bottom: 5px;
+}

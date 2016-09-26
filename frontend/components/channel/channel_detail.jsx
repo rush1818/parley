@@ -46,9 +46,9 @@ class ChannelDetail extends React.Component {
     let userCount = 0;
     const that = this;
     if (that.state.channelUsers){
-      that.state.channelUsers.forEach(user => {
-        userCount++
-        userNames.push(<li>{user.username}</li>);
+      that.state.channelUsers.forEach((user, id) => {
+        userCount++;
+        userNames.push(<li key={user.username}>{user.username}</li>);
       });
     }
     let button = (<button className="remove-channel-button tooltip"onClick={this.handleClick}><i className="material-icons remove-channel-icon">indeterminate_check_box</i><span className="tooltiptext">Leave Channel</span></button>);
@@ -62,7 +62,7 @@ class ChannelDetail extends React.Component {
         <section className='message-index-info group'>
           <h3 className="channel-title">#{this.state.channelName}</h3>
             {button}
-            <span onClick={this.openModal}>{userCount} members</span>
+            <span onClick={this.openModal} className='channel-member-count'>{userCount > 1 ? `${userCount} members` : `${userCount} member`}</span>
             <Modal
               isOpen={this.state.modalOpen}
               onRequestClose={this.closeModal}
