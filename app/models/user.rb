@@ -69,10 +69,10 @@ class User < ActiveRecord::Base
   end
 
   def private_channels
-    @channels = Channel.joins("LEFT OUTER JOIN subscriptions ON channels.id = subscriptions.channel_id").joins("LEFT OUTER JOIN users ON users.id = subscriptions.user_id").where("channels.private = true AND subscriptions.user_id = :id", id: self.id).order("channels.id").uniq
+    @channels = Channel.includes(:subscribers).joins("LEFT OUTER JOIN subscriptions ON channels.id = subscriptions.channel_id").joins("LEFT OUTER JOIN users ON users.id = subscriptions.user_id").where("channels.private = true AND subscriptions.user_id = :id", id: self.id).order("channels.id").uniq
   end
 
   def public_channels
-    @channels = Channel.joins("LEFT OUTER JOIN subscriptions ON channels.id = subscriptions.channel_id").joins("LEFT OUTER JOIN users ON users.id = subscriptions.user_id").where("channels.private = false AND subscriptions.user_id = :id", id: self.id).order("channels.id").uniq
+    @channels = Channel.includes(:subscribers).joins("LEFT OUTER JOIN subscriptions ON channels.id = subscriptions.channel_id").joins("LEFT OUTER JOIN users ON users.id = subscriptions.user_id").where("channels.private = false AND subscriptions.user_id = :id", id: self.id).order("channels.id").uniq
   end
 end
