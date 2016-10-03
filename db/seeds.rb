@@ -5,25 +5,29 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'set'
+
+taken_users = Set.new
 User.create!(username: 'moderator', password: 111111)
 User.create!(username: 'bot', password: Figaro.env.bot_password!)
+taken_users << 'moderator'
+taken_users << 'bot'
 #guest user
 guest_user = User.create!(username: Faker::Name.last_name.split(" ").map{|el| el.capitalize}.join(""), password: Figaro.env.user_passwords)
 
 #users for DM:
 dm_user_1 = User.create!(username: 'Archie', password: Figaro.env.user_passwords)
 dm_user_2 = User.create!(username: 'John', password: Figaro.env.user_passwords)
-taken_users = ['Archie', 'John', 'bot', 'moderator']
+taken_users << 'Archie'
+taken_users << 'John'
 usernames = []
-until usernames.length == 100
+until usernames.length == 120
   username = Faker::Name.last_name.split(" ").map{|el| el.capitalize}.join("")
-  if !usernames.include?(username) && !taken_users.include?(username)
+  if !taken_users.include?(username)
     usernames << username
+    taken_users << username
+    User.create!(username: username, password: Figaro.env.user_passwords)
   end
-end
-
-usernames.each do |username|
-  User.create!(username: username, password: Figaro.env.user_passwords)
 end
 #Create general channel. Subscribe first 30 users to General.
 Channel.create!(name: 'general', user_id: User.first.id, private: false)
