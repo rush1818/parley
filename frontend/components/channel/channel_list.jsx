@@ -14,9 +14,11 @@ class ChannelList extends React.Component {
   }
 
   render() {
+    let channelText = this.props.channel.name;
+    channelText = channelText === 'bot' ? '♥ bot' : channelText ;
     return(
       <li onClick={this.handleChannelClick} className={this.props.active ? "selected-channel" : "not-selected-channel"}>
-        {this.props.channel.name}
+        {channelText}
       </li>
     );
   }
