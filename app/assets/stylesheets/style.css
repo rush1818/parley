@@ -397,9 +397,11 @@ body {
   flex-direction: column;
   justify-content: space-around;
 }
-
+::-webkit-scrollbar {
+    display: none;
+}
 .message-list-data{  /* The actual list data*/
-  overflow: scroll;
+  overflow: auto;
   /* height: 85%; */
   flex: 1;
 }
