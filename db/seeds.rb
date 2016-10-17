@@ -82,6 +82,7 @@ Message.create!(user_id: 11, channel_id: channel_id, body: "Yeah, the bot also t
 
 
 Message.create!(user_id: 3, channel_id: channel_id, body: "Yeah the bot is really entertaining! :laughing:", created_at: dates[6])
+Message.create!(user_id: 3, channel_id: channel_id, body: "Yeah the bot is really entertaining! :laughing:", url: "http://media4.giphy.com/media/5yLgoccBrlFSPFAlvX2/200.gif", created_at: dates[7])
 
 
 
@@ -155,6 +156,7 @@ Message.create!(user_id: guest_user.id, channel_id: channel_id, body: "Centenari
 Message.create!(user_id: dm_user_1.id, channel_id: channel_id, body: "Agreed, they really went overboard with the Veneno.", created_at: dates[27])
 
 Message.create!(user_id: guest_user.id, channel_id: channel_id, body: "A friend of mine was at the event and he got to meet Koenigsegg. I admire the way Koenigsegg has developed his brand. That One:1 is a piece of art!", created_at: dates[28])
+Message.create!(user_id: guest_user.id, channel_id: channel_id, body: "/giphy Koenigsegg", url: "https://media.giphy.com/media/15zNYHxTGTdkI/giphy.gif", created_at: dates[28])
 
 
 #lunch-plans
@@ -167,6 +169,7 @@ Message.create!(user_id: dm_user_1.id, channel_id: channel_id, body: "Are we all
 Message.create!(user_id: dm_user_2.id, channel_id: channel_id, body: "Yes! Italian okay with everyone? :spaghetti:", created_at: dates[51])
 
 Message.create!(user_id: 9, channel_id: channel_id, body: "Italian sounds yumm! :spaghetti::spaghetti:", created_at: dates[52])
+Message.create!(user_id: 9, channel_id: channel_id, body: "/giphy spaghetti:", url: "https://media.giphy.com/media/MU7DwSE5Ulla8/giphy.gif", created_at: dates[52])
 
 Message.create!(user_id: guest_user.id, channel_id: channel_id, body: "Italian it is! Should I book a table for us for Saturday at 1pm?", created_at: dates[53])
 
