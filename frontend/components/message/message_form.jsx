@@ -42,7 +42,7 @@ class MessageForm extends React.Component{
   handleSubmit(e){
     e.preventDefault();
     if (this.state.body.length > 0) {
-      this.props.createMessage(this.state.channelId, {message: {body: this.state.body}});
+      this.props.createMessage(this.state.channelId, {message: {body: this.state.body, url: "f"}});
       this.setState({body:""});
       setTimeout(()=>{
         let messageList = document.getElementById("message-list-data");

@@ -1,6 +1,7 @@
 import {removeMessageAPI, createMessageAPI, receiveMessagesAPI} from '../util/message_api_util.js';
 import {MESSAGE_ACTIONS, FETCH_CONDITIONS, receiveNewMessage, removeMessage, receiveAllMessages} from '../actions/message_actions.js';
 import {receiveMessageErrors} from '../actions/error_actions.js';
+import {fetchGif} from '../util/giphy_api_util.js';
 import { hashHistory } from 'react-router';
 
 
@@ -13,14 +14,23 @@ const MessageMiddleware = store => next => action => {
 
   switch (action.type) {
     case MESSAGE_ACTIONS.CREATE_MESSAGE:
-      const createSuccess = (data) => {
-        setTimeout(()=>{
-          let messageList = document.getElementById("message-list-data");
-          messageList.scrollTop = messageList.scrollHeight;
-        },100);
-        store.dispatch(receiveNewMessage(data));
-      };
-      createMessageAPI(action.channelId, action.message, createSuccess, errorCallback);
+    const createSuccess = (data) => {
+      setTimeout(()=>{
+        let messageList = document.getElementById("message-list-data");
+        messageList.scrollTop = messageList.scrollHeight;
+      },100);
+      store.dispatch(receiveNewMessage(data));
+    };
+      if (action.message.message.body.match(/^\/giphy\s/)){
+        let success1 = (gifData) => {
+          const gifURL = gifData.data[Math.floor(Math.random() * gifData.data.length)].images.fixed_height.url;
+          action.message.message.url = gifURL;
+          createMessageAPI(action.channelId, action.message, createSuccess, errorCallback);
+        }
+        fetchGif(success1, action.message.message.body);
+      } else {
+        createMessageAPI(action.channelId, action.message, createSuccess, errorCallback);
+      }
       return next(action);
     case MESSAGE_ACTIONS.REMOVE_MESSAGE:
       removeMessageAPI(action.messageId, ()=>next(action));

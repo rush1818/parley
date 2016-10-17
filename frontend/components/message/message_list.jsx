@@ -19,7 +19,6 @@ class MessageList extends React.Component {
     if (!this.props.currentUser || !this.props.users){
       return (<Spinner spinnerName="rotating-plane" className="spinner-rotating-plane"/>);
     }
-    // debugger
     let messageKeys = Object.keys(this.props.messages);
     let content = messageKeys.map(key=>{
       if (key === 'date' || key === "limit") {
@@ -33,9 +32,16 @@ class MessageList extends React.Component {
           <button className="msg-delete-button" onClick={this.handleDelete(this.props.messages[key].id)}><i className="material-icons">delete</i></button>
         );
       }
-      return (
-        <li className="msg-list-item group" key={`${key} ${message.date}`}><span className="message-info group"><span className="msg-username">{this.props.users[message.user_id] ? this.props.users[message.user_id].name : this.props.currentUser.username}</span><span className='message-date'>{`${date.toDateString().slice(4)} ${date.toLocaleTimeString()}`}</span>{button}</span>{ReactEmoji.emojify(message.body, {attributes: {className: "emoji-class"}} )}</li>
-      );
+      if (message.url && message.url !== 'f'){
+        debugger
+        return (
+          <li className="msg-list-item group" key={`${key} ${message.date}`}><span className="message-info group"><span className="msg-username">{this.props.users[message.user_id] ? this.props.users[message.user_id].name : this.props.currentUser.username}</span><span className='message-date'>{`${date.toDateString().slice(4)} ${date.toLocaleTimeString()}`}</span>{button}</span><img src={message.url} className='gif-image'/></li>
+        )
+      } else {
+        return (
+          <li className="msg-list-item group" key={`${key} ${message.date}`}><span className="message-info group"><span className="msg-username">{this.props.users[message.user_id] ? this.props.users[message.user_id].name : this.props.currentUser.username}</span><span className='message-date'>{`${date.toDateString().slice(4)} ${date.toLocaleTimeString()}`}</span>{button}</span>{ReactEmoji.emojify(message.body, {attributes: {className: "emoji-class"}} )}</li>
+        );
+      }
     });
     return (
       <section id="message-list-data" className="message-list-data">

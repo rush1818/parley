@@ -3,5 +3,6 @@ json.array! @messages.each do |message|
   json.user_id message.user_id
   json.channel_id message.channel_id
   json.body message.body
+  json.url message.url
   json.date message.created_at
 end
