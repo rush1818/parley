@@ -878,3 +878,7 @@ body {
 .channel-member-list li {
   margin-bottom: 5px;
 }
+
+.gif-image{
+  width: 35%;
+}

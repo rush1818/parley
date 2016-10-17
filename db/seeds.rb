@@ -73,15 +73,15 @@ channel_id = channel.id
 user_ids = [3, 5, 4, 11]
 Message.create!(user_id: 11, channel_id: channel_id, body: "Welcome to Parley! :) This app has cool features such as a bot, emojis, channels, and direct messages. If you leave a channel, you can always join back by typing the name in the create/join channel form. Note that you cannot leave the bot conversation and the general channel.", created_at: dates[1])
 
-Message.create!(user_id: 5, channel_id: channel_id, body: "Wow! This app is so cool! It has a bot and emojis! :D :+1:", created_at: dates[2])
+Message.create!(user_id: 5, channel_id: channel_id, body: "Wow! This app is so cool! It has a bot, emojis, and giphy integration! :D :+1:", created_at: dates[2])
+Message.create!(user_id: 5, channel_id: channel_id, body: "/giphy yaay", url: "http://media0.giphy.com/media/l4HnY84pKDQCwm7II/200.gif", created_at: dates[3])
 
-Message.create!(user_id: 5, channel_id: channel_id, body: "The user search while creating a DM is really convenient!", created_at: dates[3])
+Message.create!(user_id: 5, channel_id: channel_id, body: "The user search while creating a DM is really convenient!", created_at: dates[4])
 
-Message.create!(user_id: 11, channel_id: channel_id, body: "Yeah, the bot also tells jokes! Did any of you give the bot a try?", created_at: dates[4])
+Message.create!(user_id: 11, channel_id: channel_id, body: "Yeah, the bot also tells jokes! Did any of you give the bot a try?", created_at: dates[5])
 
-# Message.create!(user_id: 4, channel_id: channel_id, body: "The one with the neighbors and wifi was really good! :laughing:", created_at: dates[3])
 
-Message.create!(user_id: 3, channel_id: channel_id, body: "Yeah the bot is really entertaining! :laughing:", created_at: dates[5])
+Message.create!(user_id: 3, channel_id: channel_id, body: "Yeah the bot is really entertaining! :laughing:", created_at: dates[6])
 
 
 

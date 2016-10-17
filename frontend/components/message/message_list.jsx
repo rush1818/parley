@@ -33,7 +33,6 @@ class MessageList extends React.Component {
         );
       }
       if (message.url && message.url !== 'f'){
-        debugger
         return (
           <li className="msg-list-item group" key={`${key} ${message.date}`}><span className="message-info group"><span className="msg-username">{this.props.users[message.user_id] ? this.props.users[message.user_id].name : this.props.currentUser.username}</span><span className='message-date'>{`${date.toDateString().slice(4)} ${date.toLocaleTimeString()}`}</span>{button}</span><img src={message.url} className='gif-image'/></li>
         )
