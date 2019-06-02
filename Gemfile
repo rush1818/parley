@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
-ruby "2.3.1"
+ruby "2.6.3"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.0.0'
+gem 'rails', '5.0.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
 # Use Puma as the app server
@@ -48,7 +48,7 @@ gem 'faker'
 
 group :development do
   # gem 'quiet_assets'
-  # gem 'annotate'
+  gem 'annotate'
   gem 'pry-rails'
   gem 'table_print'
   gem 'better_errors'
