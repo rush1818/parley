@@ -10,7 +10,7 @@
 #  updated_at      :datetime         not null
 #
 
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   def self.guest_user
     User.find(3)
   end

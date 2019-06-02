@@ -10,7 +10,7 @@
 #  updated_at :datetime         not null
 #
 
-class Channel < ActiveRecord::Base
+class Channel < ApplicationRecord
 
   def self.clean_empty_channels
     channels = Channel.all.select{|ch| ch.subscriber_ids == []}

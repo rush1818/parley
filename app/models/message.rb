@@ -11,7 +11,7 @@
 #  url        :string           default("f")
 #
 
-class Message < ActiveRecord::Base
+class Message < ApplicationRecord
   validates :body, :user, :channel, presence: true
   before_create :url_column
   belongs_to :user

@@ -9,7 +9,7 @@
 #  updated_at :datetime         not null
 #
 
-class Subscription < ActiveRecord::Base
+class Subscription < ApplicationRecord
   validates :user_id, uniqueness: { scope: :channel_id }
   validates :user, :channel, presence: true
   belongs_to :user
