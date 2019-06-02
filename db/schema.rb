@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -16,49 +15,45 @@ ActiveRecord::Schema.define(version: 20161017184749) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "channels", force: :cascade do |t|
-    t.string   "name",                      null: false
-    t.boolean  "private",    default: true, null: false
-    t.integer  "user_id",                   null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-  end
-
-  add_index "channels", ["name"], name: "index_channels_on_name", using: :btree
-  add_index "channels", ["private"], name: "index_channels_on_private", using: :btree
-  add_index "channels", ["user_id"], name: "index_channels_on_user_id", using: :btree
-
-  create_table "messages", force: :cascade do |t|
-    t.text     "body",                     null: false
-    t.integer  "user_id",                  null: false
-    t.integer  "channel_id",               null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.string   "url",        default: "f"
-  end
-
-  add_index "messages", ["channel_id"], name: "index_messages_on_channel_id", using: :btree
-  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
-
-  create_table "subscriptions", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "channel_id", null: false
+  create_table "channels", id: :serial, force: :cascade do |t|
+    t.string "name", null: false
+    t.boolean "private", default: true, null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_channels_on_name"
+    t.index ["private"], name: "index_channels_on_private"
+    t.index ["user_id"], name: "index_channels_on_user_id"
   end
 
-  add_index "subscriptions", ["channel_id"], name: "index_subscriptions_on_channel_id", using: :btree
-  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id", using: :btree
-
-  create_table "users", force: :cascade do |t|
-    t.string   "username",        null: false
-    t.string   "password_digest", null: false
-    t.string   "session_token",   null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+  create_table "messages", id: :serial, force: :cascade do |t|
+    t.text "body", null: false
+    t.integer "user_id", null: false
+    t.integer "channel_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "url", default: "f"
+    t.index ["channel_id"], name: "index_messages_on_channel_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  add_index "users", ["session_token"], name: "index_users_on_session_token", using: :btree
-  add_index "users", ["username"], name: "index_users_on_username", using: :btree
+  create_table "subscriptions", id: :serial, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "channel_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_id"], name: "index_subscriptions_on_channel_id"
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
+
+  create_table "users", id: :serial, force: :cascade do |t|
+    t.string "username", null: false
+    t.string "password_digest", null: false
+    t.string "session_token", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["session_token"], name: "index_users_on_session_token"
+    t.index ["username"], name: "index_users_on_username"
+  end
 
 end

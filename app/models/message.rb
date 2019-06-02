@@ -23,7 +23,7 @@ class Message < ApplicationRecord
     if max_created_at
       @messages = @messages.where("messages.created_at < :date", date: max_created_at)
     end
-    return @messages.limit(limit)
+    return @messages.first(limit)
   end
 
   def url_column
