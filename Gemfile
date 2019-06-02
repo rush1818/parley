@@ -56,11 +56,11 @@ group :development do
   gem 'awesome_print', require:'ap'
 end
 
-gem 'figaro'
 group :production do
   gem 'newrelic_rpm'
   gem 'rails_12factor'
 end
+gem 'figaro'
 gem 'pusher'
 gem "autoprefixer-rails"
 gem 'cleverbot_io'
